@@ -3,38 +3,40 @@ from typing import Tuple
 from matplotlib import pyplot as plt
 
 from fitness_functions import a_func
-from individual import get_score_for_sorting
+from genotype import GenotypeKey, GenotypeProperties
 from population import Population
 
 
 class Evolution:
-    def __init__(self, n_individuals: int, n_generations: int, individual_value_range: Tuple[int, int]):
-        self.population = Population(n_individuals, individual_value_range)
+    def __init__(self,
+                 n_individuals: int,
+                 n_generations: int,
+                 genotype_key: GenotypeKey = GenotypeKey.a_list,
+                 n_genes: int = 1,
+                 individual_value_range: Tuple[int, int] = (0, 1),
+                 mutation_probability: float = 0.5
+                 ):
+        self.genotype_properties = GenotypeProperties(genotype_key, n_genes, individual_value_range, mutation_probability)
+        self.population = Population(n_individuals, self.genotype_properties)
         self.epochs = n_generations
         self.fitness_over_time = []
 
     def evolve(self):
         for n in range(self.epochs):
             self.evaluate_population()
-            self.update_population()
+            self.population.update_population()
             self.record_performance()
 
-        print(f"The value of the best individual is {self.population.best_individual.value}")
+        print(f"The value of the best individual is {self.population.best_individual.genotype.all_genes}")
         self.plot_performance()
 
     def evaluate_population(self):
 
         for individual in self.population.all_individuals:
-            fitness_score = a_func(individual.value)
+            fitness_score = a_func(individual.genotype.all_genes)
             individual.fitness_score = fitness_score
             if self.population.best_individual.fitness_score is None or fitness_score > self.population.best_individual.fitness_score:
                 self.population.best_individual = individual
-
-    def update_population(self):
-        sorted_individuals = sorted(self.population.all_individuals, key=get_score_for_sorting)
-        self.population.all_individuals = sorted_individuals[:(self.population.n_individuals // 2)]
-        n_individuals_to_replace = self.population.n_individuals - (self.population.n_individuals // 2)
-        self.population.add_new_individuals(n_individuals_to_replace)
 
     def record_performance(self):
         self.fitness_over_time.append(self.population.best_individual.fitness_score)
