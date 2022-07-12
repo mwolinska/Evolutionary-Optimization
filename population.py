@@ -27,7 +27,10 @@ class Population:
             self.all_individuals.append(Individual(self.genotype_properties))
 
     def update_population(self):
-        sorted_individuals = sorted(self.all_individuals, key=get_score_for_sorting)
-        self.all_individuals = sorted_individuals[:(self.n_individuals // 2)]
-        n_individuals_to_replace = self.n_individuals - (self.n_individuals // 2)
+        sorted_individuals = sorted(self.all_individuals, key=get_score_for_sorting, reverse=True)
+        elite_individual_threshold = max(1, self.n_individuals // 5)
+        self.all_individuals = sorted_individuals[:elite_individual_threshold]
         self.add_new_individuals(n_individuals_to_replace)
+        for individual in sorted_individuals[elite_individual_threshold:]:
+            individual.mutation()
+            self.all_individuals.append(individual)

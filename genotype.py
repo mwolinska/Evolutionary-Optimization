@@ -23,7 +23,37 @@ class Genotype:
         self.value_range = genotype_properties.value_range
         self.mutation_probability = genotype_properties.mutation_probability
 
+    def mutate(self):
+        if self.genotype_key == GenotypeKey.a_string:
+            new_genotype = self.mutate_string()
+        elif self.genotype_key == GenotypeKey.a_list:
+            new_genotype = self.mutate_list()
+        else:
+            raise NotImplementedError
 
+        return new_genotype
+
+    def mutate_string(self):
+        pass
+
+    def mutate_list(self):
+        new_genotype = []
+
+        for gene in self.all_genes:
+            mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
+
+            # here vary depending on type of gene
+            if mutation:
+                # my_list = [1, 0]
+                # new_gene = my_list[gene]
+                new_gene = random.randint(self.value_range[0], self.value_range[1])
+
+            else:
+                new_gene = gene
+
+            new_genotype.append(new_gene)
+
+        return new_genotype
 
     @staticmethod
     def build_genotype(genotype_properties: GenotypeProperties):
@@ -33,7 +63,6 @@ class Genotype:
             for i in range(genotype_properties.n_genes):
                 new_gene = random.randint(genotype_properties.value_range[0], genotype_properties.value_range[1])
                 all_genes.append(new_gene)
-                print(all_genes)
 
         return all_genes
 
