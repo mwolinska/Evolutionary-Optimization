@@ -78,21 +78,20 @@ class Population:
             last_slice_index = self.genotype_properties.n_genes - 1
             gene_slice_index = random.randint(1, last_slice_index)
 
-            child_1_genotype_part_1 = parent_1.genotype.all_genes[:gene_slice_index]
-            child_1_genotype_part_2 = parent_2.genotype.all_genes[gene_slice_index:]
-            child_1_all_genes = child_1_genotype_part_1 + child_1_genotype_part_2
+            if self.genotype_properties.genotype_key == GenotypeKey.a_list:
+                child_1 = self.single_point_crossover_for_list(parent_1, parent_2, gene_slice_index)
+                child_2 = self.single_point_crossover_for_list(parent_2, parent_1, gene_slice_index)
 
-            child_2_genotype_part_1 = parent_2.genotype.all_genes[:gene_slice_index]
-            child_2_genotype_part_2 = parent_1.genotype.all_genes[gene_slice_index:]
-            child_2_all_genes = child_2_genotype_part_1 + child_2_genotype_part_2
-
-            child_1 = self.create_child(child_1_all_genes)
-            child_2 = self.create_child(child_2_all_genes)
+            else:
+                raise NotImplementedError
 
             return child_1, child_2
 
-    def create_child(self, new_genotype_all_genes):
-        child = Individual.from_all_genes(self.genotype_properties, new_genotype_all_genes)
+    def single_point_crossover_for_list(self, parent_1: Individual, parent_2: Individual, gene_slice_index: int) -> Individual:
+        child_genotype_part_1 = parent_1.genotype.all_genes[:gene_slice_index]
+        child_genotype_part_2 = parent_2.genotype.all_genes[gene_slice_index:]
+        child_all_genes = child_genotype_part_1 + child_genotype_part_2
+        child = Individual.from_all_genes(self.genotype_properties, child_all_genes)
         return child
 
     def split_elite_individuals(self) -> Tuple[List[Individual], List[Individual]]:
