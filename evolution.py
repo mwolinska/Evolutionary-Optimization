@@ -2,7 +2,7 @@ from typing import Tuple
 
 from matplotlib import pyplot as plt
 
-from fitness_functions import a_func
+from phenotype import a_func
 from genotype import GenotypeKey, GenotypeProperties
 from population import Population
 
