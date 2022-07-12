@@ -4,16 +4,35 @@ orbs:
   python: circleci/python@2.0.3
 
 jobs:
-  hello-world:
+  make-new-release:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/python:3.8.12
     steps:
       - checkout
-      - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+      - python/install-packages:
+          pkg-manager: poetry
+      - install-gh-cli
 
 workflows:
   main:
     jobs:
-      - hello-world
+      - make-new-release:
+          filters:
+            branches:
+              only:
+                - master
+                - main
+                - add_version_control_to_ci
+
+
+commands:
+  install-gh-cli:
+    description: Install Github CLI
+    steps:
+      - run:
+          name: Get and install gh-cli
+          command: |
+            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+            sudo apt update
+            sudo apt install gh
