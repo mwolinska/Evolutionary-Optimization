@@ -14,10 +14,11 @@ class Evolution:
                  genotype_key: GenotypeKey = GenotypeKey.a_list,
                  n_genes: int = 1,
                  individual_value_range: Tuple[int, int] = (0, 1),
-                 mutation_probability: float = 0.5
+                 mutation_probability: float = 0.5,
+                 crossover: bool = False
                  ):
         self.genotype_properties = GenotypeProperties(genotype_key, n_genes, individual_value_range, mutation_probability)
-        self.population = Population(n_individuals, self.genotype_properties)
+        self.population = Population(n_individuals, self.genotype_properties, crossover=crossover)
         self.epochs = n_generations
         self.fitness_over_time = []
 
