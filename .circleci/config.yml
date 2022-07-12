@@ -27,7 +27,6 @@ workflows:
               only:
                 - master
                 - main
-                - add_version_control_to_ci
           context:
             - GITHUB_CREDS
 
