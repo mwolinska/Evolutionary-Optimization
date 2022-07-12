@@ -12,6 +12,11 @@ jobs:
       - python/install-packages:
           pkg-manager: poetry
       - install-gh-cli
+      - run:
+          name: Create release
+          command: |
+            RELEASE_VERSION=$(poetry version --short)
+            gh release create $RELEASE_VERSION --generate-notes 
 
 workflows:
   main:
@@ -23,7 +28,8 @@ workflows:
                 - master
                 - main
                 - add_version_control_to_ci
-
+          context:
+            - GITHUB_CREDS
 
 commands:
   install-gh-cli:
