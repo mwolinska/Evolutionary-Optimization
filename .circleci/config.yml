@@ -16,7 +16,19 @@ jobs:
           name: Create release
           command: |
             RELEASE_VERSION=$(poetry version --short)
-            gh release create $RELEASE_VERSION --generate-notes 
+            gh release create $RELEASE_VERSION --generate-notes
+
+  docs-build:
+      docker:
+        - image: cimg/python:3.8.12
+      steps:
+        - checkout
+        - run:
+            name: Build docs
+            command: cd docs/ && make html
+        - persist_to_workspace:
+            root: docs/_build
+            paths: html
 
 workflows:
   main:
@@ -29,6 +41,11 @@ workflows:
                 - main
           context:
             - GITHUB_CREDS
+      - docs-build
+          filters:
+            branches:
+              only:
+                set_up_sphinx_documentation
 
 commands:
   install-gh-cli:
