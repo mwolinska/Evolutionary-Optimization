@@ -1,11 +1,13 @@
 [tool.poetry]
 name = "evolutionary-optimisation"
-version = "0.1.0"
-description = ""
+version = "1.0.0"
+description = "A generic evolutionary algorithm for function optimisation."
 authors = ["Marta <mswolinska@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+numpy = "^1.23.0"
+matplotlib = "^3.5.2"
 
 [tool.poetry.dev-dependencies]
 
