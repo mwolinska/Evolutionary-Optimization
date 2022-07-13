@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "evolutionary-optimisation"
 version = "1.0.0"
-description = "A generic evolutionatry algorithm for function optimisation."
+description = "A generic evolutionary algorithm for function optimisation."
 authors = ["Marta <mswolinska@gmail.com>"]
 
 [tool.poetry.dependencies]
