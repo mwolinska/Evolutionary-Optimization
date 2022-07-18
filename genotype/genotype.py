@@ -11,7 +11,6 @@ class Genotype:
 
         Args:
             genotype_properties: all properties required to build a genotype.
-
         """
         self.genotype = self.build_genotype(genotype_properties)
         self.genotype_key = GenotypeKey(genotype_properties.genotype_key)
@@ -55,7 +54,7 @@ class Genotype:
         or kept.
 
         Returns:
-            List
+            List.
         """
         new_genotype = []
 
