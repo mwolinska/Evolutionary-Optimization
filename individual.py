@@ -67,7 +67,3 @@ if __name__ == '__main__':
     #
     # c_individual = test.crossover(a_individual, b_individual)
     # print(c_individual.genotype)
-
-
-def get_score_for_sorting(individual: Individual):
-    return individual.fitness_score
