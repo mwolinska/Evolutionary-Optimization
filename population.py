@@ -27,7 +27,7 @@ class Population:
             individuals.append(new_individual)
         return individuals
 
-    def add_new_individuals(self, n_new_individuals) -> List[Individual]:
+    def create_list_of_new_individuals(self, n_new_individuals: int) -> List[Individual]:
         new_individuals_list = []
         for i in range(n_new_individuals):
             new_individuals_list.append(Individual(self.genotype_properties))
@@ -44,7 +44,7 @@ class Population:
                 individual.mutation()
 
         if not self.crossover and not self.mutation:
-            non_elite_individuals = self.add_new_individuals(len(non_elite_individuals))
+            non_elite_individuals = self.create_list_of_new_individuals(len(non_elite_individuals))
 
         new_individuals_list = elite_individuals + non_elite_individuals
 
@@ -62,13 +62,13 @@ class Population:
             list_of_parents.pop(-1)
 
         for i in range(0, len(list_of_parents), 2):
-            child_1, child_2 = self.perform_crossover(list_of_parents[i], list_of_parents[i + 1])
+            child_1, child_2 = self.single_point_crossover(list_of_parents[i], list_of_parents[i + 1])
             list_of_children.append(child_1)
             list_of_children.append(child_2)
 
         return list_of_children
 
-    def perform_crossover(self, parent_1: Individual, parent_2: Individual) -> Tuple[Individual, Individual]:
+    def single_point_crossover(self, parent_1: Individual, parent_2: Individual) -> Tuple[Individual, Individual]:
         if len(parent_1.genotype.all_genes) != len(parent_2.genotype.all_genes):
             raise NameError("The Individuals have genotypes of different lengths - crossover is impossible")
 
