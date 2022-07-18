@@ -59,7 +59,7 @@ if __name__ == '__main__':
         n_genes=1,
         value_range=(0,1), mutation_probability=1)
     test_indiv = Individual.from_all_genes(gen_prop, [1])
-    print(test_indiv.genotype.all_genes)
+    print(test_indiv.genotype.genotype)
     # a_individual = Individual([1, 1, 1, 1, 1], mutation_probability=1)
     # b_individual = Individual([2, 2, 2, 2, 2], mutation_probability=1)
     # # a_individual.mutate()

@@ -55,6 +55,8 @@ class Genotype:
 
     def mutate_string(self):
         pass
+    def mutate_list(self) -> List:
+        """Performs mutation on a list.
 
         Based on the mutation probability each gene is either replaced by a random gene of the same type
         or kept.
