@@ -1,16 +1,29 @@
 import random
 from dataclasses import dataclass
 from enum import Enum
-from typing import Tuple, Optional
+from typing import Tuple, Optional, List
 
 import numpy as np
 
 class GenotypeKey(str, Enum):
+    """Class to define allowed types of genotypes.
+
+    This key will then be used to define methods used throughout the package e.g. a different mutation
+    would be used for a_list as opposed to a_string.
+    """
     a_list = "list"
     a_string = "str"
 
 @dataclass
 class GenotypeProperties:
+    """Object containing all information required to build a genotype.
+
+    Attributes:
+        genotype_key: defines the type of genotype.
+        n_genes: number of genes required in a genotype.
+        value_range: tuple of minimum and maximum values for a gene.
+        mutation_probability: probability of a gene mutating in one generation.
+    """
     genotype_key: GenotypeKey
     n_genes: int
     value_range: Tuple[int, int]
@@ -18,12 +31,19 @@ class GenotypeProperties:
 
 class Genotype:
     def __init__(self, genotype_properties: GenotypeProperties):
-        self.all_genes = self.build_genotype(genotype_properties)
+        """Object containing genotype information for an Individual.
+
+        Args:
+            genotype_properties: all properties required to build a genotype.
+
+        """
+        self.genotype = self.build_genotype(genotype_properties)
         self.genotype_key = genotype_properties.genotype_key
         self.value_range = genotype_properties.value_range
         self.mutation_probability = genotype_properties.mutation_probability
 
     def mutate(self):
+        """Calls the correct method to perform a mutation based on GenotypeKey."""
         if self.genotype_key == GenotypeKey.a_string:
             new_genotype = self.mutate_string()
         elif self.genotype_key == GenotypeKey.a_list:
@@ -35,11 +55,18 @@ class Genotype:
 
     def mutate_string(self):
         pass
+    def mutate_list(self) -> List:
+        """Performs mutation on a list.
 
-    def mutate_list(self):
+        Based on the mutation probability each gene is either replaced by a random gene of the same type
+        or kept.
+
+        Returns:
+            List
+        """
         new_genotype = []
 
-        for gene in self.all_genes:
+        for gene in self.genotype:
             mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
 
             # here vary depending on type of gene
@@ -57,6 +84,13 @@ class Genotype:
 
     @staticmethod
     def build_genotype(genotype_properties: GenotypeProperties):
+        """Builds genotype based on requirements defined by genotype_properties.
+
+        Args:
+            genotype_properties: all genotype properties required to build genotype.
+        Returns:
+            Type aligned to the one defined by GenotypeKey. Currently, list or str
+        """
         all_genes = None
         if genotype_properties.genotype_key == "list":
             all_genes = []
