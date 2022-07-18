@@ -80,11 +80,6 @@ class Population:
             non_elite_individuals = self.create_list_of_new_individuals(len(non_elite_individuals))
 
         new_individuals_list = elite_individuals + non_elite_individuals
-
-        # for debugging
-        for i in new_individuals_list:
-            print(i.genotype.all_genes)
-
         self.all_individuals = new_individuals_list
 
     def crossover_for_list(self, list_of_parents: List[Individual]) -> List[Individual]:
