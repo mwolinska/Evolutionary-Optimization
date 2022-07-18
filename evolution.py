@@ -8,10 +8,11 @@ from population import Population
 
 
 class Evolution:
-    def __init__(self,
-                 n_individuals: int,
-                 n_generations: int,
-                 genotype_key: GenotypeKey = GenotypeKey.a_list,
+    def __init__(
+        self,
+        n_individuals: int,
+        n_generations: int,
+        genotype_key: GenotypeKey = GenotypeKey.a_list,
                  n_genes: int = 1,
         gene_value_range: Tuple[int, int] = (0, 1),
                  mutation_probability: float = 0.5,
