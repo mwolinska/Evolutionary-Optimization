@@ -15,6 +15,12 @@ class GenotypeKey(str, Enum):
     LIST = "list"
     STRING = "str"
 
+class Gene(str, Enum):
+    INTEGER = "int"
+    STRING = "str"
+    BINARY = "binary"
+    FLOAT = "float"
+
 @dataclass
 class GenotypeProperties:
     """Object containing all information required to build a genotype.
