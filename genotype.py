@@ -12,7 +12,8 @@ class GenotypeKey(str, Enum):
     would be used for a_list as opposed to a_string.
     """
     a_list = "list"
-    a_string = "str"
+    LIST = "list"
+    STRING = "str"
 
 @dataclass
 class GenotypeProperties:
@@ -44,9 +45,9 @@ class Genotype:
 
     def mutate(self):
         """Calls the correct method to perform a mutation based on GenotypeKey."""
-        if self.genotype_key == GenotypeKey.a_string:
+        if self.genotype_key == GenotypeKey.STRING:
             new_genotype = self.mutate_string()
-        elif self.genotype_key == GenotypeKey.a_list:
+        elif self.genotype_key == GenotypeKey.LIST:
             new_genotype = self.mutate_list()
         else:
             raise NotImplementedError

@@ -138,7 +138,7 @@ class Population:
             last_slice_index = self.genotype_properties.n_genes - 1
             gene_slice_index = random.randint(1, last_slice_index)
 
-            if self.genotype_properties.genotype_key == GenotypeKey.a_list:
+            if self.genotype_properties.genotype_key == GenotypeKey.LIST:
                 child_1 = self.single_point_crossover_for_list(parent_1, parent_2, gene_slice_index)
                 child_2 = self.single_point_crossover_for_list(parent_2, parent_1, gene_slice_index)
 

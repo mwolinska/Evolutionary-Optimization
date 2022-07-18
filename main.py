@@ -5,7 +5,7 @@ from genotype import GenotypeKey
 def run_evolution():
     test_evolution = Evolution(n_individuals=5,
                                n_generations=4,
-                               genotype_key=GenotypeKey.a_list,
+                               genotype_key=GenotypeKey.LIST,
                                n_genes=1,
                                gene_value_range=(-10, 10),
                                mutation_probability=1,

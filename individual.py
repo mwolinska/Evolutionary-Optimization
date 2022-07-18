@@ -55,7 +55,7 @@ def get_score_for_sorting(individual: Individual):
 
 if __name__ == '__main__':
     gen_prop = GenotypeProperties(
-        genotype_key=GenotypeKey.a_list,
+        genotype_key=GenotypeKey.LIST,
         n_genes=1,
         value_range=(0,1), mutation_probability=1)
     test_indiv = Individual.from_all_genes(gen_prop, [1])
