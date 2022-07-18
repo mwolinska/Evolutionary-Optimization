@@ -110,6 +110,12 @@ class Genotype:
 class Gene:
     def __init__(self, a_gene):
         self.gene_type = type(a_gene)
+    def check_if_binary(self):
+        for el in self.genotype:
+            if int(el) != 1 and int(el) != 0:
+                return False
+        return True
+
 
 if __name__ == '__main__':
     test = Genotype.a_list
