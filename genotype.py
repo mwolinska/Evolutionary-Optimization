@@ -18,7 +18,8 @@ class GenotypeProperties:
 
 class Genotype:
     def __init__(self, genotype_properties: GenotypeProperties):
-        self.all_genes = self.build_genotype(genotype_properties)
+        """Object containing genotype information for an Individual.
+        self.genotype = self.build_genotype(genotype_properties)
         self.genotype_key = genotype_properties.genotype_key
         self.value_range = genotype_properties.value_range
         self.mutation_probability = genotype_properties.mutation_probability
@@ -39,7 +40,7 @@ class Genotype:
     def mutate_list(self):
         new_genotype = []
 
-        for gene in self.all_genes:
+        for gene in self.genotype:
             mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
 
             # here vary depending on type of gene

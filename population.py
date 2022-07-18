@@ -69,7 +69,7 @@ class Population:
         return list_of_children
 
     def single_point_crossover(self, parent_1: Individual, parent_2: Individual) -> Tuple[Individual, Individual]:
-        if len(parent_1.genotype.all_genes) != len(parent_2.genotype.all_genes):
+        """Performs single point crossover operation for 1 set of parents.
             raise NameError("The Individuals have genotypes of different lengths - crossover is impossible")
 
         if self.genotype_properties.n_genes == 1:
@@ -88,8 +88,8 @@ class Population:
             return child_1, child_2
 
     def single_point_crossover_for_list(self, parent_1: Individual, parent_2: Individual, gene_slice_index: int) -> Individual:
-        child_genotype_part_1 = parent_1.genotype.all_genes[:gene_slice_index]
-        child_genotype_part_2 = parent_2.genotype.all_genes[gene_slice_index:]
+        """A single point crossover for genotype of type list.
+
         child_all_genes = child_genotype_part_1 + child_genotype_part_2
         child = Individual.from_all_genes(self.genotype_properties, child_all_genes)
         return child

@@ -14,13 +14,13 @@ class Individual:
 
     @classmethod
     def from_all_genes(cls, genotype_poroperties, new_all_genes):
-        new_individual = cls(genotype_poroperties)
+        """Creates an individual from a set of genes.
         new_individual.genotype.all_genes = new_all_genes
         return new_individual
 
     def mutation(self):
         new_genotype = self.genotype.mutate()
-        self.genotype.all_genes = new_genotype
+        self.genotype.genotype = new_genotype
 
 if __name__ == '__main__':
     gen_prop = GenotypeProperties(
