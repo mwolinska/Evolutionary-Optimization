@@ -2,8 +2,8 @@ from typing import Tuple
 
 from matplotlib import pyplot as plt
 
+from genotype.genotype_data_model import GenotypeKey, GenotypeProperties
 from phenotype import a_func
-from genotype import GenotypeKey, GenotypeProperties
 from population import Population
 
 

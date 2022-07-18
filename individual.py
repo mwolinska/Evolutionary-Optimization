@@ -1,4 +1,5 @@
-from genotype import Genotype, GenotypeProperties, GenotypeKey
+from genotype.genotype import Genotype
+from genotype.genotype_data_model import GenotypeProperties, GenotypeKey
 
 
 class Individual:

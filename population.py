@@ -2,7 +2,7 @@ from random import random, shuffle
 from typing import Tuple, List
 import random
 
-from genotype import GenotypeKey, GenotypeProperties
+from genotype.genotype_data_model import GenotypeProperties, GenotypeKey
 from individual import Individual, get_score_for_sorting
 
 
