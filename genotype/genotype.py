@@ -11,7 +11,6 @@ class Genotype:
 
         Args:
             genotype_properties: all properties required to build a genotype.
-
         """
         self.genotype = self.build_genotype(genotype_properties)
         self.genotype_key = GenotypeKey(genotype_properties.genotype_key)
@@ -55,7 +54,7 @@ class Genotype:
         or kept.
 
         Returns:
-            List
+            List.
         """
         new_genotype = []
 
@@ -68,6 +67,9 @@ class Genotype:
             elif mutation and self.gene_type == Gene.BINARY:
                 my_list = [1, 0]
                 new_gene = my_list[gene]
+
+            elif mutation and self.gene_type == Gene.FLOAT:
+                new_gene = random.uniform(self.value_range[0], self.value_range[1])
             else:
                 new_gene = gene
 
@@ -88,7 +90,15 @@ class Genotype:
         if genotype_properties.genotype_key == list:
             all_genes = []
             for i in range(genotype_properties.n_genes):
-                new_gene = random.randint(genotype_properties.value_range[0], genotype_properties.value_range[1])
+                if genotype_properties.type_of_gene == int:
+                    new_gene = random.randint(genotype_properties.value_range[0], genotype_properties.value_range[1])
+                elif genotype_properties.type_of_gene == float:
+                    new_gene = random.uniform(genotype_properties.value_range[0], genotype_properties.value_range[1])
+                elif genotype_properties.type_of_gene == bin:
+                    new_gene = random.randint(0, 1)
+                else:
+                    raise NotImplementedError
+
                 all_genes.append(new_gene)
 
         return all_genes

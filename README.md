@@ -45,6 +45,7 @@ To run the code type the following in your terminal.
 python3 main.py
 ```
 The parameters used for the run can be edited within the main.py file.
+
 ```python
     test_evolution = Evolution(n_individuals=3,
                                n_generations=4,
