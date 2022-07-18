@@ -7,7 +7,7 @@ def run_evolution():
                                n_generations=4,
                                genotype_key=GenotypeKey.a_list,
                                n_genes=1,
-                               individual_value_range=(-10, 10),
+                               gene_value_range=(-10, 10),
                                mutation_probability=1,
                                crossover=True)
     test_evolution.evolve()
