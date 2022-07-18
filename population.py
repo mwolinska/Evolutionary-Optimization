@@ -2,7 +2,7 @@ from random import random, shuffle
 from typing import Tuple, List
 import random
 
-from genotype import GenotypeKey, GenotypeProperties
+from genotype.genotype_data_model import GenotypeProperties, GenotypeKey
 from individual import Individual, get_score_for_sorting
 
 
@@ -138,7 +138,7 @@ class Population:
             last_slice_index = self.genotype_properties.n_genes - 1
             gene_slice_index = random.randint(1, last_slice_index)
 
-            if self.genotype_properties.genotype_key == GenotypeKey.a_list:
+            if self.genotype_properties.genotype_key == GenotypeKey.LIST:
                 child_1 = self.single_point_crossover_for_list(parent_1, parent_2, gene_slice_index)
                 child_2 = self.single_point_crossover_for_list(parent_2, parent_1, gene_slice_index)
 
@@ -165,7 +165,7 @@ class Population:
         child_genotype_part_1 = parent_1.genotype.genotype[:gene_slice_index]
         child_genotype_part_2 = parent_2.genotype.genotype[gene_slice_index:]
         child_all_genes = child_genotype_part_1 + child_genotype_part_2
-        child = Individual.from_all_genes(self.genotype_properties, child_all_genes)
+        child = Individual.from_genotype(self.genotype_properties, child_all_genes)
         return child
 
     def split_elite_individuals(self) -> Tuple[List[Individual], List[Individual]]:
@@ -178,6 +178,7 @@ class Population:
         Returns:
             Tuple of List[Individual] and List[Individual].
         """
+        # TODO allow user to define % of elitism
         sorted_individuals = sorted(self.all_individuals, key=get_score_for_sorting, reverse=True)
         elite_individual_threshold = max(1, self.n_individuals // 5)
         elite_individuals = sorted_individuals[:elite_individual_threshold]

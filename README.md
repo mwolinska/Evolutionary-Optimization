@@ -48,7 +48,7 @@ The parameters used for the run can be edited within the main.py file.
 ```python
     test_evolution = Evolution(n_individuals=3,
                                n_generations=4,
-                               genotype_key=GenotypeKey.a_list,
+                               genotype_key=GenotypeKey.LIST,
                                n_genes=2,
                                individual_value_range=(-10, 10),
                                mutation_probability=1,

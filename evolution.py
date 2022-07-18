@@ -2,8 +2,8 @@ from typing import Tuple
 
 from matplotlib import pyplot as plt
 
+from genotype.genotype_data_model import GenotypeProperties
 from phenotype import a_func
-from genotype import GenotypeKey, GenotypeProperties
 from population import Population
 
 
@@ -12,10 +12,11 @@ class Evolution:
         self,
         n_individuals: int,
         n_generations: int,
-        genotype_key: GenotypeKey = GenotypeKey.a_list,
-                 n_genes: int = 1,
+        genotype_key: type = list,
+        type_of_gene: type = float,
+        n_genes: int = 1,
         gene_value_range: Tuple[int, int] = (0, 1),
-                 mutation_probability: float = 0.5,
+        mutation_probability: float = 0.5,
         crossover: bool = False
     ):
         """Initialises Evolution class.
@@ -28,13 +29,14 @@ class Evolution:
             n_individuals: number of individuals in the desired population.
             n_generations: number of iterations of the algorithm.
             genotype_key: type of genotype using the GenotypeKey object.
+            type_of_gene: type of gene within the genotype.
             n_genes: number of genes in an individual's genotype.
             gene_value_range: tuple of the minimum and maximum values of a gene.
             mutation_probability: probability of mutation of an individual when updating population.
             crossover: whether crossover should happen when updating the population.
         """
 
-        self.genotype_properties = GenotypeProperties(genotype_key, n_genes, gene_value_range, mutation_probability)
+        self.genotype_properties = GenotypeProperties(genotype_key, type_of_gene, n_genes, gene_value_range, mutation_probability)
         self.population = Population(n_individuals, self.genotype_properties, crossover=crossover)
         self.epochs = n_generations
         self.fitness_over_time = []
