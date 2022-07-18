@@ -2,7 +2,7 @@ from typing import Tuple
 
 from matplotlib import pyplot as plt
 
-from genotype.genotype_data_model import GenotypeKey, GenotypeProperties
+from genotype.genotype_data_model import GenotypeProperties
 from phenotype import a_func
 from population import Population
 
@@ -29,6 +29,7 @@ class Evolution:
             n_individuals: number of individuals in the desired population.
             n_generations: number of iterations of the algorithm.
             genotype_key: type of genotype using the GenotypeKey object.
+            type_of_gene: type of gene within the genotype.
             n_genes: number of genes in an individual's genotype.
             gene_value_range: tuple of the minimum and maximum values of a gene.
             mutation_probability: probability of mutation of an individual when updating population.
