@@ -14,10 +14,10 @@ class Genotype:
 
         """
         self.genotype = self.build_genotype(genotype_properties)
-        self.genotype_key = genotype_properties.genotype_key
+        self.genotype_key = GenotypeKey(genotype_properties.genotype_key)
         self.value_range = genotype_properties.value_range
         self.mutation_probability = genotype_properties.mutation_probability
-        self.gene_type = self.find_type_of_gene()
+        self.gene_type = Gene(genotype_properties.type_of_gene)
 
     def mutate(self):
         """Calls the correct method to perform a mutation based on GenotypeKey."""

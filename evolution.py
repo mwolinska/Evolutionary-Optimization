@@ -12,7 +12,8 @@ class Evolution:
         self,
         n_individuals: int,
         n_generations: int,
-        genotype_key: GenotypeKey = GenotypeKey.LIST,
+        genotype_key: type = list,
+        type_of_gene: type = float,
         n_genes: int = 1,
         gene_value_range: Tuple[int, int] = (0, 1),
         mutation_probability: float = 0.5,
@@ -34,7 +35,7 @@ class Evolution:
             crossover: whether crossover should happen when updating the population.
         """
 
-        self.genotype_properties = GenotypeProperties(genotype_key, n_genes, gene_value_range, mutation_probability)
+        self.genotype_properties = GenotypeProperties(genotype_key, type_of_gene, n_genes, gene_value_range, mutation_probability)
         self.population = Population(n_individuals, self.genotype_properties, crossover=crossover)
         self.epochs = n_generations
         self.fitness_over_time = []
