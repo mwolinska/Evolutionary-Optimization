@@ -48,6 +48,7 @@ class Genotype:
         self.genotype_key = genotype_properties.genotype_key
         self.value_range = genotype_properties.value_range
         self.mutation_probability = genotype_properties.mutation_probability
+        self.gene_type = self.find_type_of_gene()
 
     def mutate(self):
         """Calls the correct method to perform a mutation based on GenotypeKey."""
@@ -107,9 +108,26 @@ class Genotype:
 
         return all_genes
 
-class Gene:
-    def __init__(self, a_gene):
-        self.gene_type = type(a_gene)
+    def find_type_of_gene(self) -> Gene:
+        """Finds type of gene within genotype.
+
+        Checks whether genotype is binary (for both GenotypeKey == LIST and GenotypeKey == STRING),
+        then checks type of first element in genotype.
+
+        Returns:
+            Gene.
+        """
+        if self.check_if_binary():
+            return Gene.BINARY
+        elif isinstance(self.genotype[0], int):
+            return Gene.INTEGER
+        elif isinstance(self.genotype[0], str):
+            return Gene.STRING
+        elif isinstance(self.genotype[0], float):
+            return Gene.FLOAT
+        else:
+            raise NotImplementedError
+
     def check_if_binary(self):
         for el in self.genotype:
             if int(el) != 1 and int(el) != 0:
