@@ -62,12 +62,12 @@ class Genotype:
         for gene in self.genotype:
             mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
 
-            # here vary depending on type of gene
-            if mutation:
-                # my_list = [1, 0]
-                # new_gene = my_list[gene]
+            if mutation and self.gene_type == Gene.INTEGER:
                 new_gene = random.randint(self.value_range[0], self.value_range[1])
 
+            elif mutation and self.gene_type == Gene.BINARY:
+                my_list = [1, 0]
+                new_gene = my_list[gene]
             else:
                 new_gene = gene
 
@@ -85,7 +85,7 @@ class Genotype:
             Type aligned to the one defined by GenotypeKey. Currently, list or str
         """
         all_genes = None
-        if genotype_properties.genotype_key == "list":
+        if genotype_properties.genotype_key == list:
             all_genes = []
             for i in range(genotype_properties.n_genes):
                 new_gene = random.randint(genotype_properties.value_range[0], genotype_properties.value_range[1])
