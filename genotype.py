@@ -1,7 +1,7 @@
 import random
 from dataclasses import dataclass
 from enum import Enum
-from typing import Tuple, Optional
+from typing import Tuple, Optional, List
 
 import numpy as np
 
