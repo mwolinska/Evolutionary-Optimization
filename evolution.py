@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 
 from genotype.genotype_data_model import GenotypeProperties
 from phenotype import a_func
+from phenotype.phenotypes_interface import Phenotypes
 from population import Population
 
 
@@ -17,6 +18,7 @@ class Evolution:
         n_genes: int = 1,
         gene_value_range: Tuple[int, int] = (0, 1),
         mutation_probability: float = 0.5,
+        phenotype: str = "test",
         crossover: bool = False
     ):
         """Initialises Evolution class.
@@ -33,11 +35,16 @@ class Evolution:
             n_genes: number of genes in an individual's genotype.
             gene_value_range: tuple of the minimum and maximum values of a gene.
             mutation_probability: probability of mutation of an individual when updating population.
+            phenotype: phenotype used to understand the genotype.
             crossover: whether crossover should happen when updating the population.
         """
 
         self.genotype_properties = GenotypeProperties(genotype_key, type_of_gene, n_genes, gene_value_range, mutation_probability)
-        self.population = Population(n_individuals, self.genotype_properties, crossover=crossover)
+                                                      type_of_gene,
+        self.population = Population(n_individuals,
+                                     self.genotype_properties,
+                                     phenotype=Phenotypes(phenotype),
+                                     crossover=crossover)
         self.epochs = n_generations
         self.fitness_over_time = []
 

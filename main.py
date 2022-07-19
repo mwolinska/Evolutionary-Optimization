@@ -11,6 +11,7 @@ def run_evolution():
         n_genes=1,
         gene_value_range=(-10, 10),
         mutation_probability=1,
+        phenotype="test",
         crossover=True
     )
 

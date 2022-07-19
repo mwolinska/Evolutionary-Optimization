@@ -1,9 +1,10 @@
 from genotype.genotype import Genotype
 from genotype.genotype_data_model import GenotypeProperties, GenotypeKey
+from phenotype.phenotypes_interface import Phenotypes
 
 
 class Individual:
-    def __init__(self, genotype_properties: GenotypeProperties):
+    def __init__(self, genotype_properties: GenotypeProperties, phenotype: Phenotypes):
         """An object containing all information of one instance being evaluated.
 
         An individual is effectively an instance being evaluated during the evolution. An individual contains
@@ -13,7 +14,7 @@ class Individual:
             genotype_properties: all genotype properties as required for an individual.
         """
         self.genotype = Genotype(genotype_properties)
-        # TODO the line below is obsolete? Check
+        self.phenotype = phenotype
         self.genotype.mutation_probability = genotype_properties.mutation_probability
         self.fitness_score = None
 
