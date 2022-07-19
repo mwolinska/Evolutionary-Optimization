@@ -44,6 +44,7 @@ class Individual:
         """
         new_genotype = self.genotype.mutate()
         self.genotype.genotype = new_genotype
+        self.phenotype_value = self.get_phenotype_value()
 
     def get_phenotype_value(self):
         phenotype_instance = Phenotypes.get_phenotype(self.phenotype)
