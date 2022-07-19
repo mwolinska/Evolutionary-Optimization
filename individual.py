@@ -15,7 +15,7 @@ class Individual:
         """
         self.genotype = Genotype(genotype_properties)
         self.phenotype = phenotype
-        self.genotype.mutation_probability = genotype_properties.mutation_probability
+        self.phenotype_value = self.get_phenotype_value()
         self.fitness_score = None
 
     @classmethod
@@ -44,6 +44,15 @@ class Individual:
         """
         new_genotype = self.genotype.mutate()
         self.genotype.genotype = new_genotype
+
+    def get_phenotype_value(self):
+        phenotype_instance = Phenotypes.get_phenotype(self.phenotype)
+        phenotype_value = None
+        if self.genotype.genotype_key == GenotypeKey.LIST:
+            phenotype_value = phenotype_instance.function_to_optimise(self.genotype.genotype)
+
+        return phenotype_value
+
 
 def get_score_for_sorting(individual: Individual):
     """Key for sort function used in Population object.
