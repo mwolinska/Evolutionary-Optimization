@@ -5,6 +5,7 @@ import numpy as np
 
 from genotype.genotype_data_model import GenotypeKey, Gene, GenotypeProperties
 
+
 class Genotype:
     def __init__(self, genotype_properties: GenotypeProperties):
         """Object containing genotype information for an Individual.

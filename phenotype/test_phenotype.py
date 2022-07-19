@@ -1,6 +1,5 @@
 from typing import List
 
-from genotype.genotype import Genotype
 from phenotype.abstract_phenotype import AbstractPhenotype
 
 

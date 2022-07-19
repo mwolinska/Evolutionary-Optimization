@@ -1,8 +1,8 @@
 from enum import Enum
 
 from phenotype.abstract_phenotype import AbstractPhenotype
-from phenotype.test_phenotype import TestPhenotype
 from phenotype.mse import MSE
+from phenotype.test_phenotype import TestPhenotype
 
 
 class Phenotypes(str, Enum):

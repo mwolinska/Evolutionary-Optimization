@@ -1,5 +1,3 @@
-import abc
-from enum import Enum
 from abc import ABC, abstractmethod
 
 from genotype.genotype import Genotype

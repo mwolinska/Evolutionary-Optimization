@@ -2,6 +2,7 @@ from typing import Tuple
 
 from matplotlib import pyplot as plt
 
+from fitness_score.fitness_score import FitnessScore
 from genotype.genotype_data_model import GenotypeProperties
 from phenotype.phenotypes_interface import Phenotypes
 from population import Population

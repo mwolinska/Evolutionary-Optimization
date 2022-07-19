@@ -1,5 +1,4 @@
 from evolution import Evolution
-from genotype.genotype_data_model import GenotypeKey
 
 
 def run_evolution():
