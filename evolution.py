@@ -3,7 +3,6 @@ from typing import Tuple
 from matplotlib import pyplot as plt
 
 from genotype.genotype_data_model import GenotypeProperties
-from phenotype import a_func
 from phenotype.phenotypes_interface import Phenotypes
 from population import Population
 
@@ -70,7 +69,7 @@ class Evolution:
         in the population.best_individual attribute.
         """
         for individual in self.population.all_individuals:
-            fitness_score = a_func(individual.genotype.genotype)
+            fitness_score = FitnessScore(individual).calculate_score()
             individual.fitness_score = fitness_score
             if self.population.best_individual.fitness_score is None or \
                     fitness_score > self.population.best_individual.fitness_score:
