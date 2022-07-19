@@ -5,6 +5,7 @@ import numpy as np
 
 from genotype.genotype_data_model import GenotypeKey, Gene, GenotypeProperties
 
+
 class Genotype:
     def __init__(self, genotype_properties: GenotypeProperties):
         """Object containing genotype information for an Individual.
@@ -128,8 +129,3 @@ class Genotype:
             if int(el) != 1 and int(el) != 0:
                 return False
         return True
-
-
-if __name__ == '__main__':
-
-    print()

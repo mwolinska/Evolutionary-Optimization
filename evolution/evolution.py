@@ -2,9 +2,10 @@ from typing import Tuple
 
 from matplotlib import pyplot as plt
 
+from evolution.population import Population
+from fitness_score.fitness_score import FitnessScore
 from genotype.genotype_data_model import GenotypeProperties
 from phenotype.phenotypes_interface import Phenotypes
-from population import Population
 
 
 class Evolution:
@@ -38,8 +39,11 @@ class Evolution:
             crossover: whether crossover should happen when updating the population.
         """
 
-        self.genotype_properties = GenotypeProperties(genotype_key, type_of_gene, n_genes, gene_value_range, mutation_probability)
+        self.genotype_properties = GenotypeProperties(genotype_key,
                                                       type_of_gene,
+                                                      n_genes,
+                                                      gene_value_range,
+                                                      mutation_probability)
         self.population = Population(n_individuals,
                                      self.genotype_properties,
                                      phenotype=Phenotypes(phenotype),
@@ -70,12 +74,11 @@ class Evolution:
         """
         for individual in self.population.all_individuals:
             fitness_score = FitnessScore(individual).calculate_score()
+
             individual.fitness_score = fitness_score
             if self.population.best_individual.fitness_score is None or \
                     fitness_score > self.population.best_individual.fitness_score:
                 self.population.best_individual = individual
-        print(f"the best individual currently is at {self.population.best_individual.genotype.genotype}")
-        print(f"the fitness score is {self.population.best_individual.fitness_score}")
 
     def record_performance(self):
         """Record fitness function value of the current best individual."""
@@ -91,8 +94,3 @@ class Evolution:
         plt.xlabel('Epoch')
         plt.ylabel('Fitness score')
         plt.show()
-
-if __name__ == '__main__':
-    test_evolution = Evolution(n_individuals=10, n_generations=3, individual_value_range=(10, -10))
-    test_evolution.evolve()
-    print()
