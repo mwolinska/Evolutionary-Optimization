@@ -1,9 +1,10 @@
 from genotype.genotype import Genotype
 from genotype.genotype_data_model import GenotypeProperties, GenotypeKey
+from phenotype.phenotypes_interface import Phenotypes
 
 
 class Individual:
-    def __init__(self, genotype_properties: GenotypeProperties):
+    def __init__(self, genotype_properties: GenotypeProperties, phenotype: Phenotypes):
         """An object containing all information of one instance being evaluated.
 
         An individual is effectively an instance being evaluated during the evolution. An individual contains
@@ -13,8 +14,8 @@ class Individual:
             genotype_properties: all genotype properties as required for an individual.
         """
         self.genotype = Genotype(genotype_properties)
-        # TODO the line below is obsolete? Check
-        self.genotype.mutation_probability = genotype_properties.mutation_probability
+        self.phenotype = phenotype
+        self.phenotype_value = self.get_phenotype_value()
         self.fitness_score = None
 
     @classmethod
@@ -43,6 +44,16 @@ class Individual:
         """
         new_genotype = self.genotype.mutate()
         self.genotype.genotype = new_genotype
+        self.phenotype_value = self.get_phenotype_value()
+
+    def get_phenotype_value(self):
+        phenotype_instance = Phenotypes.get_phenotype(self.phenotype)
+        phenotype_value = None
+        if self.genotype.genotype_key == GenotypeKey.LIST:
+            phenotype_value = phenotype_instance.function_to_optimise(self.genotype.genotype)
+
+        return phenotype_value
+
 
 def get_score_for_sorting(individual: Individual):
     """Key for sort function used in Population object.
