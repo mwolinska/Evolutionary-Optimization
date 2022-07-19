@@ -2,8 +2,8 @@ import random
 from random import random, shuffle
 from typing import Tuple, List
 
+from evolution.individual import Individual, get_score_for_sorting
 from genotype.genotype_data_model import GenotypeProperties, GenotypeKey
-from individual import Individual, get_score_for_sorting
 from phenotype.phenotypes_interface import Phenotypes
 
 

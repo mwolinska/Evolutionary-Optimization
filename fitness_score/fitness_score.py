@@ -1,6 +1,6 @@
 from enum import Enum
 
-from individual import Individual
+from evolution.individual import Individual
 from phenotype.phenotypes_interface import Phenotypes
 
 
