@@ -94,8 +94,3 @@ class Evolution:
         plt.xlabel('Epoch')
         plt.ylabel('Fitness score')
         plt.show()
-
-if __name__ == '__main__':
-    test_evolution = Evolution(n_individuals=10, n_generations=3, individual_value_range=(10, -10))
-    test_evolution.evolve()
-    print()

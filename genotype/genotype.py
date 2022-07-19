@@ -129,8 +129,3 @@ class Genotype:
             if int(el) != 1 and int(el) != 0:
                 return False
         return True
-
-
-if __name__ == '__main__':
-
-    print()

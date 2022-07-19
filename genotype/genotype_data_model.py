@@ -37,8 +37,3 @@ class GenotypeProperties:
     n_genes: int
     value_range: Tuple[int, int]
     mutation_probability: float
-
-if __name__ == '__main__':
-    test = GenotypeProperties(list, str, 3, (0, 2), 1)
-    my_key = GenotypeKey(test.genotype_key)
-    print(my_key)
