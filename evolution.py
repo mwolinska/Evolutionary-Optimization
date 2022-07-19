@@ -74,12 +74,11 @@ class Evolution:
         """
         for individual in self.population.all_individuals:
             fitness_score = FitnessScore(individual).calculate_score()
+
             individual.fitness_score = fitness_score
             if self.population.best_individual.fitness_score is None or \
                     fitness_score > self.population.best_individual.fitness_score:
                 self.population.best_individual = individual
-        print(f"the best individual currently is at {self.population.best_individual.genotype.genotype}")
-        print(f"the fitness score is {self.population.best_individual.fitness_score}")
 
     def record_performance(self):
         """Record fitness function value of the current best individual."""
