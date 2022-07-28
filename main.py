@@ -1,5 +1,5 @@
 from evolutionary_optimization.evolution import Evolution
-from fitness_score.fitness_interface import FitnessFunctions
+from fitness_functions.fitness_interface import FitnessFunctions
 from genotype.genotype_interface import Genotype, Genotypes
 from phenotype.phenotype_interface import Phenotype, Phenotypes
 

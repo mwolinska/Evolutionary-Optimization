@@ -13,13 +13,17 @@ class Evolution:
         number_of_individuals: int,
         number_of_generations: int,
     ):
-        """Initialises Evolution class.
+        """Initialise Evolution class.
 
         The evolutionary_optimization_2 class performs evolutionary optimisation of a function (a phenotype_folder).
         It contains a population of individuals that are evaluated at every iteration (generation)
         of the algorithm.
 
         Args:
+            phenotype: a phenotype instance with the desired genotype.
+            fitness_function: desired fitness function from interface.
+            number_of_individuals: number of phenotype instances to be used within the population.
+            number_of_generations: number of times the algorithm will be run.
         """
         self.population = Population(number_of_individuals, phenotype)
         self.epochs = number_of_generations
@@ -27,10 +31,10 @@ class Evolution:
         self.fitness_function = FitnessFunction().get_fitness_function(fitness_function)
 
     def evolve(self):
-        """Performs evolutionary optimisation.
+        """Perform evolutionary optimisation.
 
-        This function performs the evolutionary optimisation. Over n_generations it evaluates the population,
-        updates the population (with crossover and/ or mutation as initialised). It then record the
+        This function performs the evolutionary optimisation. Over number_of_generations it evaluates the population,
+        updates the population (with crossover and/ or mutation as initialised). It then records the
         best fitness score at each generation. Once optimisation is complete it plots the performance over time.
         """
         for n in range(self.epochs):
@@ -41,27 +45,13 @@ class Evolution:
         print(f"The value of the best individual is {self.population.best_individual.genotype.genotype}")
         self.plot_performance()
 
-    # def evaluate_population(self):
-    #     """Calculates fitness scores for each individual in population.
-    #
-    #     For each individual in the population calculates the fitness score and stores the best individual
-    #     in the population.best_individual attribute.
-    #     """
-    #     for individual in self.population.population:
-    #         fitness_score_2 = individual.calculate_fitness_score()
-    #
-    #         individual.fitness_functions_dictionary = fitness_score_2
-    #         if self.population.best_individual.fitness_functions_dictionary is None or \
-    #                 fitness_score_2 > self.population.best_individual.fitness_functions_dictionary:
-    #             self.population.best_individual = individual
-
     def record_performance(self):
         """Record fitness function value of the current best individual."""
 
         self.fitness_over_time.append(self.fitness_function().evaluate(phenotype=self.population.best_individual))
 
     def plot_performance(self):
-        """Plots score of the best individual at each generation."""
+        """Plot score of the best individual at each generation."""
         x_axis = list(range(0, len(self.fitness_over_time)))
         plt.plot(x_axis, self.fitness_over_time)
         plt.title('Algorithm Performance Over Time')

@@ -1,6 +1,6 @@
 
 from random import shuffle
-from typing import Tuple, List
+from typing import Tuple, List, Union
 
 from fitness_functions.abstract_fitness_function import AbstractFitnessFunction
 from phenotype.abstract_phenotype import AbstractPhenotype
@@ -11,14 +11,13 @@ class Population:
                  number_of_individuals: int,
                  phenotype: AbstractPhenotype,
                  ):
-        """Contains all individuals being evaluated.
+        """Create and store phenotypes used in Evolution object.
 
-        The Population object is used by the Evolution object to create, store and update the individuals
-        being evaluated. It also performs crossover of individuals if required when updating the population.
+        The Population object is used by the Evolution object to create, store, evaluate and update phenotypes.
 
         Args:
-            number_of_individuals: number of individuals in the desired population.
-            phenotype:
+            number_of_individuals: number of phenotype instances i.e. individuals in the desired population.
+            phenotype: a phenotype instance with the desired genotype.
         """
 
         self.n_individuals = number_of_individuals
@@ -29,10 +28,10 @@ class Population:
         self.crossover = True if phenotype.genotype.mutation_probability > 0 else False
 
     def _create_population(self, phenotype) -> List[AbstractPhenotype]:
-        """Creates initial population used to evaluate phenotype_folder.
+        """Create initial population of individuals.
 
         Returns:
-            List of Individual instances of length n_individuals.
+            List of AbstractPhenoty[e instances of length number_of_individuals.
         """
         individuals = []
         for i in range(self.n_individuals):
@@ -41,7 +40,8 @@ class Population:
         return individuals
 
     def create_list_of_new_individuals(self, n_new_individuals: int) -> List[AbstractPhenotype]:
-        """Creates a list of Individual instances.
+        # TODO update this function
+        """Create a list of Individual instances.
 
         Args:
             n_new_individuals: number of desired individuals in list.
@@ -56,31 +56,34 @@ class Population:
         return new_individuals_list
 
     def evaluate_population(self, fitness_function: AbstractFitnessFunction):
-        """Calculates fitness scores for each individual in population.
+        """Find best_individual in population by calculating fitness scores for all individuals.
 
         For each individual in the population calculates the fitness score and stores the best individual
         in the population.best_individual attribute.
 
         Args:
-            fitness_function: fitness function used to evaluate a phenotype.
+            fitness_function: fitness function used to evaluate the phenotype.
         """
-        for phenotype in self.population:
-            if phenotype.phenotype_value is None:
-                phenotype.evaluate_phenotype()
-            fitness_score = fitness_function.evaluate(phenotype=phenotype)
+        for individual in self.population:
+            if individual.phenotype_value is None:
+                individual.evaluate_phenotype()
+            fitness_score = fitness_function.evaluate(phenotype=individual)
 
             if self.best_individual.phenotype_value is None or \
                     fitness_score > fitness_function.evaluate(self.best_individual):
 
-                self.best_individual = phenotype
+                self.best_individual = individual
 
     def update_population(self, fitness_function: AbstractFitnessFunction):
-        """Updates self.all_genes following evaluation.
+        """Update population attribute following evaluation.
 
         Once all individuals in the population have been evaluated, the top individuals are kept (elitism),
         the remaining individuals are updated by a combination of mutation and/or crossover if these were
         defined in the Evolution instance. If neither was selected, the non-elite individuals will
         be replaced by randomly generated individuals.
+
+        Args:
+            fitness_function: fitness function used to evaluate the phenotype.
         """
         elite_individuals, non_elite_individuals = self.split_elite_individuals(fitness_function)
 
@@ -97,13 +100,14 @@ class Population:
         new_individuals_list = elite_individuals + non_elite_individuals
         self.population = new_individuals_list
 
-    def crossover_for_population_segment(self, list_of_parents: List[AbstractPhenotype]) -> List[AbstractPhenotype]:
-        """Crossover method for a genotype of type list.
+    @staticmethod
+    def crossover_for_population_segment(list_of_parents: List[AbstractPhenotype]) -> List[AbstractPhenotype]:
+        """Perform crossover.
 
-        This method creates a new list of individuals (children) based on the parents' genotypes.
+        This method creates a new list of phenotypes (children) based on the parents' genotypes.
 
         Args:
-            list_of_parents: list of individuals which should be used to generate offspring.
+            list_of_parents: list of phenotypes which should be used to generate offspring.
 
         Returns:
             List of Individual.
@@ -121,7 +125,7 @@ class Population:
 
         return list_of_children
 
-    def split_elite_individuals(self, fitness_func) -> Tuple[List[AbstractPhenotype], List[AbstractPhenotype]]:
+    def split_elite_individuals(self, fitness_function: AbstractFitnessFunction) -> Tuple[List[AbstractPhenotype], List[AbstractPhenotype]]:
         """Splits list of individuals into elite and non-elite individuals.
 
         The function will create two lists to separate out elite individuals i.e. ones with the highest fitness
@@ -133,7 +137,7 @@ class Population:
         """
         # TODO allow user to define % of elitism
 
-        sorted_individuals = self.sort_phenotypes_by_fitness_score(fitness_func)
+        sorted_individuals = self.sort_phenotypes_by_fitness_score(fitness_function)
         elite_individual_threshold = max(1, self.n_individuals // 5)
         elite_individuals = sorted_individuals[:elite_individual_threshold]
         non_elite_individuals = sorted_individuals[elite_individual_threshold:]
@@ -141,6 +145,7 @@ class Population:
         return elite_individuals, non_elite_individuals
 
     def sort_phenotypes_by_fitness_score(self, fitness_function: AbstractFitnessFunction):
+        """Sorts list of AbstractPhenotype by calculating fitness score starting at the highest fitness score."""
         phenotype_and_fitness_score_tuple_list = []
         for phenotype in self.population:
             fitness_score = fitness_function.evaluate(phenotype)
@@ -154,15 +159,15 @@ class Population:
         return sorted_phenotypes
 
 
-def get_score_for_sorting(a_tuple: Tuple[AbstractPhenotype, int]):
+def get_score_for_sorting(phenotype_and_fitness_score_tuple: Tuple[AbstractPhenotype, int]) -> Union[Float, int]:
     """Key for sort function used in Population object.
 
     Provides a key for sorting individuals using python's sort function used by the update_population function
     within the Population object.
 
     Args:
-        individual: an Individual instance.
+        phenotype_and_fitness_score_tuple: tuple of phenotype instance and its fitness score.
     Returns:
-        Float equal to an individual's fitness score.
+        Float or int equal to a phenotype's fitness score.
     """
-    return a_tuple[1]
+    return phenotype_and_fitness_score_tuple[1]
