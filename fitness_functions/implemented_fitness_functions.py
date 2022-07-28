@@ -1,4 +1,4 @@
-from fitness_score.abstract_fitness_function import AbstractFitnessFunction
+from fitness_functions.abstract_fitness_function import AbstractFitnessFunction
 from phenotype.abstract_phenotype import AbstractPhenotype
 
 

@@ -1,7 +1,7 @@
 from enum import Enum
 
-from fitness_score.abstract_fitness_function import AbstractFitnessFunction
-from fitness_score.implemented_fitness_functions import MaximizeFitnessFunction, MinimizeFitnessFunction, \
+from fitness_functions.abstract_fitness_function import AbstractFitnessFunction
+from fitness_functions.implemented_fitness_functions import MaximizeFitnessFunction, MinimizeFitnessFunction, \
     ApproachValueFitnessFunction
 
 
