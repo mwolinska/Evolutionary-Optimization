@@ -2,8 +2,8 @@
 from random import shuffle
 from typing import Tuple, List, Union
 
-from fitness_functions.abstract_fitness_function import AbstractFitnessFunction
-from phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.fitness_functions.abstract_fitness_function import AbstractFitnessFunction
+from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
 
 class Population:
@@ -40,7 +40,6 @@ class Population:
         return individuals
 
     def create_list_of_new_individuals(self, n_new_individuals: int) -> List[AbstractPhenotype]:
-        # TODO update this function
         """Create a list of Individual instances.
 
         Args:
@@ -48,6 +47,11 @@ class Population:
 
         Returns:
             List of Individual instances of length n_new_individuals.
+
+        Todo:
+            * update this function
+            * add name in all todos
+
         """
         new_individuals_list = []
         for i in range(n_new_individuals):
@@ -115,6 +119,9 @@ class Population:
 
         Returns:
             List of Individual.
+
+        Todo:
+            * improve returns description
         """
         list_of_children = []
 

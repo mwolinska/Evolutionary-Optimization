@@ -1,8 +1,8 @@
 from enum import Enum
 
-from phenotype.abstract_phenotype import AbstractPhenotype
-from phenotype.inverted_parabola_phenotype import InvertedParabolaPhenotype
-from phenotype.parabola_phenotype import ParabolaPhenotype
+from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.phenotype.inverted_parabola_phenotype import InvertedParabolaPhenotype
+from evolutionary_optimization.phenotype.parabola_phenotype import ParabolaPhenotype
 
 
 class Phenotypes(str, Enum):

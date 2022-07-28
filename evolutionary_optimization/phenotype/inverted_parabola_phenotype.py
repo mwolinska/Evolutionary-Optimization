@@ -1,8 +1,8 @@
 from typing import Union
 
-from genotype.binary_list_genotype import BinaryListGenotype
-from genotype.integer_list_genotype import IntegerListGenotype
-from phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.genotype.binary_list_genotype import BinaryListGenotype
+from evolutionary_optimization.genotype.integer_list_genotype import IntegerListGenotype
+from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
 
 class InvertedParabolaPhenotype(AbstractPhenotype):

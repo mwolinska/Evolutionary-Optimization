@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
 
 class AbstractFitnessFunction(ABC):

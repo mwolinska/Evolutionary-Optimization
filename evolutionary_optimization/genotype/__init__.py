@@ -1,0 +1,2 @@
+from evolutionary_optimization.genotype.binary_list_genotype import BinaryListGenotype
+from evolutionary_optimization.genotype.integer_list_genotype import IntegerListGenotype

@@ -1,8 +1,8 @@
 from matplotlib import pyplot as plt
 
 from evolutionary_optimization.population import Population
-from fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
-from phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
+from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
 
 class Evolution:
@@ -12,7 +12,7 @@ class Evolution:
         fitness_function: FitnessFunctions,
         number_of_individuals: int,
         number_of_generations: int,
-    ):
+    ): # add sensible defaults
         """Initialise Evolution class.
 
         The evolutionary_optimization_2 class performs evolutionary optimisation of a function (a phenotype_folder).

@@ -3,7 +3,7 @@ from typing import Tuple, Optional, List
 
 import numpy as np
 
-from genotype.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
 
 
 class BinaryListGenotype(AbstractGenotype):
@@ -96,23 +96,31 @@ class BinaryListGenotype(AbstractGenotype):
             child_1_genotype = self.single_point_crossover(self.genotype, parent_2.genotype, gene_slice_index)
             child_2_genotype = self.single_point_crossover(parent_2.genotype, self.genotype, gene_slice_index)
 
-            child_1 = BinaryListGenotype(genotype=child_1_genotype,
-                                          mutation_probability=self.mutation_probability,
-                                          ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                                          number_of_genes=self.number_of_genes,
-                                          value_range=self.value_range)
+            child_1 = BinaryListGenotype(
+                genotype=child_1_genotype,
+                mutation_probability=self.mutation_probability,
+                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
+                number_of_genes=self.number_of_genes,
+                value_range=self.value_range,
+            )
 
-            child_2 = BinaryListGenotype(genotype=child_2_genotype,
-                                          mutation_probability=self.mutation_probability,
-                                          ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                                          number_of_genes=self.number_of_genes,
-                                          value_range=self.value_range)
+            child_2 = BinaryListGenotype(
+                genotype=child_2_genotype,
+                mutation_probability=self.mutation_probability,
+                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
+                number_of_genes=self.number_of_genes,
+                value_range=self.value_range,
+            )
             # TODO implement method to return Genotype copy with updated genotype attribute
 
             return child_1, child_2
 
     @staticmethod
-    def single_point_crossover(parent_1_genotype: List[int], parent_2_genotype: List[int], gene_slice_index: int) -> List[int]:
+    def single_point_crossover(
+            parent_1_genotype: List[int],
+            parent_2_genotype: List[int],
+            gene_slice_index: int,
+    ) -> List[int]:
         """A single point crossover for genotype of type list.
 
         This is a single point crossover. Using the gene_slice_index, for both parents the genotype.all genes are sliced.
