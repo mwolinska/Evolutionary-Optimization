@@ -1,20 +1,15 @@
-from evolution.evolution import Evolution
-
-
-def run_evolution():
-    test_evolution = Evolution(
-        n_individuals=5,
-        n_generations=4,
-        genotype_key=list,
-        type_of_gene=int,
-        n_genes=1,
-        gene_value_range=(-10, 10),
-        mutation_probability=1,
-        phenotype="test",
-        crossover=True
-    )
-
-    test_evolution.evolve()
+from evolutionary_optimization.evolution import Evolution
+from fitness_score.fitness_interface import FitnessFunctions
+from genotype.genotype_interface import Genotype, Genotypes
+from phenotype.phenotype_interface import Phenotype, Phenotypes
 
 if __name__ == '__main__':
-    run_evolution()
+    genotype_class = Genotype().get_genotype(Genotypes.BINARY_LIST)
+    phenotype_class = Phenotype().get_phenotype(Phenotypes.PARABOLA)
+
+    evolutionary_algorithm = Evolution(phenotype=phenotype_class(genotype_class()),
+                                       number_of_individuals=100,
+                                       number_of_generations=10,
+                                       fitness_function=FitnessFunctions.MINIMIZE
+                                       )
+    evolutionary_algorithm.evolve()
