@@ -20,7 +20,7 @@ class Population:
             phenotype: a phenotype instance with the desired genotype.
         """
 
-        self.n_individuals = number_of_individuals
+        self.number_of_individuals = number_of_individuals
         self.population = self._create_population(phenotype)
         self.phenotype = phenotype
         self.best_individual = phenotype.from_phenotype(phenotype)
@@ -34,7 +34,7 @@ class Population:
             List of AbstractPhenoty[e instances of length number_of_individuals.
         """
         individuals = []
-        for i in range(self.n_individuals):
+        for i in range(self.number_of_individuals):
             new_individual = phenotype.from_phenotype(phenotype)
             individuals.append(new_individual)
         return individuals
@@ -138,7 +138,7 @@ class Population:
         # TODO allow user to define % of elitism
 
         sorted_individuals = self.sort_phenotypes_by_fitness_score(fitness_function)
-        elite_individual_threshold = max(1, self.n_individuals // 5)
+        elite_individual_threshold = max(1, self.number_of_individuals // 5)
         elite_individuals = sorted_individuals[:elite_individual_threshold]
         non_elite_individuals = sorted_individuals[elite_individual_threshold:]
         shuffle(non_elite_individuals)
@@ -159,7 +159,7 @@ class Population:
         return sorted_phenotypes
 
 
-def get_score_for_sorting(phenotype_and_fitness_score_tuple: Tuple[AbstractPhenotype, int]) -> Union[Float, int]:
+def get_score_for_sorting(phenotype_and_fitness_score_tuple: Tuple[AbstractPhenotype, int]) -> Union[float, int]:
     """Key for sort function used in Population object.
 
     Provides a key for sorting individuals using python's sort function used by the update_population function
