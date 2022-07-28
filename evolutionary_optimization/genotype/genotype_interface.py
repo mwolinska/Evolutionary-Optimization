@@ -1,8 +1,8 @@
 from enum import Enum
 
-from genotype.abstract_genotype import AbstractGenotype
-from genotype.binary_list_genotype import BinaryListGenotype
-from genotype.integer_list_genotype import IntegerListGenotype
+from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype import BinaryListGenotype
+from evolutionary_optimization.genotype import IntegerListGenotype
 
 
 class Genotypes(str, Enum):

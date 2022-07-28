@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 
-from genotype.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
 
 class AbstractPhenotype(ABC):
     @abstractmethod
@@ -29,3 +29,5 @@ class AbstractPhenotype(ABC):
     @abstractmethod
     def from_phenotype(cls, base_phenotype: "AbstractPhenotype"):
         pass
+
+    # TODO add genotype as a property

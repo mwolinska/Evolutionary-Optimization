@@ -19,7 +19,7 @@ class AbstractGenotype(ABC):
     def build_random_genotype(
         cls,
         mutation_probability: Optional[float],
-        ratio_of_population_for_crossover: Optional[float]
+        ratio_of_population_for_crossover: Optional[float],
     ) -> "AbstractGenotype":
         pass
 
@@ -28,8 +28,6 @@ class AbstractGenotype(ABC):
         pass
 
     @abstractmethod
-    def crossover(self,
-        parent_2: "AbstractGenotype",
-    ) -> Tuple:
-
+    def crossover(self, parent_2: "AbstractGenotype") -> Tuple:
+        # TODO typing
         pass

@@ -1,9 +1,9 @@
-from random import randint, random
+from random import randint
 from typing import Tuple, Optional, List
 
 import numpy as np
 
-from genotype.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
 
 
 class IntegerListGenotype(AbstractGenotype):

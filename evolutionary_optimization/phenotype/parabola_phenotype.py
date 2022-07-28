@@ -1,8 +1,8 @@
 from typing import Union
 
-from genotype.binary_list_genotype import BinaryListGenotype
-from genotype.integer_list_genotype import IntegerListGenotype
-from phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.genotype.binary_list_genotype import BinaryListGenotype
+from evolutionary_optimization.genotype.integer_list_genotype import IntegerListGenotype
+from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
 
 class ParabolaPhenotype(AbstractPhenotype):
@@ -20,11 +20,12 @@ class ParabolaPhenotype(AbstractPhenotype):
 
     @classmethod
     def from_phenotype(cls, base_phenotype: "ParabolaPhenotype") -> "ParabolaPhenotype":
-        new_genotype = base_phenotype.genotype.build_random_genotype(number_of_genes=base_phenotype.genotype.number_of_genes,
-                                                                     value_range=base_phenotype.genotype.value_range,
-                                                                     mutation_probability=base_phenotype.genotype.mutation_probability,
-                                                                     ratio_of_population_for_crossover=base_phenotype.genotype.ratio_of_population_for_crossover,
-                                                                    )
+        new_genotype = base_phenotype.genotype.build_random_genotype(
+            number_of_genes=base_phenotype.genotype.number_of_genes,
+            value_range=base_phenotype.genotype.value_range,
+            mutation_probability=base_phenotype.genotype.mutation_probability,
+            ratio_of_population_for_crossover=base_phenotype.genotype.ratio_of_population_for_crossover,
+        )
         return cls(new_genotype)
 
     def evaluate_phenotype(self):
