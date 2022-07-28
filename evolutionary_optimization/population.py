@@ -88,7 +88,11 @@ class Population:
         elite_individuals, non_elite_individuals = self.split_elite_individuals(fitness_function)
 
         if self.crossover:
-            non_elite_individuals = self.crossover_for_population_segment(non_elite_individuals)
+            number_of_individuals_for_crossover = int(self.phenotype.genotype.ratio_of_population_for_crossover
+                                                      * self.number_of_individuals)
+
+            non_elite_individuals = self.crossover_for_population_segment(
+                non_elite_individuals[:number_of_individuals_for_crossover]) + non_elite_individuals[number_of_individuals_for_crossover:]
 
         if self.mutation:
             for individual in non_elite_individuals:
