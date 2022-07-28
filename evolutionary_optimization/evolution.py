@@ -1,10 +1,8 @@
 from matplotlib import pyplot as plt
 
 from evolutionary_optimization.population import Population
-from fitness_score.fitness_interface import FitnessFunctions, FitnessFunction
-from genotype.integer_list_genotype import IntegerListGenotype
+from fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
 from phenotype.abstract_phenotype import AbstractPhenotype
-from phenotype.parabola_phenotype import ParabolaPhenotype
 
 
 class Evolution:
@@ -17,7 +15,7 @@ class Evolution:
     ):
         """Initialises Evolution class.
 
-        The evolutionary_optimization class performs evolutionary optimisation of a function (a phenotype_folder).
+        The evolutionary_optimization_2 class performs evolutionary optimisation of a function (a phenotype_folder).
         It contains a population of individuals that are evaluated at every iteration (generation)
         of the algorithm.
 
@@ -50,11 +48,11 @@ class Evolution:
     #     in the population.best_individual attribute.
     #     """
     #     for individual in self.population.population:
-    #         fitness_score = individual.calculate_fitness_score()
+    #         fitness_score_2 = individual.calculate_fitness_score()
     #
-    #         individual.fitness_functions_dictionary = fitness_score
+    #         individual.fitness_functions_dictionary = fitness_score_2
     #         if self.population.best_individual.fitness_functions_dictionary is None or \
-    #                 fitness_score > self.population.best_individual.fitness_functions_dictionary:
+    #                 fitness_score_2 > self.population.best_individual.fitness_functions_dictionary:
     #             self.population.best_individual = individual
 
     def record_performance(self):

@@ -2,9 +2,8 @@
 from random import shuffle
 from typing import Tuple, List
 
-from fitness_score.abstract_fitness_function import AbstractFitnessFunction
+from fitness_functions.abstract_fitness_function import AbstractFitnessFunction
 from phenotype.abstract_phenotype import AbstractPhenotype
-from phenotype.parabola_phenotype import ParabolaPhenotype
 
 
 class Population:
