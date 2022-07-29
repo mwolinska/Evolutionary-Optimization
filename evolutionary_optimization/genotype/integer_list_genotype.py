@@ -16,22 +16,43 @@ class IntegerListGenotype(AbstractGenotype):
         number_of_genes: int = 1,
         value_range: Tuple[int, int] = (0, 9),
     ):
+        """Initialise instance of AbstractGenotype.
 
+        Args:
+            genotype: genotype used for mutation, crossover and to calculate phenotype_value.
+            mutation_probability: probability of a gene mutating.
+            ratio_of_population_for_crossover: ratio of population used for crossover when updating population.
+            number_of_genes: number of genes in the genotype.
+            value_range: minimum and maximum values of a gene.
+        """
         self.genotype = genotype
         self.mutation_probability = mutation_probability
         self.ratio_of_population_for_crossover = ratio_of_population_for_crossover
         self.number_of_genes = number_of_genes
         self.value_range = value_range
 
-    # TODO do I indent functions like the init? What about within code
     @classmethod
-    def build_random_genotype(cls,# TODO set infinity
-                              number_of_genes: int = 1,
-                              value_range: Tuple[int, int] = (-100, 100),
-                              mutation_probability: Optional[float] = 0.5,
-                              ratio_of_population_for_crossover: Optional[float] = 0.5
-                              ) -> "IntegerListGenotype":
-        """Builds genotype based on requirements defined by genotype_properties."""
+    def build_random_genotype(
+        cls,
+        number_of_genes: int = 1,
+        value_range: Tuple[int, int] = (-100, 100),
+        mutation_probability: Optional[float] = 0.5,
+        ratio_of_population_for_crossover: Optional[float] = 0.5,
+    ) -> "IntegerListGenotype":
+        """Builds random genotype attribute based on requirements.
+
+        Args:
+            number_of_genes: number of genes in the genotype.
+            value_range: minimum and maximum values of a gene.
+            mutation_probability: probability of a gene mutating.
+            ratio_of_population_for_crossover: ratio of population used for crossover when updating population.
+
+        Returns:
+              Genotype object with updated genotype attribute.
+
+        Todo:
+            * (Marta): set infinity as value range defaults
+        """
         genotype = []
 
         for i in range(number_of_genes):
@@ -45,6 +66,7 @@ class IntegerListGenotype(AbstractGenotype):
                    value_range=value_range)
 
     def mutate(self):
+        """In place modification of the genotype by randomly changing genes based on mutation probability."""
         new_genotype = []
 
         for gene in self.genotype:
@@ -58,14 +80,15 @@ class IntegerListGenotype(AbstractGenotype):
             new_genotype.append(new_gene)
         self.genotype = new_genotype
 
-    def crossover(self,
-                  parent_2: "IntegerListGenotype",
-                  ) -> Tuple["IntegerListGenotype", "IntegerListGenotype"]:
+    def crossover(
+        self,
+        parent_2_genotype: "IntegerListGenotype",
+    ) -> Tuple["IntegerListGenotype", "IntegerListGenotype"]:
         """Performs single point crossover operation for 1 set of parents.
 
         A random integer is generated to split the genotype of the two individuals -
-        this is the gene slice index. Then two child Individuals are generated with the complementary parts
-        of the parent individuals. If the parent's genotype length is 1, cross over is impossible so the parent
+        this is the gene slice index. Then two child genotypes are generated with the complementary parts
+        of the parent genotypes. If the parent's genotype length is 1, crossover is impossible so the parent
         instances are returned.
 
         Example:
@@ -77,23 +100,25 @@ class IntegerListGenotype(AbstractGenotype):
             child_2.genotype = [A, 2, 3, 4]
 
         Args:
-            parent_1: Individual which will be used to create an offspring.
-            parent_2: Individual which will be used to create an offspring.
+            parent_2_genotype: Individual which will be used to create an offspring.
 
         Returns:
-            Tuple of AbstractGenotype.
+            Tuple of AbstractGenotype, representing two children genotypes that are a combination of the parents.
+
+        Todo:
+            * (Marta): implement method to return Genotype copy with updated genotype attribute
         """
-        if len(self.genotype) != len(parent_2.genotype):
+        if len(self.genotype) != len(parent_2_genotype.genotype):
             raise NameError("The Individuals have genotypes of different lengths - crossover is impossible")
 
         if self.number_of_genes == 1:
-            return self, parent_2
+            return self, parent_2_genotype
         else:
             last_slice_index = self.number_of_genes - 1
             gene_slice_index = randint(1, last_slice_index)
 
-            child_1_genotype = self.single_point_crossover(self.genotype, parent_2.genotype, gene_slice_index)
-            child_2_genotype = self.single_point_crossover(parent_2.genotype, self.genotype, gene_slice_index)
+            child_1_genotype = self.single_point_crossover(self.genotype, parent_2_genotype.genotype, gene_slice_index)
+            child_2_genotype = self.single_point_crossover(parent_2_genotype.genotype, self.genotype, gene_slice_index)
 
             child_1 = IntegerListGenotype(genotype=child_1_genotype,
                                           mutation_probability=self.mutation_probability,
@@ -106,25 +131,29 @@ class IntegerListGenotype(AbstractGenotype):
                                           ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
                                           number_of_genes=self.number_of_genes,
                                           value_range=self.value_range)
-            # TODO implement method to return Genotype copy with updated genotype attribuet
+            # TODO (Marta): implement method to return Genotype copy with updated genotype attribuet
 
             return child_1, child_2
 
     @staticmethod
-    def single_point_crossover(parent_1_genotype: List[int], parent_2_genotype: List[int], gene_slice_index: int) -> List[int]:
+    def single_point_crossover(
+        parent_1_genotype: List[int],
+        parent_2_genotype: List[int],
+        gene_slice_index: int,
+    ) -> List[int]:
         """A single point crossover for genotype of type list.
 
-        This is a single point crossover. Using the gene_slice_index, for both parents the genotype.all genes are sliced.
-        The slice [:gene_slice_index[ is taken from parent_1 and the slice [gene_slice_index:] is taken from parent_2.
-        The two complementary slices are then joined to create a new individual (a child) from the new genotype.
+        This is a single point crossover. Using the gene_slice_index, for both parents the genotype are sliced.
+        The slice [:gene_slice_index] is taken from parent_1 and the slice [gene_slice_index:] is taken from parent_2.
+        The two complementary slices are then joined to create a new genotype (a child genotype).
 
         Args:
-            parent_1_genotype: Individual which will be used to create an offspring.
-            parent_2_genotype: Individual which will be used to create an offspring.
+            parent_1_genotype: genotype which will be used to create an offspring.
+            parent_2_genotype: genotype which will be used to create an offspring.
             gene_slice_index: random integer at which the parent genotypes will be sliced.
 
         Returns:
-            An Individual instance.
+            A genotype used to build a Genotype object.
         """
         child_genotype_part_1 = parent_1_genotype[:gene_slice_index]
         child_genotype_part_2 = parent_2_genotype[gene_slice_index:]

@@ -7,11 +7,12 @@ from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPheno
 
 
 class Population:
-    def __init__(self,
-                 number_of_individuals: int,
-                 phenotype: AbstractPhenotype,
-                 ):
-        """Create and store phenotypes used in Evolution object.
+    def __init__(
+        self,
+        number_of_individuals: int,
+        phenotype: AbstractPhenotype,
+    ):
+        """Create and store phenotypes used in the Evolution object.
 
         The Population object is used by the Evolution object to create, store, evaluate and update phenotypes.
 
@@ -31,7 +32,7 @@ class Population:
         """Create initial population of individuals.
 
         Returns:
-            List of AbstractPhenoty[e instances of length number_of_individuals.
+            List of AbstractPhenotype instances of length number_of_individuals used in Evolution.
         """
         individuals = []
         for i in range(self.number_of_individuals):
@@ -46,12 +47,11 @@ class Population:
             n_new_individuals: number of desired individuals in list.
 
         Returns:
-            List of Individual instances of length n_new_individuals.
+            List of random Phenotype instances of length n_new_individuals.
 
         Todo:
             * update this function
             * add name in all todos
-
         """
         new_individuals_list = []
         for i in range(n_new_individuals):
@@ -94,9 +94,10 @@ class Population:
         if self.crossover:
             number_of_individuals_for_crossover = int(self.phenotype.genotype.ratio_of_population_for_crossover
                                                       * self.number_of_individuals)
-
-            non_elite_individuals = self.crossover_for_population_segment(
-                non_elite_individuals[:number_of_individuals_for_crossover]) + non_elite_individuals[number_of_individuals_for_crossover:]
+            # TODO (Marta): include elite individuals in crossover
+            non_elite_individuals = \
+                self.crossover_for_population_segment(non_elite_individuals[:number_of_individuals_for_crossover]) + \
+                non_elite_individuals[number_of_individuals_for_crossover:]
 
         if self.mutation:
             for individual in non_elite_individuals:
@@ -110,18 +111,16 @@ class Population:
 
     @staticmethod
     def crossover_for_population_segment(list_of_parents: List[AbstractPhenotype]) -> List[AbstractPhenotype]:
-        """Perform crossover.
+        """Perform crossover for a list of phenotypes.
 
-        This method creates a new list of phenotypes (children) based on the parents' genotypes.
+        This method creates a new list of phenotypes (children) based on the parents' genotypes by calling the
+        phenotype's crossover method.
 
         Args:
             list_of_parents: list of phenotypes which should be used to generate offspring.
 
         Returns:
-            List of Individual.
-
-        Todo:
-            * improve returns description
+            List of new Phenotype objects created from their parents' genotypes.
         """
         list_of_children = []
 
@@ -136,33 +135,36 @@ class Population:
 
         return list_of_children
 
-    def split_elite_individuals(self, fitness_function: AbstractFitnessFunction) -> Tuple[List[AbstractPhenotype], List[AbstractPhenotype]]:
-        """Splits list of individuals into elite and non-elite individuals.
+    def split_elite_individuals(self, fitness_function: AbstractFitnessFunction) \
+            -> Tuple[List[AbstractPhenotype], List[AbstractPhenotype]]:
+        """Split list of individuals into elite and non-elite individuals.
 
         The function will create two lists to separate out elite individuals i.e. ones with the highest fitness
-        scores, from those with lower fitness scores. Top 20% of individuals (or at least 1) will be kept from
+        scores, from those with lower fitness scores. Top 10% of individuals (or at least 1) will be kept from
         a list. The rest will be assigned to a separate list, which will be updated using crossover and/or mutation.
 
         Returns:
-            Tuple of List[Individual] and List[Individual].
+            Tuple of List[Phenotype] and List[Phenotype] representing separate groups of
+                elite and non_elite individuals.
         """
-        # TODO allow user to define % of elitism
+        # TODO (Marta): allow user to define % of elitism
 
         sorted_individuals = self.sort_phenotypes_by_fitness_score(fitness_function)
-        elite_individual_threshold = max(1, self.number_of_individuals // 5)
+        elite_individual_threshold = max(1, int(self.number_of_individuals * 0.1))
         elite_individuals = sorted_individuals[:elite_individual_threshold]
         non_elite_individuals = sorted_individuals[elite_individual_threshold:]
         shuffle(non_elite_individuals)
         return elite_individuals, non_elite_individuals
 
-    def sort_phenotypes_by_fitness_score(self, fitness_function: AbstractFitnessFunction):
-        """Sorts list of AbstractPhenotype by calculating fitness score starting at the highest fitness score."""
+    def sort_phenotypes_by_fitness_score(self, fitness_function: AbstractFitnessFunction) -> List[AbstractPhenotype]:
+        """Sort list of AbstractPhenotype by descending fitness score."""
         phenotype_and_fitness_score_tuple_list = []
         for phenotype in self.population:
             fitness_score = fitness_function.evaluate(phenotype)
             phenotype_and_fitness_score_tuple_list.append((phenotype, fitness_score))
 
-        sorted_phenotype_tuples = sorted(phenotype_and_fitness_score_tuple_list, key=get_score_for_sorting, reverse=True)
+        sorted_phenotype_tuples = sorted(phenotype_and_fitness_score_tuple_list,
+                                         key=get_score_for_sorting, reverse=True)
         sorted_phenotypes = []
         for my_tuple in sorted_phenotype_tuples:
             sorted_phenotypes.append(my_tuple[0])
@@ -171,10 +173,10 @@ class Population:
 
 
 def get_score_for_sorting(phenotype_and_fitness_score_tuple: Tuple[AbstractPhenotype, int]) -> Union[float, int]:
-    """Key for sort function used in Population object.
+    """Key for sorted function used in split_elite_individuals object.
 
-    Provides a key for sorting individuals using python's sort function used by the update_population function
-    within the Population object.
+    Provides a key for sorting individuals by returning the phenotype's fitness score from a tuple
+    of phenotype and fitness score. This is used with python's sorted function.
 
     Args:
         phenotype_and_fitness_score_tuple: tuple of phenotype instance and its fitness score.

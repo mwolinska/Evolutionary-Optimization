@@ -6,10 +6,12 @@ from evolutionary_optimization.phenotype.parabola_phenotype import ParabolaPheno
 
 
 class Phenotypes(str, Enum):
+    """Enum containing implemented phenotypes."""
     PARABOLA = "parabola"
     INVERTED_PARABOLA = "inverted_parabola"
 
 class Phenotype:
+    """Maps Phenotypes to their associated concrete class based on AbstractPhenotype."""
     phenotypes_dictionary = {
         Phenotypes.PARABOLA: ParabolaPhenotype,
         Phenotypes.INVERTED_PARABOLA: InvertedParabolaPhenotype,
@@ -17,4 +19,5 @@ class Phenotype:
 
     @classmethod
     def get_phenotype(cls, phenotypes_enum: Phenotypes) -> type(AbstractPhenotype):
+        """Return class of desired AbstractPhenotype."""
         return cls.phenotypes_dictionary[phenotypes_enum]
