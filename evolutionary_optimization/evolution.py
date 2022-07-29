@@ -15,7 +15,7 @@ class Evolution:
     ): # add sensible defaults
         """Initialise Evolution class.
 
-        The evolutionary_optimization_2 class performs evolutionary optimisation of a function (a phenotype_folder).
+        The Evolution class performs evolutionary optimization of a function (a phenotype).
         It contains a population of individuals that are evaluated at every iteration (generation)
         of the algorithm.
 
@@ -35,7 +35,7 @@ class Evolution:
 
         This function performs the evolutionary optimisation. Over number_of_generations it evaluates the population,
         updates the population (with crossover and/ or mutation as initialised). It then records the
-        best fitness score at each generation. Once optimisation is complete it plots the performance over time.
+        best fitness score at each generation.
         """
         for n in range(self.epochs):
             self.population.evaluate_population(self.fitness_function())
@@ -46,8 +46,11 @@ class Evolution:
         self.plot_performance()
 
     def record_performance(self):
-        """Record fitness function value of the current best individual."""
+        """In place addition of fitness function value of the current best individual.
 
+        This function performs in place addition of the current best fitness score to the
+        fitness_over_time attribute. Visualise using the plot_performance function.
+        """
         self.fitness_over_time.append(self.fitness_function().evaluate(phenotype=self.population.best_individual))
 
     def plot_performance(self):
