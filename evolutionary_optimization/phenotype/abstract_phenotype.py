@@ -13,6 +13,16 @@ class AbstractPhenotype(ABC):
         """
         pass
 
+    @property
+    @abstractmethod
+    def genotype(self):
+        pass
+
+    @genotype.setter
+    @abstractmethod
+    def genotype(self, value):
+        pass
+
     @abstractmethod
     def evaluate_phenotype(self):
         """Calculate phenotype value using genotype."""
