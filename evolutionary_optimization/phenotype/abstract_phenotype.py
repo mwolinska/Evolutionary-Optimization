@@ -22,9 +22,7 @@ class AbstractPhenotype(ABC):
     def crossover(self, parent_2: "AbstractPhenotype") -> Tuple["AbstractPhenotype", "AbstractPhenotype"]:
         """Perform crossover between two phenotypes.
 
-        Calls crossover method from the genotype attribute. Combines a portion of this object's genotype
-        with that of parent_2 to return 2 new phenotypes based on the combined genotypes.
-        The new genotype length is the same as of the parents.
+        Calls crossover method from the genotype attribute.
 
         Args:
             parent_2: a phenotype of the same class whose genotype will be mixed with
@@ -36,7 +34,7 @@ class AbstractPhenotype(ABC):
 
     @abstractmethod
     def mutate(self):
-        """Randomly change a gene within the genotype based on mutation probability."""
+        """In place modification of the genotype by randomly changing genes based on mutation probability."""
         pass
 
     @property
