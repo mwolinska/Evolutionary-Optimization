@@ -29,7 +29,7 @@ class Evolution:
         self.population = Population(number_of_individuals, phenotype)
         self.epochs = number_of_generations
         self.fitness_over_time = []
-        self.fitness_function = FitnessFunction().get_fitness_function(fitness_function)
+        self.fitness_function = FitnessFunction.get_fitness_function(fitness_function)
 
     def evolve(self):
         """Perform evolutionary optimisation.
