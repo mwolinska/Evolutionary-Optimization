@@ -44,7 +44,6 @@ class Evolution:
             self.record_performance()
 
         print(f"The value of the best individual is {self.population.best_individual.genotype.genotype}")
-        self.plot_performance()
 
     def record_performance(self):
         """In place addition of fitness function value of the current best individual.
