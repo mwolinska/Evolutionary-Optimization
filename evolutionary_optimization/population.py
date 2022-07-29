@@ -52,14 +52,10 @@ class Population:
 
         Returns:
             List of random Phenotype instances of length n_new_individuals.
-
-        Todo:
-            * update this function
-            * add name in all todos
         """
         new_individuals_list = []
         for i in range(n_new_individuals):
-            new_individuals_list.append(self.phenotype.generate_random_phenotype())
+            new_individuals_list.append(self.phenotype.from_phenotype(self.phenotype))
 
         return new_individuals_list
 
