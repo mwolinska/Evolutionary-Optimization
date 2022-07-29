@@ -11,6 +11,7 @@ class Population:
         self,
         number_of_individuals: int,
         phenotype: AbstractPhenotype,
+        ratio_of_elite_individuals: float,
     ):
         """Create and store phenotypes used in the Evolution object.
 
@@ -19,6 +20,8 @@ class Population:
         Args:
             number_of_individuals: number of phenotype instances i.e. individuals in the desired population.
             phenotype: a phenotype instance with the desired genotype.
+            ratio_of_elite_individuals: proportion of best scoring phenotypes in population that will be kept
+                to the next generation.
         """
 
         self.number_of_individuals = number_of_individuals
@@ -27,6 +30,7 @@ class Population:
         self.best_individual = phenotype.from_phenotype(phenotype)
         self.mutation = True if phenotype.genotype.mutation_probability > 0 else False
         self.crossover = True if phenotype.genotype.mutation_probability > 0 else False
+        self.ratio_of_elite_individuals = ratio_of_elite_individuals
 
     def _create_population(self, phenotype) -> List[AbstractPhenotype]:
         """Create initial population of individuals.
