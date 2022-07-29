@@ -1,11 +1,11 @@
-from ctypes import Union
+from typing import Union
 
 from evolutionary_optimization.fitness_functions.abstract_fitness_function import AbstractFitnessFunction
 from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
 
 class MaximizeFitnessFunction(AbstractFitnessFunction):
-    def evaluate(self, phenotype: AbstractPhenotype) -> Union(float, int):
+    def evaluate(self, phenotype: AbstractPhenotype) -> Union[float, int]:
         """Looking for maximum phenotype value.
 
         Args:
@@ -18,7 +18,7 @@ class MaximizeFitnessFunction(AbstractFitnessFunction):
 
 
 class MinimizeFitnessFunction(AbstractFitnessFunction):
-    def evaluate(self, phenotype: AbstractPhenotype) -> Union(float, int):
+    def evaluate(self, phenotype: AbstractPhenotype) -> Union[float, int]:
         """Looking for minimum phenotype value.
 
         Args:

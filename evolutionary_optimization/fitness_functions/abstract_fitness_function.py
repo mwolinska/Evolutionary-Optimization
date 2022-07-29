@@ -1,12 +1,12 @@
 from abc import ABC, abstractmethod
-from ctypes import Union
+from typing import Union
 
 from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
 
 class AbstractFitnessFunction(ABC):
     @abstractmethod
-    def evaluate(self, phenotype: AbstractPhenotype) -> Union(float, int):
+    def evaluate(self, phenotype: AbstractPhenotype) -> Union[float, int]:
         """This method will return the fitness score from a phenotype.
 
         Args:

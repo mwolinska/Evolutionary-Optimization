@@ -1,8 +1,8 @@
 from enum import Enum
 
 from evolutionary_optimization.fitness_functions.abstract_fitness_function import AbstractFitnessFunction
-from evolutionary_optimization.fitness_functions.implemented_fitness_functions import MaximizeFitnessFunction, MinimizeFitnessFunction, \
-    ApproachValueFitnessFunction
+from evolutionary_optimization.fitness_functions.implemented_fitness_functions import MaximizeFitnessFunction, \
+    MinimizeFitnessFunction, ApproachValueFitnessFunction
 
 
 class FitnessFunctions(str, Enum):
