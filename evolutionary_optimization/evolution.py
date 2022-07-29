@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+from tqdm import tqdm
 
 from evolutionary_optimization.population import Population
 from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
@@ -37,7 +38,7 @@ class Evolution:
         updates the population (with crossover and/ or mutation as initialised). It then records the
         best fitness score at each generation.
         """
-        for n in range(self.epochs):
+        for epoch in tqdm(range(self.epochs)):
             self.population.evaluate_population(self.fitness_function())
             self.population.update_population(self.fitness_function())
             self.record_performance()
