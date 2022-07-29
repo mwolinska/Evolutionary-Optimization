@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Tuple
 
 from evolutionary_optimization.genotype.binary_list_genotype import BinaryListGenotype
 from evolutionary_optimization.genotype.integer_list_genotype import IntegerListGenotype
@@ -7,27 +7,42 @@ from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPheno
 
 class InvertedParabolaPhenotype(AbstractPhenotype):
     def __init__(self, genotype: Union[BinaryListGenotype, IntegerListGenotype]):
+        """Initialise InvertedParabolaPhenotype object.
+
+        Args
+            genotype: an AbstractGenotype that defines the phenotype.
+        """
         self.genotype = genotype
         self._phenotype_value = None
 
     @property
     def phenotype_value(self):
+        """Stores value of the phenotype based on the genotype - calculated using evaluate_phenotype."""
         return self._phenotype_value
 
     @phenotype_value.setter
     def phenotype_value(self, value: int):
+        """Setter for phenotype_value property."""
         self._phenotype_value = value
 
     @classmethod
-    def from_phenotype(cls, base_phenotype: "ParabolaPhenotype") -> "ParabolaPhenotype":
-        new_genotype = base_phenotype.genotype.build_random_genotype(number_of_genes=base_phenotype.genotype.number_of_genes,
-                                                                     value_range=base_phenotype.genotype.value_range,
-                                                                     mutation_probability=base_phenotype.genotype.mutation_probability,
-                                                                     ratio_of_population_for_crossover=base_phenotype.genotype.ratio_of_population_for_crossover,
-                                                                    )
+    def from_phenotype(cls, base_phenotype: "InvertedParabolaPhenotype") -> "InvertedParabolaPhenotype":
+        """Create new phenotype with the same attributes as the base phenotype, but a new random genotype.genotype."""
+        new_genotype = base_phenotype.genotype.build_random_genotype(
+            number_of_genes=base_phenotype.genotype.number_of_genes,
+            value_range=base_phenotype.genotype.value_range,
+            mutation_probability=base_phenotype.genotype.mutation_probability,
+            ratio_of_population_for_crossover=base_phenotype.genotype.ratio_of_population_for_crossover,
+        )
         return cls(new_genotype)
 
     def evaluate_phenotype(self):
+        """In place method to calculate phenotype value using genotype.
+
+        This phenotype follows -x^2 and as such is a single parameter optimisation problem.
+        For a binary genotype the integer value is returned,for an integer list genotype only the first value is used.
+        It updates the phenotype_value property in place once the calculation is done.
+        """
         if isinstance(self.genotype, BinaryListGenotype):
             float_genotype = self.genotype.return_integer_form()
         else:
