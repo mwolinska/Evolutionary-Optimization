@@ -31,12 +31,13 @@ class BinaryListGenotype(AbstractGenotype):
         self.value_range = value_range
 
     @classmethod
-    def build_random_genotype(cls,
-                              number_of_genes: int = 32,
-                              value_range: Tuple[int, int] = (0, 1),
-                              mutation_probability: Optional[float] = 0.1,
-                              ratio_of_population_for_crossover: Optional[float] = 0.5
-                              ) -> "BinaryListGenotype":
+    def build_random_genotype(
+        cls,
+        number_of_genes: int = 32,
+        value_range: Tuple[int, int] = (0, 1),
+        mutation_probability: Optional[float] = 0.1,
+        ratio_of_population_for_crossover: Optional[float] = 0.5
+    ) -> "BinaryListGenotype":
         """Builds random genotype attribute based on requirements.
 
         Args:
@@ -77,9 +78,10 @@ class BinaryListGenotype(AbstractGenotype):
 
         self.genotype = new_genotype
 
-    def crossover(self,
-                  parent_2_genotype: "BinaryListGenotype",
-                  ) -> Tuple["BinaryListGenotype", "BinaryListGenotype"]:
+    def crossover(
+        self,
+        parent_2_genotype: "BinaryListGenotype",
+    ) -> Tuple["BinaryListGenotype", "BinaryListGenotype"]:
         """Performs single point crossover operation for 1 set of parents.
 
         A random integer is generated to split the genotype of the two individuals -
@@ -136,9 +138,9 @@ class BinaryListGenotype(AbstractGenotype):
 
     @staticmethod
     def single_point_crossover(
-            parent_1_genotype: List[int],
-            parent_2_genotype: List[int],
-            gene_slice_index: int,
+        parent_1_genotype: List[int],
+        parent_2_genotype: List[int],
+        gene_slice_index: int,
     ) -> List[int]:
         """A single point crossover for genotype of type list.
 

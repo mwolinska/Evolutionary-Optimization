@@ -7,10 +7,11 @@ from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPheno
 
 
 class Population:
-    def __init__(self,
-                 number_of_individuals: int,
-                 phenotype: AbstractPhenotype,
-                 ):
+    def __init__(
+        self,
+        number_of_individuals: int,
+        phenotype: AbstractPhenotype,
+    ):
         """Create and store phenotypes used in the Evolution object.
 
         The Population object is used by the Evolution object to create, store, evaluate and update phenotypes.
@@ -134,7 +135,8 @@ class Population:
 
         return list_of_children
 
-    def split_elite_individuals(self, fitness_function: AbstractFitnessFunction) -> Tuple[List[AbstractPhenotype], List[AbstractPhenotype]]:
+    def split_elite_individuals(self, fitness_function: AbstractFitnessFunction) \
+            -> Tuple[List[AbstractPhenotype], List[AbstractPhenotype]]:
         """Split list of individuals into elite and non-elite individuals.
 
         The function will create two lists to separate out elite individuals i.e. ones with the highest fitness
@@ -154,7 +156,7 @@ class Population:
         shuffle(non_elite_individuals)
         return elite_individuals, non_elite_individuals
 
-    def sort_phenotypes_by_fitness_score(self, fitness_function: AbstractFitnessFunction):
+    def sort_phenotypes_by_fitness_score(self, fitness_function: AbstractFitnessFunction) -> List[AbstractPhenotype]:
         """Sort list of AbstractPhenotype by descending fitness score."""
         phenotype_and_fitness_score_tuple_list = []
         for phenotype in self.population:

@@ -80,9 +80,10 @@ class IntegerListGenotype(AbstractGenotype):
             new_genotype.append(new_gene)
         self.genotype = new_genotype
 
-    def crossover(self,
-                  parent_2_genotype: "IntegerListGenotype",
-                  ) -> Tuple["IntegerListGenotype", "IntegerListGenotype"]:
+    def crossover(
+        self,
+        parent_2_genotype: "IntegerListGenotype",
+    ) -> Tuple["IntegerListGenotype", "IntegerListGenotype"]:
         """Performs single point crossover operation for 1 set of parents.
 
         A random integer is generated to split the genotype of the two individuals -
@@ -135,7 +136,11 @@ class IntegerListGenotype(AbstractGenotype):
             return child_1, child_2
 
     @staticmethod
-    def single_point_crossover(parent_1_genotype: List[int], parent_2_genotype: List[int], gene_slice_index: int) -> List[int]:
+    def single_point_crossover(
+        parent_1_genotype: List[int],
+        parent_2_genotype: List[int],
+        gene_slice_index: int,
+    ) -> List[int]:
         """A single point crossover for genotype of type list.
 
         This is a single point crossover. Using the gene_slice_index, for both parents the genotype are sliced.
