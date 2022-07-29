@@ -13,7 +13,6 @@ class FitnessFunctions(str, Enum):
 
 class FitnessFunction:
     """Maps FitnessFunctions to their associated concrete class based on AbstractFitnessFunction."""
-
     fitness_functions_dictionary = {
             FitnessFunctions.MAXIMIZE: MaximizeFitnessFunction,
             FitnessFunctions.MINIMIZE: MinimizeFitnessFunction,
