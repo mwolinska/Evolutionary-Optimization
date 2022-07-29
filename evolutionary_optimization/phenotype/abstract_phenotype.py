@@ -23,6 +23,17 @@ class AbstractPhenotype(ABC):
     def genotype(self, value):
         pass
 
+    @property
+    @abstractmethod
+    def phenotype_value(self):
+        """Stores value of the phenotype based on the genotype - calculated using evaluate_phenotype."""
+        pass
+
+    @phenotype_value.setter
+    @abstractmethod
+    def phenotype_value(self, value):
+        pass
+
     @abstractmethod
     def evaluate_phenotype(self):
         """Calculate phenotype value using genotype."""
@@ -47,16 +58,8 @@ class AbstractPhenotype(ABC):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
         pass
 
-    @property
-    @abstractmethod
-    def phenotype_value(self):
-        """Stores value of the phenotype based on the genotype - calculated using evaluate_phenotype."""
-        pass
-
     @classmethod
     @abstractmethod
     def from_phenotype(cls, base_phenotype: "AbstractPhenotype"):
         """Create new phenotype with the same attributes as the base phenotype."""
         pass
-
-    # TODO add genotype as a property
