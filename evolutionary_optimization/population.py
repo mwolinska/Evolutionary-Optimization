@@ -25,14 +25,14 @@ class Population:
         """
 
         self.number_of_individuals = number_of_individuals
-        self.population = self._create_population(phenotype)
         self.phenotype = phenotype
+        self.population = self._create_population()
         self.best_individual = phenotype.from_phenotype(phenotype)
         self.mutation = True if phenotype.genotype.mutation_probability > 0 else False
         self.crossover = True if phenotype.genotype.mutation_probability > 0 else False
         self.ratio_of_elite_individuals = ratio_of_elite_individuals
 
-    def _create_population(self, phenotype) -> List[AbstractPhenotype]:
+    def _create_population(self) -> List[AbstractPhenotype]:
         """Create initial population of individuals.
 
         Returns:
@@ -40,7 +40,7 @@ class Population:
         """
         individuals = []
         for i in range(self.number_of_individuals):
-            new_individual = phenotype.from_phenotype(phenotype)
+            new_individual = self.phenotype.from_phenotype(self.phenotype)
             individuals.append(new_individual)
         return individuals
 
@@ -52,14 +52,10 @@ class Population:
 
         Returns:
             List of random Phenotype instances of length n_new_individuals.
-
-        Todo:
-            * update this function
-            * add name in all todos
         """
         new_individuals_list = []
         for i in range(n_new_individuals):
-            new_individuals_list.append(self.phenotype.generate_random_phenotype())
+            new_individuals_list.append(self.phenotype.from_phenotype(self.phenotype))
 
         return new_individuals_list
 
