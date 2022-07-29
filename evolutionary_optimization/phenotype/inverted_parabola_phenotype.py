@@ -16,6 +16,14 @@ class InvertedParabolaPhenotype(AbstractPhenotype):
         self._phenotype_value = None
 
     @property
+    def genotype(self):
+        return self._genotype
+
+    @genotype.setter
+    def genotype(self, value):
+        self._genotype = value
+
+    @property
     def phenotype_value(self):
         """Stores value of the phenotype based on the genotype - calculated using evaluate_phenotype."""
         return self._phenotype_value
