@@ -13,6 +13,7 @@ class Evolution:
         fitness_function: FitnessFunctions = FitnessFunctions.MAXIMIZE,
         number_of_individuals: int = 100,
         number_of_generations: int = 20,
+        ratio_of_elite_individuals: float = 0.1,
     ):
         """Initialise Evolution class.
 
@@ -25,8 +26,10 @@ class Evolution:
             fitness_function: desired fitness function from interface.
             number_of_individuals: number of phenotype instances to be used within the population.
             number_of_generations: number of times the algorithm will be run.
+            ratio_of_elite_individuals: proportion of best scoring phenotypes in population that will be kept
+                to the next generation.
         """
-        self.population = Population(number_of_individuals, phenotype)
+        self.population = Population(number_of_individuals, phenotype, ratio_of_elite_individuals)
         self.epochs = number_of_generations
         self.fitness_over_time = []
         self.fitness_function = FitnessFunction.get_fitness_function(fitness_function)

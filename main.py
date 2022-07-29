@@ -8,11 +8,13 @@ def run():
     genotype_class = Genotype.get_genotype(Genotypes.BINARY_LIST)
     phenotype_class = Phenotype.get_phenotype(Phenotypes.PARABOLA)
 
-    evolutionary_algorithm = Evolution(phenotype=phenotype_class(genotype_class()),
-                                       number_of_individuals=100,
-                                       number_of_generations=10,
-                                       fitness_function=FitnessFunctions.MINIMIZE
-                                       )
+    evolutionary_algorithm = Evolution(
+        phenotype=phenotype_class(genotype_class()),
+        number_of_individuals=100,
+        number_of_generations=10,
+        fitness_function=FitnessFunctions.MINIMIZE,
+        ratio_of_elite_individuals=0.1
+    )
     evolutionary_algorithm.evolve()
     evolutionary_algorithm.plot_performance()
 
