@@ -1,3 +1,6 @@
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mwolinska/Evolutionary-Optimisation/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mwolinska/Evolutionary-Optimisation/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mwolinska/Evolutionary-Optimisation/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/mwolinska/Evolutionary-Optimisation/tree/main)
+
 # Evolutionary-Optimisation
 A generic evolutionary algorithm for function optimisation.
 
@@ -42,10 +45,11 @@ To run the code type the following in your terminal.
 python3 main.py
 ```
 The parameters used for the run can be edited within the main.py file.
+
 ```python
     test_evolution = Evolution(n_individuals=3,
                                n_generations=4,
-                               genotype_key=GenotypeKey.a_list,
+                               genotype_key=GenotypeKey.LIST,
                                n_genes=2,
                                individual_value_range=(-10, 10),
                                mutation_probability=1,
