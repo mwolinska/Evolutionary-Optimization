@@ -9,10 +9,10 @@ class Evolution:
     def __init__(
         self,
         phenotype: AbstractPhenotype,
-        fitness_function: FitnessFunctions,
-        number_of_individuals: int,
-        number_of_generations: int,
-    ): # add sensible defaults
+        fitness_function: FitnessFunctions = FitnessFunctions.MAXIMIZE,
+        number_of_individuals: int = 100,
+        number_of_generations: int = 20,
+    ):
         """Initialise Evolution class.
 
         The Evolution class performs evolutionary optimization of a function (a phenotype).
