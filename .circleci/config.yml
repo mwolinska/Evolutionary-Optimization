@@ -25,21 +25,6 @@ jobs:
         - checkout
         - python/install-packages:
             pkg-manager: poetry
-#        - run:
-#            name:
-#            command: |
-#              poetry install
-#        - run: |
-#            pip install -U sphinx
-#            pip install sphinx-autodoc-typehints
-#            pip install myst-parser
-#            pip install sphinx-copybutton
-#            pip install sphinx-rtd-theme
-
-#            mkdir -p docs/_build/
-#        - run:
-#            name: Build docs
-#            command: cd docs/ && make html
         - run: |
             poetry run sphinx-apidoc evolutionary_optimization -o docs/source
             cd docs && poetry run make html
