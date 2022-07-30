@@ -25,21 +25,6 @@ jobs:
         - checkout
         - python/install-packages:
             pkg-manager: poetry
-#        - run:
-#            name:
-#            command: |
-#              poetry install
-#        - run: |
-#            pip install -U sphinx
-#            pip install sphinx-autodoc-typehints
-#            pip install myst-parser
-#            pip install sphinx-copybutton
-#            pip install sphinx-rtd-theme
-
-#            mkdir -p docs/_build/
-#        - run:
-#            name: Build docs
-#            command: cd docs/ && make html
         - run: |
             poetry run sphinx-apidoc evolutionary_optimization -o docs/source
             cd docs && poetry run make html
@@ -57,18 +42,24 @@ jobs:
           name: Disable jekyll builds
           command: touch docs/build/html/.nojekyll
       - run:
-          name: Install and configure dependencies
+          name: Upload docs to gh-pages branch
           command: |
-            npm install -g --silent gh-pages@2.0.1
-            git config user.email "mswolinska@gmail.com"
-            git config user.name "mwolinska"
-            gh-pages --help
-      - add_ssh_keys:
-          fingerprints:
-            - "a3:39:98:59:ae:db:a0:f6:0d:99:6c:2b:bb:20:57:da"
-      - run:
-          name: Deploy docs to gh-pages branch
-          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs/build/html
+            git checkout gh-pages
+            git add docs/build/html
+            git commit -m "Updating sphinx documentation"
+            git push -u origin gh-pages
+#      - run:
+#          name: Install and configure dependencies
+#          command: |
+#            npm install -g --silent gh-pages@2.0.1
+#            git config user.email "mswolinska@gmail.com"
+#            git config user.name "mwolinska"
+#      - add_ssh_keys:
+#          fingerprints:
+#            - "a3:39:98:59:ae:db:a0:f6:0d:99:6c:2b:bb:20:57:da"
+#      - run:
+#          name: Deploy docs to gh-pages branch
+#          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs/build/html
 
 
 workflows:
