@@ -71,13 +71,16 @@ workflows:
           filters:
             branches:
               only:
-                set_up_sphinx_documentation
+                - master
+                - main
       - docs-deploy:
           requires:
             - docs-build
           filters:
             branches:
-              only: set_up_sphinx_documentation
+              only:
+                - master
+                - main
 
 
 commands:
