@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>evolutionary_optimization.population &mdash; Evolutionary-Optimization 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Evolutionary-Optimization
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">evolutionary_optimization</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Evolutionary-Optimization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      <li>evolutionary_optimization.population</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for evolutionary_optimization.population</h1><div class="highlight"><pre>
+<span></span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">shuffle</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">evolutionary_optimization.fitness_functions.abstract_fitness_function</span> <span class="kn">import</span> <span class="n">AbstractFitnessFunction</span>
+<span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.abstract_phenotype</span> <span class="kn">import</span> <span class="n">AbstractPhenotype</span>
+
+
+<div class="viewcode-block" id="Population"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.Population">[docs]</a><span class="k">class</span> <span class="nc">Population</span><span class="p">:</span>
+<div class="viewcode-block" id="Population.__init__"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.Population.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">number_of_individuals</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">phenotype</span><span class="p">:</span> <span class="n">AbstractPhenotype</span><span class="p">,</span>
+        <span class="n">ratio_of_elite_individuals</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create and store phenotypes used in the Evolution object.</span>
+
+<span class="sd">        The Population object is used by the Evolution object to create, store, evaluate and update phenotypes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            number_of_individuals: number of phenotype instances i.e. individuals in the desired population.</span>
+<span class="sd">            phenotype: a phenotype instance with the desired genotype.</span>
+<span class="sd">            ratio_of_elite_individuals: proportion of best scoring phenotypes in population that will be kept</span>
+<span class="sd">                to the next generation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">number_of_individuals</span> <span class="o">=</span> <span class="n">number_of_individuals</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phenotype</span> <span class="o">=</span> <span class="n">phenotype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_population</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_individual</span> <span class="o">=</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">from_phenotype</span><span class="p">(</span><span class="n">phenotype</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mutation</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">mutation_probability</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">crossover</span> <span class="o">=</span> <span class="kc">True</span> <span class="k">if</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">mutation_probability</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ratio_of_elite_individuals</span> <span class="o">=</span> <span class="n">ratio_of_elite_individuals</span></div>
+
+    <span class="k">def</span> <span class="nf">_create_population</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">AbstractPhenotype</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Create initial population of individuals.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of AbstractPhenotype instances of length number_of_individuals used in Evolution.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">individuals</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_individuals</span><span class="p">):</span>
+            <span class="n">new_individual</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">phenotype</span><span class="o">.</span><span class="n">from_phenotype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotype</span><span class="p">)</span>
+            <span class="n">individuals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_individual</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">individuals</span>
+
+<div class="viewcode-block" id="Population.create_list_of_new_individuals"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.Population.create_list_of_new_individuals">[docs]</a>    <span class="k">def</span> <span class="nf">create_list_of_new_individuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_new_individuals</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">AbstractPhenotype</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Create a list of Individual instances.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            n_new_individuals: number of desired individuals in list.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of random Phenotype instances of length n_new_individuals.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_individuals_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_new_individuals</span><span class="p">):</span>
+            <span class="n">new_individuals_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotype</span><span class="o">.</span><span class="n">from_phenotype</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotype</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">new_individuals_list</span></div>
+
+<div class="viewcode-block" id="Population.evaluate_population"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.Population.evaluate_population">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate_population</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness_function</span><span class="p">:</span> <span class="n">AbstractFitnessFunction</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Find best_individual in population by calculating fitness scores for all individuals.</span>
+
+<span class="sd">        For each individual in the population calculates the fitness score and stores the best individual</span>
+<span class="sd">        in the population.best_individual attribute.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            fitness_function: fitness function used to evaluate the phenotype.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">individual</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">individual</span><span class="o">.</span><span class="n">phenotype_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">individual</span><span class="o">.</span><span class="n">evaluate_phenotype</span><span class="p">()</span>
+            <span class="n">fitness_score</span> <span class="o">=</span> <span class="n">fitness_function</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">phenotype</span><span class="o">=</span><span class="n">individual</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_individual</span><span class="o">.</span><span class="n">phenotype_value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> \
+                    <span class="n">fitness_score</span> <span class="o">&gt;</span> <span class="n">fitness_function</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">best_individual</span><span class="p">):</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">best_individual</span> <span class="o">=</span> <span class="n">individual</span></div>
+
+<div class="viewcode-block" id="Population.update_population"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.Population.update_population">[docs]</a>    <span class="k">def</span> <span class="nf">update_population</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness_function</span><span class="p">:</span> <span class="n">AbstractFitnessFunction</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Update population attribute following evaluation.</span>
+
+<span class="sd">        Once all individuals in the population have been evaluated, the top individuals are kept (elitism),</span>
+<span class="sd">        the remaining individuals are updated by a combination of mutation and/or crossover if these were</span>
+<span class="sd">        defined in the Evolution instance. If neither was selected, the non-elite individuals will</span>
+<span class="sd">        be replaced by randomly generated individuals.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            fitness_function: fitness function used to evaluate the phenotype.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">elite_individuals</span><span class="p">,</span> <span class="n">non_elite_individuals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">split_elite_individuals</span><span class="p">(</span><span class="n">fitness_function</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossover</span><span class="p">:</span>
+            <span class="n">number_of_individuals_for_crossover</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">ratio_of_population_for_crossover</span>
+                                                      <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">number_of_individuals</span><span class="p">)</span>
+            <span class="c1"># TODO (Marta): include elite individuals in crossover</span>
+            <span class="n">non_elite_individuals</span> <span class="o">=</span> \
+                <span class="bp">self</span><span class="o">.</span><span class="n">crossover_for_population_segment</span><span class="p">(</span><span class="n">non_elite_individuals</span><span class="p">[:</span><span class="n">number_of_individuals_for_crossover</span><span class="p">])</span> <span class="o">+</span> \
+                <span class="n">non_elite_individuals</span><span class="p">[</span><span class="n">number_of_individuals_for_crossover</span><span class="p">:]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutation</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">individual</span> <span class="ow">in</span> <span class="n">non_elite_individuals</span><span class="p">:</span>
+                <span class="n">individual</span><span class="o">.</span><span class="n">mutate</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">crossover</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">mutation</span><span class="p">:</span>
+            <span class="n">non_elite_individuals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_list_of_new_individuals</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">non_elite_individuals</span><span class="p">))</span>
+
+        <span class="n">new_individuals_list</span> <span class="o">=</span> <span class="n">elite_individuals</span> <span class="o">+</span> <span class="n">non_elite_individuals</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">population</span> <span class="o">=</span> <span class="n">new_individuals_list</span></div>
+
+<div class="viewcode-block" id="Population.crossover_for_population_segment"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.Population.crossover_for_population_segment">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">crossover_for_population_segment</span><span class="p">(</span><span class="n">list_of_parents</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">AbstractPhenotype</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">AbstractPhenotype</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Perform crossover for a list of phenotypes.</span>
+
+<span class="sd">        This method creates a new list of phenotypes (children) based on the parents&#39; genotypes by calling the</span>
+<span class="sd">        phenotype&#39;s crossover method.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            list_of_parents: list of phenotypes which should be used to generate offspring.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List of new Phenotype objects created from their parents&#39; genotypes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">list_of_children</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_parents</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">list_of_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">list_of_parents</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">list_of_parents</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">list_of_parents</span><span class="p">),</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">child_1</span><span class="p">,</span> <span class="n">child_2</span> <span class="o">=</span> <span class="n">list_of_parents</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="n">list_of_parents</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="n">list_of_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child_1</span><span class="p">)</span>
+            <span class="n">list_of_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">child_2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">list_of_children</span></div>
+
+<div class="viewcode-block" id="Population.split_elite_individuals"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.Population.split_elite_individuals">[docs]</a>    <span class="k">def</span> <span class="nf">split_elite_individuals</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness_function</span><span class="p">:</span> <span class="n">AbstractFitnessFunction</span><span class="p">)</span> \
+            <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="n">AbstractPhenotype</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">AbstractPhenotype</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Split list of individuals into elite and non-elite individuals.</span>
+
+<span class="sd">        The function will create two lists to separate out elite individuals i.e. ones with the highest fitness</span>
+<span class="sd">        scores, from those with lower fitness scores. Top 10% of individuals (or at least 1) will be kept from</span>
+<span class="sd">        a list. The rest will be assigned to a separate list, which will be updated using crossover and/or mutation.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple of List[Phenotype] and List[Phenotype] representing separate groups of</span>
+<span class="sd">                elite and non_elite individuals.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO (Marta): allow user to define % of elitism</span>
+
+        <span class="n">sorted_individuals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort_phenotypes_by_fitness_score</span><span class="p">(</span><span class="n">fitness_function</span><span class="p">)</span>
+        <span class="n">elite_individual_threshold</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">number_of_individuals</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">ratio_of_elite_individuals</span><span class="p">))</span>
+        <span class="n">elite_individuals</span> <span class="o">=</span> <span class="n">sorted_individuals</span><span class="p">[:</span><span class="n">elite_individual_threshold</span><span class="p">]</span>
+        <span class="n">non_elite_individuals</span> <span class="o">=</span> <span class="n">sorted_individuals</span><span class="p">[</span><span class="n">elite_individual_threshold</span><span class="p">:]</span>
+        <span class="n">shuffle</span><span class="p">(</span><span class="n">non_elite_individuals</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">elite_individuals</span><span class="p">,</span> <span class="n">non_elite_individuals</span></div>
+
+<div class="viewcode-block" id="Population.sort_phenotypes_by_fitness_score"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.Population.sort_phenotypes_by_fitness_score">[docs]</a>    <span class="k">def</span> <span class="nf">sort_phenotypes_by_fitness_score</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fitness_function</span><span class="p">:</span> <span class="n">AbstractFitnessFunction</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">AbstractPhenotype</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Sort list of AbstractPhenotype by descending fitness score.&quot;&quot;&quot;</span>
+        <span class="n">phenotype_and_fitness_score_tuple_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">phenotype</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">population</span><span class="p">:</span>
+            <span class="n">fitness_score</span> <span class="o">=</span> <span class="n">fitness_function</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">phenotype</span><span class="p">)</span>
+            <span class="n">phenotype_and_fitness_score_tuple_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">phenotype</span><span class="p">,</span> <span class="n">fitness_score</span><span class="p">))</span>
+
+        <span class="n">sorted_phenotype_tuples</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">phenotype_and_fitness_score_tuple_list</span><span class="p">,</span>
+                                         <span class="n">key</span><span class="o">=</span><span class="n">get_score_for_sorting</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">sorted_phenotypes</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">my_tuple</span> <span class="ow">in</span> <span class="n">sorted_phenotype_tuples</span><span class="p">:</span>
+            <span class="n">sorted_phenotypes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">my_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">return</span> <span class="n">sorted_phenotypes</span></div></div>
+
+
+<div class="viewcode-block" id="get_score_for_sorting"><a class="viewcode-back" href="../../evolutionary_optimization.html#evolutionary_optimization.population.get_score_for_sorting">[docs]</a><span class="k">def</span> <span class="nf">get_score_for_sorting</span><span class="p">(</span><span class="n">phenotype_and_fitness_score_tuple</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">AbstractPhenotype</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Key for sorted function used in split_elite_individuals object.</span>
+
+<span class="sd">    Provides a key for sorting individuals by returning the phenotype&#39;s fitness score from a tuple</span>
+<span class="sd">    of phenotype and fitness score. This is used with python&#39;s sorted function.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        phenotype_and_fitness_score_tuple: tuple of phenotype instance and its fitness score.</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        Float or int equal to a phenotype&#39;s fitness score.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">phenotype_and_fitness_score_tuple</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Marta Wolinska.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
