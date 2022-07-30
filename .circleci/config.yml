@@ -16,7 +16,45 @@ jobs:
           name: Create release
           command: |
             RELEASE_VERSION=$(poetry version --short)
-            gh release create $RELEASE_VERSION --generate-notes 
+            gh release create $RELEASE_VERSION --generate-notes
+
+  docs-build:
+      docker:
+        - image: cimg/python:3.8.12
+      steps:
+        - checkout
+        - python/install-packages:
+            pkg-manager: poetry
+        - run: |
+            poetry run sphinx-apidoc evolutionary_optimization -o docs/source
+            cd docs && poetry run make html
+        - persist_to_workspace:
+            root: docs/build/
+            paths: html
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: docs/build
+      - run:
+          name: Disable jekyll builds
+          command: touch docs/build/html/.nojekyll
+      - run:
+          name: Install and configure dependencies
+          command: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "mswolinska@gmail.com"
+            git config user.name "mwolinska"
+            gh-pages --help
+      - add_ssh_keys:
+          fingerprints:
+            - "a3:39:98:59:ae:db:a0:f6:0d:99:6c:2b:bb:20:57:da"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: gh-pages --dotfiles --message "[skip ci] Updates" --dist docs/build/html
+
 
 workflows:
   main:
@@ -29,6 +67,21 @@ workflows:
                 - main
           context:
             - GITHUB_CREDS
+      - docs-build:
+          filters:
+            branches:
+              only:
+                - master
+                - main
+      - docs-deploy:
+          requires:
+            - docs-build
+          filters:
+            branches:
+              only:
+                - master
+                - main
+
 
 commands:
   install-gh-cli:
