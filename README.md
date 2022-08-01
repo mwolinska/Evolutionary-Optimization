@@ -83,4 +83,4 @@ ApproachValueFitnessFunction is not currently operational.)
 <img src="./Images/code_structure/abstract_fitness_functions_diagram.svg"/>
 
 ### Documentation
-You can consult our documentation [here](https://mwolinska.github.io/Evolutionary-Optimisation/)
+You can consult our documentation [here](https://mwolinska.github.io/Evolutionary-Optimisation/).
