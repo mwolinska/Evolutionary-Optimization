@@ -22,7 +22,8 @@ flowchart TD;
 Currently, the only exit condition for the code is running the desired
 number of generations.
 
-### Getting started with the package
+## Using the Package
+### Getting Started 
 To get started with this package clone this repo:
 
 ```bash
@@ -39,7 +40,7 @@ To install all dependencies run:
 poetry install
 ```
 
-## Using the package
+### Running experiments
 To run the code type the following in your terminal.
 ```bash
 python3 main.py
