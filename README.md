@@ -75,5 +75,12 @@ or you can build your own.
 To do so, you simply need to create a new phenotype / genotype class that 
 inherits from the corresponding abstract class and implement the methods to suit your needs.
 
+The classes structure is outlined in the diagram below
+<img  src="/Users/marta/Documents/CodingProjects/Evolutionary-Optimisation/Images/code_structure/classes_structure_diagram.svg"/>
+
+The implemented fitness functions are outlined in the diagram below (please note 
+ApproachValueFitnessFunction is not currently operational.)
+<img src="/Users/marta/Documents/CodingProjects/Evolutionary-Optimisation/Images/code_structure/abstract_fitness_functions_diagram.svg"/>
+
 ### Documentation
 You can consult our documentation [here](https://mwolinska.github.io/Evolutionary-Optimisation/)
