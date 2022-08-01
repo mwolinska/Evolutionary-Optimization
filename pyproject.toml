@@ -3,6 +3,7 @@ name = "evolutionary-optimisation"
 version = "2.0.0"
 description = "A generic evolutionary algorithm for function optimisation."
 authors = ["Marta <mswolinska@gmail.com>"]
+packages = [{ include = "evolutionary_optimization"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -24,4 +25,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-abc = "main:run"
+run_evolution = "main:run_evolutionary_alg"
