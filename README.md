@@ -41,22 +41,24 @@ poetry install
 ```
 
 ### Running experiments
-To run the code type the following in your terminal.
+To run the code type the following in your terminal. The default experiment is a 
+simple optimization of the $x^{2}$ using integers.
 ```bash
-python3 main.py
+run_evolution
 ```
 The parameters used for the run can be edited within the main.py file.
 
 ```python
-    test_evolution = Evolution(n_individuals=3,
-                               n_generations=4,
-                               genotype_key=GenotypeKey.LIST,
-                               n_genes=2,
-                               individual_value_range=(-10, 10),
-                               mutation_probability=1,
-                               crossover=True
-                               )
+    genotype_class = Genotype.get_genotype(Genotypes.INTEGER_LIST)
+    phenotype_class = Phenotype.get_phenotype(Phenotypes.PARABOLA)
 
+    evolutionary_algorithm = Evolution(
+        phenotype=phenotype_class(genotype_class()),
+        number_of_individuals=10,
+        number_of_generations=5,
+        fitness_function=FitnessFunctions.MINIMIZE,
+        ratio_of_elite_individuals=0.1
+    )
 ```
 
 This will produce the following output:
