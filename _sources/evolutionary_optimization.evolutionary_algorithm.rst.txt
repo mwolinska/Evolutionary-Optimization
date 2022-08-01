@@ -1,0 +1,29 @@
+evolutionary\_optimization.evolutionary\_algorithm package
+==========================================================
+
+Submodules
+----------
+
+evolutionary\_optimization.evolutionary\_algorithm.evolution module
+-------------------------------------------------------------------
+
+.. automodule:: evolutionary_optimization.evolutionary_algorithm.evolution
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+evolutionary\_optimization.evolutionary\_algorithm.population module
+--------------------------------------------------------------------
+
+.. automodule:: evolutionary_optimization.evolutionary_algorithm.population
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: evolutionary_optimization.evolutionary_algorithm
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -70,13 +70,14 @@
   <h1>Source code for evolutionary_optimization.phenotype.parabola_phenotype</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
 
+<span class="kn">from</span> <span class="nn">evolutionary_optimization.genotype.abstract_genotype</span> <span class="kn">import</span> <span class="n">AbstractGenotype</span>
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.genotype.binary_list_genotype</span> <span class="kn">import</span> <span class="n">BinaryListGenotype</span>
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.genotype.integer_list_genotype</span> <span class="kn">import</span> <span class="n">IntegerListGenotype</span>
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.abstract_phenotype</span> <span class="kn">import</span> <span class="n">AbstractPhenotype</span>
 
 
 <div class="viewcode-block" id="ParabolaPhenotype"><a class="viewcode-back" href="../../../evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype">[docs]</a><span class="k">class</span> <span class="nc">ParabolaPhenotype</span><span class="p">(</span><span class="n">AbstractPhenotype</span><span class="p">):</span>
-<div class="viewcode-block" id="ParabolaPhenotype.__init__"><a class="viewcode-back" href="../../../evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">genotype</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">BinaryListGenotype</span><span class="p">,</span> <span class="n">IntegerListGenotype</span><span class="p">]):</span>
+<div class="viewcode-block" id="ParabolaPhenotype.__init__"><a class="viewcode-back" href="../../../evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">genotype</span><span class="p">:</span> <span class="n">AbstractGenotype</span><span class="p">):</span> <span class="c1"># Union[BinaryListGenotype, IntegerListGenotype]</span>
         <span class="sd">&quot;&quot;&quot;Initialise InvertedParabolaPhenotype object.</span>
 
 <span class="sd">        Args</span>

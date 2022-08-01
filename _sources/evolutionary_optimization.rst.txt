@@ -7,28 +7,10 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
+   evolutionary_optimization.evolutionary_algorithm
    evolutionary_optimization.fitness_functions
    evolutionary_optimization.genotype
    evolutionary_optimization.phenotype
-
-Submodules
-----------
-
-evolutionary\_optimization.evolution module
--------------------------------------------
-
-.. automodule:: evolutionary_optimization.evolution
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-evolutionary\_optimization.population module
---------------------------------------------
-
-.. automodule:: evolutionary_optimization.population
-   :members:
-   :undoc-members:
-   :show-inheritance:
 
 Module contents
 ---------------
