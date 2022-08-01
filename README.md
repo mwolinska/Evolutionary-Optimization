@@ -31,7 +31,7 @@ git clone https://github.com/mwolinska/Evolutionary-Optimisation
 ```
 Then enter the correct directory on your machine:
 ```bash
-cd Decision-Tree
+cd Evolutionary-Optimisation
 ```
 This package uses [poetry](https://python-poetry.org) dependency manager. 
 To install all dependencies run:
