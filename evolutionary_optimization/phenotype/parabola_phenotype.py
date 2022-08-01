@@ -1,12 +1,13 @@
 from typing import Union, Tuple
 
+from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
 from evolutionary_optimization.genotype.binary_list_genotype import BinaryListGenotype
 from evolutionary_optimization.genotype.integer_list_genotype import IntegerListGenotype
 from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
 
 class ParabolaPhenotype(AbstractPhenotype):
-    def __init__(self, genotype: Union[BinaryListGenotype, IntegerListGenotype]):
+    def __init__(self, genotype: AbstractGenotype): # Union[BinaryListGenotype, IntegerListGenotype]
         """Initialise InvertedParabolaPhenotype object.
 
         Args

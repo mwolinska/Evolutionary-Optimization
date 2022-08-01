@@ -1,7 +1,7 @@
 from matplotlib import pyplot as plt
 from tqdm import tqdm
 
-from evolutionary_optimization.population import Population
+from evolutionary_optimization.evolutionary_algorithm.population import Population
 from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
 from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
 
@@ -33,6 +33,8 @@ class Evolution:
         self.epochs = number_of_generations
         self.fitness_over_time = []
         self.fitness_function = FitnessFunction.get_fitness_function(fitness_function)
+        self.phenotype_values_over_time = []
+        self.genotype_values_over_time = []
 
     def evolve(self):
         """Perform evolutionary optimisation.
@@ -45,6 +47,7 @@ class Evolution:
             self.population.evaluate_population(self.fitness_function())
             self.population.update_population(self.fitness_function())
             self.record_performance()
+            self.record_guess()
 
         print(f"The value of the best individual is {self.population.best_individual.genotype.genotype}")
 
@@ -56,6 +59,10 @@ class Evolution:
         """
         self.fitness_over_time.append(self.fitness_function().evaluate(phenotype=self.population.best_individual))
 
+    def record_guess(self):
+        self.phenotype_values_over_time.append(self.population.best_individual.phenotype_value)
+        self.genotype_values_over_time.append(self.population.best_individual.genotype.genotype[0])
+
     def plot_performance(self):
         """Plot score of the best individual at each generation."""
         x_axis = list(range(0, len(self.fitness_over_time)))
@@ -63,4 +70,12 @@ class Evolution:
         plt.title('Algorithm Performance Over Time')
         plt.xlabel('Epoch')
         plt.ylabel('Fitness score')
+        plt.show()
+
+    def plot_phenotype_function_and_guesses(self, function_tuple):
+        plt.plot(self.genotype_values_over_time, self.phenotype_values_over_time)
+        plt.plot(function_tuple[0], function_tuple[1])
+        plt.title('Function to optimise')
+        plt.xlabel('x')
+        plt.ylabel('y')
         plt.show()

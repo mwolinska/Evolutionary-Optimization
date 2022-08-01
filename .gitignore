@@ -1,3 +1,9 @@
 .idea
 __pycache__/
 .DS_Store
+.pub
+
+*.pub
+*.dot
+
+docs/build/
