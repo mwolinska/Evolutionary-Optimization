@@ -66,8 +66,8 @@ This will produce the following output:
 The value of the best individual is [1]
 ```
 
-And the graph of fitness over time will be genertated:
+And the graph of fitness over time will be generated:
 <img src="./Images/sample_evolution_over_time.png" height="400">
 
-The algorithm currently only returns integers and currently maximises the function -x^2.
-The function can be changed in phenotype.py in the a_func() function.
+## Documentation
+You can consult our documentation [here](https://mwolinska.github.io/Evolutionary-Optimisation/)
