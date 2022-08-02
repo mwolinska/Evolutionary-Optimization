@@ -3,12 +3,14 @@ from enum import Enum
 from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
 from evolutionary_optimization.genotype import BinaryListGenotype
 from evolutionary_optimization.genotype import IntegerListGenotype
+from evolutionary_optimization.genotype.float_list_genotype import FloatListGenotype
 
 
 class Genotypes(str, Enum):
     """Enum containing implemented genotypes."""
     BINARY_LIST = "binary_list"
     INTEGER_LIST = "integer_list"
+    FLOAT_LIST = "float_list"
 
 
 class Genotype:
@@ -16,6 +18,7 @@ class Genotype:
     genotypes_dictionary = {
         Genotypes.BINARY_LIST: BinaryListGenotype,
         Genotypes.INTEGER_LIST: IntegerListGenotype,
+        Genotypes.FLOAT_LIST: FloatListGenotype
     }
 
     @classmethod
