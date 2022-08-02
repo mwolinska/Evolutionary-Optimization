@@ -49,7 +49,7 @@ run_evolution
 The parameters used for the run can be edited within the main.py file.
 
 ```python
-    genotype_class = Genotype.get_genotype(Genotypes.INTEGER_LIST)
+    genotype_class = Genotype.get_genotype(Genotypes.FLOAT_LIST)
     phenotype_class = Phenotype.get_phenotype(Phenotypes.PARABOLA)
 
     evolutionary_algorithm = Evolution(
@@ -63,12 +63,31 @@ The parameters used for the run can be edited within the main.py file.
 
 This will produce the following output:
 ```bash
-The value of the best individual is [1]
+The value of the best individual is [-0.2240206935262563]
 ```
 
-And the graph of fitness over time will be generated:
+To generate the graph of fitness over time use:
+```python
+    evolutionary_algorithm.plot_performance()
+```
+within the run_evolution function to produce the following output:
 <img src="./Images/sample_evolution_over_time.png" height="400">
 
+To generate the graph of the phenotype function and best individual phenotype / genotype 
+pairs, use:
+```python
+    # generate points to plot the phenotype function
+    phenotype_function_points_tuple = generate_points_for_function(
+        phenotype=evolutionary_algorithm.population.phenotype,
+        bottom_plotting_limit=-10,
+        c=10,
+    )
+    # plot phenotype function and best individual phenotype / genotype pairs
+    evolutionary_algorithm.plot_phenotype_function_and_best_individuals(phenotype_function__points_tuple)
+```
+
+To produce the following output:
+![](Images/algorithm_plots/phenotype_func_and_best_individuals.png)
 ### Personalising Experiments
 To personalise your experiment you can either use the prebuilt phenotypes and genotypes using our interface,
 or you can build your own. 
