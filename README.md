@@ -71,6 +71,7 @@ To generate the graph of fitness over time use:
     evolutionary_algorithm.plot_performance()
 ```
 within the run_evolution function to produce the following output:
+
 <p align="center">
 <img height="400" src="./Images/algorithm_plots/sample_evolution_over_time.png" height="400">
 </p>
@@ -89,6 +90,7 @@ pairs, use:
 ```
 
 To produce the following output:
+
 <p align="center">
     <img height="400" src="./Images/algorithm_plots/phenotype_func_and_best_individuals.png"/>
 </p>
