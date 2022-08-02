@@ -1,6 +1,8 @@
 from random import uniform
 from typing import Tuple
 
+import numpy as np
+
 
 class FloatListGenotype:
     def __init__(
@@ -61,7 +63,18 @@ class FloatListGenotype:
 
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
-        pass
+        new_genotype = []
+
+        for gene in self.genotype:
+            mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
+
+            if mutation:
+                new_gene = uniform(self.value_range[0], self.value_range[1])
+            else:
+                new_gene = gene
+
+            new_genotype.append(new_gene)
+        self.genotype = new_genotype
 
     def crossover(self, parent_2_genotype: "AbstractGenotype") -> Tuple["AbstractGenotype", "AbstractGenotype"]:
         """Perform crossover between two phenotypes.
