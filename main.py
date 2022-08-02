@@ -22,7 +22,7 @@ def run_evolutionary_alg():
         ratio_of_elite_individuals=0.1
     )
     evolutionary_algorithm.evolve()
-    # evolutionary_algorithm.plot_performance()
+    evolutionary_algorithm.plot_fitness_score_over_time()
     phenotype_function_points_tuple = generate_points_for_function(
         phenotype=evolutionary_algorithm.population.phenotype,
         bottom_plotting_limit=-10,
