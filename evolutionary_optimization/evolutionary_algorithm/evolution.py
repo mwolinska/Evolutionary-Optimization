@@ -74,9 +74,14 @@ class Evolution:
         plt.show()
 
     def plot_phenotype_function_and_guesses(self, function_tuple):
-        plt.plot(function_tuple[0], function_tuple[1])
-        plt.plot(self.performance_over_time.genotype_over_time, self.performance_over_time.phenotype_over_time)
-        plt.title('Function to optimise')
-        plt.xlabel('x')
-        plt.ylabel('y')
+        plt.plot(function_tuple[0], function_tuple[1], label="Phenotype Function")
+        plt.plot(
+            self.performance_over_time.genotype_over_time,
+            self.performance_over_time.phenotype_over_time,
+            label="Best Individual Over Time"
+        )
+        plt.title('Phenotype Function and Best Predictions')
+        plt.xlabel('Genotype')
+        plt.ylabel('Phenotype')
+        plt.legend()
         plt.show()
