@@ -1,7 +1,9 @@
-from random import uniform
+from random import uniform, randint
 from typing import Tuple
 
 import numpy as np
+
+from evolutionary_optimization.genotype.genotype_utils import single_point_crossover
 
 
 class FloatListGenotype:
@@ -74,6 +76,7 @@ class FloatListGenotype:
                 new_gene = gene
 
             new_genotype.append(new_gene)
+
         self.genotype = new_genotype
 
     def crossover(self, parent_2_genotype: "AbstractGenotype") -> Tuple["AbstractGenotype", "AbstractGenotype"]:
@@ -88,4 +91,31 @@ class FloatListGenotype:
         Returns:
             Two new phenotype instances based on the combined genotypes of the two parents.
         """
-        pass
+        if len(self.genotype) != len(parent_2_genotype.genotype):
+            raise NameError("The Individuals have genotypes of different lengths - crossover is impossible")
+
+        if self.number_of_genes == 1:
+            return self, parent_2_genotype
+        else:
+            last_slice_index = self.number_of_genes - 1
+            gene_slice_index = randint(1, last_slice_index)
+
+            child_1_genotype = single_point_crossover(self.genotype, parent_2_genotype.genotype, gene_slice_index)
+            child_2_genotype = single_point_crossover(parent_2_genotype.genotype, self.genotype, gene_slice_index)
+
+            child_1 = FloatListGenotype(
+                genotype=child_1_genotype,
+                mutation_probability=self.mutation_probability,
+                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
+                number_of_genes=self.number_of_genes,
+                value_range=self.value_range,
+            )
+
+            child_2 = FloatListGenotype(
+                genotype=child_2_genotype,
+                mutation_probability=self.mutation_probability,
+                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
+                number_of_genes=self.number_of_genes,
+                value_range=self.value_range,
+            )
+            return child_1, child_2
