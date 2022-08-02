@@ -71,7 +71,10 @@ To generate the graph of fitness over time use:
     evolutionary_algorithm.plot_performance()
 ```
 within the run_evolution function to produce the following output:
-<img src="./Images/sample_evolution_over_time.png" height="400">
+
+<p align="center">
+<img height="400" src="./Images/algorithm_plots/sample_evolution_over_time.png" height="400">
+</p>
 
 To generate the graph of the phenotype function and best individual phenotype / genotype 
 pairs, use:
@@ -87,7 +90,11 @@ pairs, use:
 ```
 
 To produce the following output:
-![](Images/algorithm_plots/phenotype_func_and_best_individuals.png)
+
+<p align="center">
+    <img height="400" src="./Images/algorithm_plots/phenotype_func_and_best_individuals.png"/>
+</p>
+
 ### Personalising Experiments
 To personalise your experiment you can either use the prebuilt phenotypes and genotypes using our interface,
 or you can build your own. 
