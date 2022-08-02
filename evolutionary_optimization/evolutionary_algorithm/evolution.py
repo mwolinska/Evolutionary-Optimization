@@ -1,6 +1,7 @@
 from matplotlib import pyplot as plt
 from tqdm import tqdm
 
+from evolutionary_optimization.evolutionary_algorithm.ea_data_model import PerformancePlotting
 from evolutionary_optimization.evolutionary_algorithm.population import Population
 from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
 from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
@@ -31,10 +32,12 @@ class Evolution:
         """
         self.population = Population(number_of_individuals, phenotype, ratio_of_elite_individuals)
         self.epochs = number_of_generations
-        self.fitness_over_time = []
         self.fitness_function = FitnessFunction.get_fitness_function(fitness_function)
-        self.phenotype_values_over_time = []
-        self.genotype_values_over_time = []
+        self.performance_over_time = PerformancePlotting(
+            fitness_over_time=[],
+            phenotype_over_time=[],
+            genotype_over_time=[],
+        )
 
     def evolve(self):
         """Perform evolutionary optimisation.
@@ -47,7 +50,6 @@ class Evolution:
             self.population.evaluate_population(self.fitness_function())
             self.population.update_population(self.fitness_function())
             self.record_performance()
-            self.record_guess()
 
         print(f"The value of the best individual is {self.population.best_individual.genotype.genotype}")
 
@@ -57,24 +59,23 @@ class Evolution:
         This function performs in place addition of the current best fitness score to the
         fitness_over_time attribute. Visualise using the plot_performance function.
         """
-        self.fitness_over_time.append(self.fitness_function().evaluate(phenotype=self.population.best_individual))
-
-    def record_guess(self):
-        self.phenotype_values_over_time.append(self.population.best_individual.phenotype_value)
-        self.genotype_values_over_time.append(self.population.best_individual.genotype.genotype[0])
+        self.performance_over_time.fitness_over_time.append(self.fitness_function().evaluate(phenotype=self.population.best_individual))
+        self.performance_over_time.phenotype_over_time.append(self.population.best_individual.phenotype_value)
+        self.performance_over_time.genotype_over_time.append(self.population.best_individual.genotype.genotype[0])
+        print(self.population.best_individual.phenotype_value)
 
     def plot_performance(self):
         """Plot score of the best individual at each generation."""
-        x_axis = list(range(0, len(self.fitness_over_time)))
-        plt.plot(x_axis, self.fitness_over_time)
+        x_axis = list(range(0, len(self.performance_over_time.fitness_over_time)))
+        plt.plot(x_axis, self.performance_over_time.fitness_over_time)
         plt.title('Algorithm Performance Over Time')
         plt.xlabel('Epoch')
         plt.ylabel('Fitness score')
         plt.show()
 
     def plot_phenotype_function_and_guesses(self, function_tuple):
-        plt.plot(self.genotype_values_over_time, self.phenotype_values_over_time)
         plt.plot(function_tuple[0], function_tuple[1])
+        plt.plot(self.performance_over_time.genotype_over_time, self.performance_over_time.phenotype_over_time)
         plt.title('Function to optimise')
         plt.xlabel('x')
         plt.ylabel('y')
