@@ -56,12 +56,16 @@ class Evolution:
         print(f"The value of the best individual is {self.population.best_individual.genotype.genotype}")
 
     def record_performance(self):
-        """In place addition of fitness function value of the current best individual.
+        """In place addition of fitness score, phenotype and genotype values of the current best individual.
 
-        This function performs in place addition of the current best fitness score to the
-        fitness_over_time attribute. Visualise using the plot_performance function.
+        This function performs in place addition of the current best fitness score, phenotype value
+        and genotype value to the performance_over_time attribute.
+        You can visualise fitness over time using the plot_fitness_score_over_time function, and you can visualise
+        phenotype and genotype values over time using plot_phenotype_function_and_best_individuals function.
         """
-        self.performance_over_time.fitness_over_time.append(self.fitness_function().evaluate(phenotype=self.population.best_individual))
+        self.performance_over_time.fitness_over_time.append(self.fitness_function().evaluate(
+            phenotype=self.population.best_individual)
+        )
         self.performance_over_time.phenotype_over_time.append(self.population.best_individual.phenotype_value)
         self.performance_over_time.genotype_over_time.append(self.population.best_individual.genotype.genotype[0])
         print(self.population.best_individual.phenotype_value)
@@ -79,6 +83,7 @@ class Evolution:
             self,
             function_tuple: Tuple[List[Union[int, float]], List[Union[int, float]]],
     ):
+        """Plot phenotype function and best individual phenotype values."""
         plt.plot(function_tuple[0], function_tuple[1], label="Phenotype Function")
         plt.plot(
             self.performance_over_time.genotype_over_time,
