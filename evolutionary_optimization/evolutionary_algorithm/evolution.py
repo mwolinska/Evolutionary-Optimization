@@ -64,7 +64,7 @@ class Evolution:
         self.performance_over_time.genotype_over_time.append(self.population.best_individual.genotype.genotype[0])
         print(self.population.best_individual.phenotype_value)
 
-    def plot_performance(self):
+    def plot_fitness_score_over_time(self):
         """Plot score of the best individual at each generation."""
         x_axis = list(range(0, len(self.performance_over_time.fitness_over_time)))
         plt.plot(x_axis, self.performance_over_time.fitness_over_time)
@@ -73,7 +73,7 @@ class Evolution:
         plt.ylabel('Fitness score')
         plt.show()
 
-    def plot_phenotype_function_and_guesses(self, function_tuple):
+    def plot_phenotype_function_and_best_individuals(
         plt.plot(function_tuple[0], function_tuple[1], label="Phenotype Function")
         plt.plot(
             self.performance_over_time.genotype_over_time,
