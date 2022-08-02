@@ -1,3 +1,5 @@
+from typing import Tuple, Union, List
+
 from matplotlib import pyplot as plt
 from tqdm import tqdm
 
@@ -74,6 +76,9 @@ class Evolution:
         plt.show()
 
     def plot_phenotype_function_and_best_individuals(
+            self,
+            function_tuple: Tuple[List[Union[int, float]], List[Union[int, float]]],
+    ):
         plt.plot(function_tuple[0], function_tuple[1], label="Phenotype Function")
         plt.plot(
             self.performance_over_time.genotype_over_time,
