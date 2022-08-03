@@ -36,4 +36,10 @@ class ApproachValueFitnessFunction(AbstractFitnessFunction):
         self.expected_value = expected_value
 
     def evaluate(self, phenotype: AbstractPhenotype) -> float:
-        return 1 / abs(self.expected_value - phenotype.phenotype_value)
+
+        delta_to_expected_value = abs(self.expected_value - phenotype.phenotype_value)
+
+        if delta_to_expected_value == 0:
+            return 1
+        else:
+            return 1 / delta_to_expected_value
