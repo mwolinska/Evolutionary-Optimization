@@ -72,6 +72,14 @@ class BinaryListGenotype(AbstractGenotype):
                    number_of_genes=number_of_genes,
                    value_range=value_range)
 
+    @classmethod
+    def from_genotype(cls, base_genotype: "BinaryListGenotype", new_genotype: List[int]) -> "BinaryListGenotype":
+        return cls(genotype=new_genotype,
+                   value_range=base_genotype.value_range,
+                   mutation_probability=base_genotype.mutation_probability,
+                   ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover
+                   )
+
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
         new_genotype = []
