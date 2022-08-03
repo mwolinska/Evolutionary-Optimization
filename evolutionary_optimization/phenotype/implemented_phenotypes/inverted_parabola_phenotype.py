@@ -51,10 +51,8 @@ class InvertedParabolaPhenotype(AbstractPhenotype):
         For a binary genotype the integer value is returned,for an integer list genotype only the first value is used.
         It updates the phenotype_value property in place once the calculation is done.
         """
-        if isinstance(self.genotype, BinaryListGenotype):
-            float_genotype = self.genotype.return_integer_form()
-        else:
-            float_genotype = self.genotype.genotype[0]
+
+        float_genotype = self.genotype.genotype[0]
 
         phenotype = float_genotype ** 2 * (-1)
         self.phenotype_value = phenotype
