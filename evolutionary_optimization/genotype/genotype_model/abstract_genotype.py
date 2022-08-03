@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Tuple, Optional
+from typing import Tuple, Optional, List, Union
 
 
 class AbstractGenotype(ABC):
@@ -73,4 +73,13 @@ class AbstractGenotype(ABC):
         Returns:
             Two new phenotype instances based on the combined genotypes of the two parents.
         """
+        pass
+
+    @classmethod
+    @abstractmethod
+    def from_genotype(
+        cls,
+        base_genotype: "AbstractGenotype",
+        new_genotype: Union[List[int], List[float], List[str]],
+    ) -> "AbstractGenotype":
         pass

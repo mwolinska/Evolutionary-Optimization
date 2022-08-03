@@ -147,8 +147,6 @@ class Population:
             Tuple of List[Phenotype] and List[Phenotype] representing separate groups of
                 elite and non_elite individuals.
         """
-        # TODO (Marta): allow user to define % of elitism
-
         sorted_individuals = self.sort_phenotypes_by_fitness_score(fitness_function)
         elite_individual_threshold = max(1, int(self.number_of_individuals * self.ratio_of_elite_individuals))
         elite_individuals = sorted_individuals[:elite_individual_threshold]

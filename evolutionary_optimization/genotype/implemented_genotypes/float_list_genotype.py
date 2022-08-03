@@ -1,5 +1,5 @@
 from random import uniform, randint
-from typing import Tuple
+from typing import Tuple, List
 
 import numpy as np
 
@@ -71,6 +71,14 @@ class FloatListGenotype:
                    number_of_genes=number_of_genes,
                    value_range=value_range)
 
+    @classmethod
+    def from_genotype(cls, base_genotype: "FloatListGenotype", new_genotype: List[float]) -> "FloatListGenotype":
+        return cls(genotype=new_genotype,
+                   value_range=base_genotype.value_range,
+                   mutation_probability=base_genotype.mutation_probability,
+                   ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover
+                   )
+
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
         new_genotype = []
@@ -111,19 +119,7 @@ class FloatListGenotype:
             child_1_genotype = single_point_crossover(self.genotype, parent_2_genotype.genotype, gene_slice_index)
             child_2_genotype = single_point_crossover(parent_2_genotype.genotype, self.genotype, gene_slice_index)
 
-            child_1 = FloatListGenotype(
-                genotype=child_1_genotype,
-                mutation_probability=self.mutation_probability,
-                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                number_of_genes=self.number_of_genes,
-                value_range=self.value_range,
-            )
+            child_1 = self.from_genotype(parent_2_genotype, child_1_genotype)
+            child_2 = self.from_genotype(parent_2_genotype, child_2_genotype)
 
-            child_2 = FloatListGenotype(
-                genotype=child_2_genotype,
-                mutation_probability=self.mutation_probability,
-                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                number_of_genes=self.number_of_genes,
-                value_range=self.value_range,
-            )
             return child_1, child_2
