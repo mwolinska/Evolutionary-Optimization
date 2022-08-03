@@ -138,21 +138,8 @@ class BinaryListGenotype(AbstractGenotype):
             child_1_genotype = single_point_crossover(self.binary_genotype, parent_2_genotype.binary_genotype, gene_slice_index)
             child_2_genotype = single_point_crossover(parent_2_genotype.binary_genotype, self.binary_genotype, gene_slice_index)
 
-            child_1 = BinaryListGenotype(
-                genotype=child_1_genotype,
-                mutation_probability=self.mutation_probability,
-                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                number_of_genes=self.number_of_genes,
-                value_range=self.value_range,
-            )
-
-            child_2 = BinaryListGenotype(
-                genotype=child_2_genotype,
-                mutation_probability=self.mutation_probability,
-                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                number_of_genes=self.number_of_genes,
-                value_range=self.value_range,
-            )
+            child_1 = self.from_genotype(parent_2_genotype, child_1_genotype)
+            child_2 = self.from_genotype(parent_2_genotype, child_2_genotype)
 
             return child_1, child_2
 

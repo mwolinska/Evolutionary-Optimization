@@ -137,17 +137,7 @@ class IntegerListGenotype(AbstractGenotype):
             child_1_genotype = single_point_crossover(self.genotype, parent_2_genotype.genotype, gene_slice_index)
             child_2_genotype = single_point_crossover(parent_2_genotype.genotype, self.genotype, gene_slice_index)
 
-            child_1 = IntegerListGenotype(genotype=child_1_genotype,
-                                          mutation_probability=self.mutation_probability,
-                                          ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                                          number_of_genes=self.number_of_genes,
-                                          value_range=self.value_range)
-
-            child_2 = IntegerListGenotype(genotype=child_2_genotype,
-                                          mutation_probability=self.mutation_probability,
-                                          ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                                          number_of_genes=self.number_of_genes,
-                                          value_range=self.value_range)
-            # TODO (Marta): implement method to return Genotype copy with updated genotype attribuet
+            child_1 = self.from_genotype(parent_2_genotype, child_1_genotype)
+            child_2 = self.from_genotype(parent_2_genotype, child_2_genotype)
 
             return child_1, child_2
