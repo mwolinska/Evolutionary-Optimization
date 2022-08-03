@@ -70,7 +70,6 @@ class Evolution:
         )
         self.performance_over_time.phenotype_over_time.append(self.population.best_individual.phenotype_value)
         self.performance_over_time.genotype_over_time.append(self.population.best_individual.genotype.genotype[0])
-        print(self.population.best_individual.phenotype_value)
 
     def plot_fitness_score_over_time(self):
         """Plot score of the best individual at each generation."""
