@@ -1,5 +1,5 @@
 from evolutionary_optimization.evolutionary_algorithm.evolution import Evolution
-from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions
+from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
 from evolutionary_optimization.genotype.genotype_model.genotype_interface import Genotype, Genotypes
 from evolutionary_optimization.phenotype.phenotype_model.phenotype_interface import Phenotype, Phenotypes
 from evolutionary_optimization.phenotype.phenotype_model.phenotype_utils import generate_points_for_function
@@ -8,6 +8,8 @@ from evolutionary_optimization.phenotype.phenotype_model.phenotype_utils import 
 def run_evolutionary_alg():
     genotype_class = Genotype.get_genotype(Genotypes.FLOAT_LIST)
     phenotype_class = Phenotype.get_phenotype(Phenotypes.PARABOLA)
+    fitness_function_class = FitnessFunction.get_fitness_function(FitnessFunctions.APPROACH_VALUE)
+    fitness_function_instance = fitness_function_class(0)
 
     evolutionary_algorithm = Evolution(
         phenotype=phenotype_class(
