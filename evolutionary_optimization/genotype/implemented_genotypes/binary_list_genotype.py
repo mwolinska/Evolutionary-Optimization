@@ -122,9 +122,6 @@ class BinaryListGenotype(AbstractGenotype):
 
         Returns:
             Tuple of AbstractGenotype, representing two children genotypes that are a combination of the parents.
-
-        Todo:
-            * (Marta): implement method to return Genotype copy with updated genotype attribute
         """
         if len(self.binary_genotype) != len(parent_2_genotype.binary_genotype):
             raise NameError("The Individuals have genotypes of different lengths - crossover is impossible")
