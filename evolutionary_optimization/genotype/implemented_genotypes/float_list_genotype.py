@@ -87,7 +87,8 @@ class FloatListGenotype:
             mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
 
             if mutation:
-                new_gene = uniform(self.value_range[0], self.value_range[1])
+                noise = uniform(-1, 1)
+                new_gene = gene + noise
             else:
                 new_gene = gene
 
