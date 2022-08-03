@@ -51,12 +51,14 @@ The parameters used for the run can be edited within the main.py file.
 ```python
     genotype_class = Genotype.get_genotype(Genotypes.FLOAT_LIST)
     phenotype_class = Phenotype.get_phenotype(Phenotypes.PARABOLA)
+    fitness_function_class = FitnessFunction.get_fitness_function(FitnessFunctions.MINIMIZE)
+    fitness_function_instance = fitness_function_class()
 
     evolutionary_algorithm = Evolution(
         phenotype=phenotype_class(genotype_class()),
         number_of_individuals=10,
         number_of_generations=5,
-        fitness_function=FitnessFunctions.MINIMIZE,
+        fitness_function=fitness_function_instance,
         ratio_of_elite_individuals=0.1
     )
 ```
@@ -104,8 +106,7 @@ inherits from the corresponding abstract class and implement the methods to suit
 The classes structure is outlined in the diagram below
 <img  src="./Images/code_structure/classes_structure_diagram.svg"/>
 
-The implemented fitness functions are outlined in the diagram below (please note 
-ApproachValueFitnessFunction is not currently operational.)
+The implemented fitness functions are outlined in the diagram below.
 <img src="./Images/code_structure/abstract_fitness_functions_diagram.svg"/>
 
 ### Documentation
