@@ -35,3 +35,5 @@ class ApproachValueFitnessFunction(AbstractFitnessFunction):
     def __init__(self, expected_value: Union[float, int]):
         self.expected_value = expected_value
     # TODO (Marta): how to deal with expected value?
+    def evaluate(self, phenotype: AbstractPhenotype) -> float:
+        return 1 / abs(self.expected_value - phenotype.phenotype_value)
