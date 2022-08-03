@@ -1,3 +1,4 @@
+import random
 from random import randint
 from typing import Tuple, Optional, List
 
@@ -90,7 +91,11 @@ class IntegerListGenotype(AbstractGenotype):
             mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
 
             if mutation:
-                new_gene = randint(self.value_range[0], self.value_range[1])
+                noise = random.uniform(-1, 1)
+                if noise > 0:
+                    new_gene = gene + 1
+                else:
+                    new_gene = gene - 1
             else:
                 new_gene = gene
 
