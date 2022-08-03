@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 
-from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
 
 class AbstractPhenotype(ABC):
     @abstractmethod

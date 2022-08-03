@@ -1,8 +1,6 @@
 from typing import Tuple
 
-import numpy as np
-
-from evolutionary_optimization.genotype.float_list_genotype import FloatListGenotype
+from evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype import FloatListGenotype
 from evolutionary_optimization.phenotype import AbstractPhenotype
 
 class SaddlePointPhenotype(AbstractPhenotype):

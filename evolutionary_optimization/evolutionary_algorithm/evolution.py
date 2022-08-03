@@ -6,7 +6,7 @@ from tqdm import tqdm
 from evolutionary_optimization.evolutionary_algorithm.ea_data_model import PerformancePlotting
 from evolutionary_optimization.evolutionary_algorithm.population import Population
 from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
-from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
 
 
 class Evolution:

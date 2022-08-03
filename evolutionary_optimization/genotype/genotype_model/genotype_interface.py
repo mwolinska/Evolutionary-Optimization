@@ -1,9 +1,9 @@
 from enum import Enum
 
-from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
 from evolutionary_optimization.genotype import BinaryListGenotype
 from evolutionary_optimization.genotype import IntegerListGenotype
-from evolutionary_optimization.genotype.float_list_genotype import FloatListGenotype
+from evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype import FloatListGenotype
 
 
 class Genotypes(str, Enum):

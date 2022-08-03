@@ -27,6 +27,16 @@ class AbstractGenotype(ABC):
         """
         pass
 
+    @property
+    @abstractmethod
+    def genotype(self):
+        pass
+
+    @genotype.setter
+    @abstractmethod
+    def genotype(self, value):
+        pass
+
     @classmethod
     @abstractmethod
     def build_random_genotype(
