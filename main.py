@@ -19,7 +19,7 @@ def run_evolutionary_alg():
         number_of_individuals=10,
         number_of_generations=20,
         fitness_function=FitnessFunctions.MINIMIZE,
-        ratio_of_elite_individuals=0.1
+        ratio_of_elite_individuals=0.1,
     )
     evolutionary_algorithm.evolve()
     evolutionary_algorithm.plot_fitness_score_over_time()
