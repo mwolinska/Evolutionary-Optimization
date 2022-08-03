@@ -25,11 +25,19 @@ class BinaryListGenotype(AbstractGenotype):
             number_of_genes: number of genes in the genotype.
             value_range: minimum and maximum values of a gene.
         """
-        self.genotype = genotype
+        self._genotype = genotype
         self.mutation_probability = mutation_probability
         self.ratio_of_population_for_crossover = ratio_of_population_for_crossover
         self.number_of_genes = number_of_genes
         self.value_range = value_range
+
+    @property
+    def genotype(self):
+        return self._genotype
+
+    @genotype.setter
+    def genotype(self, value):
+        self._genotype = value
 
     @classmethod
     def build_random_genotype(
