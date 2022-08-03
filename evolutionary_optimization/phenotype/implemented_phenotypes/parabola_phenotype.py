@@ -1,9 +1,8 @@
-from typing import Union, Tuple
+from typing import Tuple
 
-from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
-from evolutionary_optimization.genotype.binary_list_genotype import BinaryListGenotype
-from evolutionary_optimization.genotype.integer_list_genotype import IntegerListGenotype
-from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype import BinaryListGenotype
+from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
 
 
 class ParabolaPhenotype(AbstractPhenotype):

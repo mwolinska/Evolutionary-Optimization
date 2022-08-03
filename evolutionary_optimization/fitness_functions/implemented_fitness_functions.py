@@ -1,7 +1,7 @@
 from typing import Union
 
 from evolutionary_optimization.fitness_functions.abstract_fitness_function import AbstractFitnessFunction
-from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
 
 
 class MaximizeFitnessFunction(AbstractFitnessFunction):

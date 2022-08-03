@@ -3,19 +3,18 @@ from typing import Tuple, Optional, List
 
 import numpy as np
 
-from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
-from evolutionary_optimization.genotype.genotype_utils import single_point_crossover
+from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.genotype_model.genotype_utils import single_point_crossover
 
 
-class IntegerListGenotype(AbstractGenotype):
-
+class BinaryListGenotype(AbstractGenotype):
     def __init__(
         self,
         genotype: Optional[List[int]] = None,
-        mutation_probability: float = 0.1,
+        mutation_probability: float = 0.5,
         ratio_of_population_for_crossover: float = 0.5,
-        number_of_genes: int = 1,
-        value_range: Tuple[int, int] = (0, 9),
+        number_of_genes: int = 32,
+        value_range: Tuple[int, int] = (0, 1),
     ):
         """Initialise instance of AbstractGenotype.
 
@@ -35,11 +34,11 @@ class IntegerListGenotype(AbstractGenotype):
     @classmethod
     def build_random_genotype(
         cls,
-        number_of_genes: int = 1,
-        value_range: Tuple[int, int] = (-100, 100),
-        mutation_probability: Optional[float] = 0.5,
-        ratio_of_population_for_crossover: Optional[float] = 0.5,
-    ) -> "IntegerListGenotype":
+        number_of_genes: int = 32,
+        value_range: Tuple[int, int] = (0, 1),
+        mutation_probability: Optional[float] = 0.1,
+        ratio_of_population_for_crossover: Optional[float] = 0.5
+    ) -> "BinaryListGenotype":
         """Builds random genotype attribute based on requirements.
 
         Args:
@@ -50,9 +49,6 @@ class IntegerListGenotype(AbstractGenotype):
 
         Returns:
               Genotype object with updated genotype attribute.
-
-        Todo:
-            * (Marta): set infinity as value range defaults
         """
         genotype = []
 
@@ -74,17 +70,19 @@ class IntegerListGenotype(AbstractGenotype):
             mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
 
             if mutation:
-                new_gene = randint(self.value_range[0], self.value_range[1])
+                my_list = [1, 0]
+                new_gene = my_list[gene]
             else:
                 new_gene = gene
 
             new_genotype.append(new_gene)
+
         self.genotype = new_genotype
 
     def crossover(
         self,
-        parent_2_genotype: "IntegerListGenotype",
-    ) -> Tuple["IntegerListGenotype", "IntegerListGenotype"]:
+        parent_2_genotype: "BinaryListGenotype",
+    ) -> Tuple["BinaryListGenotype", "BinaryListGenotype"]:
         """Performs single point crossover operation for 1 set of parents.
 
         A random integer is generated to split the genotype of the two individuals -
@@ -121,17 +119,30 @@ class IntegerListGenotype(AbstractGenotype):
             child_1_genotype = single_point_crossover(self.genotype, parent_2_genotype.genotype, gene_slice_index)
             child_2_genotype = single_point_crossover(parent_2_genotype.genotype, self.genotype, gene_slice_index)
 
-            child_1 = IntegerListGenotype(genotype=child_1_genotype,
-                                          mutation_probability=self.mutation_probability,
-                                          ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                                          number_of_genes=self.number_of_genes,
-                                          value_range=self.value_range)
+            child_1 = BinaryListGenotype(
+                genotype=child_1_genotype,
+                mutation_probability=self.mutation_probability,
+                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
+                number_of_genes=self.number_of_genes,
+                value_range=self.value_range,
+            )
 
-            child_2 = IntegerListGenotype(genotype=child_2_genotype,
-                                          mutation_probability=self.mutation_probability,
-                                          ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                                          number_of_genes=self.number_of_genes,
-                                          value_range=self.value_range)
-            # TODO (Marta): implement method to return Genotype copy with updated genotype attribuet
+            child_2 = BinaryListGenotype(
+                genotype=child_2_genotype,
+                mutation_probability=self.mutation_probability,
+                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
+                number_of_genes=self.number_of_genes,
+                value_range=self.value_range,
+            )
 
             return child_1, child_2
+
+    def return_integer_form(self):
+        """Return integer form of a binary number."""
+        power_of_2 = 0
+        integer_form = 0
+
+        for i in range(len(self.genotype) - 1, -1, -1):
+            integer_form += self.genotype[i] * 2 ** power_of_2
+            power_of_2 += 1
+        return integer_form
