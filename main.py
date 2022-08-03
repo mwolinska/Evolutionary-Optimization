@@ -1,8 +1,8 @@
 from evolutionary_optimization.evolutionary_algorithm.evolution import Evolution
 from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions
-from evolutionary_optimization.genotype.genotype_interface import Genotype, Genotypes
-from evolutionary_optimization.phenotype.phenotype_interface import Phenotype, Phenotypes
-from evolutionary_optimization.phenotype.phenotype_utils import generate_points_for_function
+from evolutionary_optimization.genotype.genotype_model.genotype_interface import Genotype, Genotypes
+from evolutionary_optimization.phenotype.phenotype_model.phenotype_interface import Phenotype, Phenotypes
+from evolutionary_optimization.phenotype.phenotype_model.phenotype_utils import generate_points_for_function
 
 
 def run_evolutionary_alg():
