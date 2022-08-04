@@ -59,7 +59,9 @@ class BoothPhenotype(AbstractPhenotype):
         phenotype = (x_1 + x_2 - 7) ** 2 + (2 * x_1 + x_2 - 5) ** 2
         self.phenotype_value = phenotype
 
-
+    @staticmethod
+    def evaluate_phenotype_using_arrays(x_values: np.ndarray, y_values: np.ndarray) -> np.ndarray:
+        return (x_values + y_values - 7) ** 2 + (2 * x_values + y_values - 5) ** 2
 
     def crossover(self, parent_2: "BoothPhenotype") -> Tuple["BoothPhenotype", "BoothPhenotype"]:
         """Perform crossover between two phenotypes.

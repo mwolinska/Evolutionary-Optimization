@@ -72,3 +72,7 @@ class SaddlePointPhenotype(AbstractPhenotype):
             ratio_of_population_for_crossover=base_phenotype.genotype.ratio_of_population_for_crossover,
         )
         return cls(new_genotype)
+
+    @staticmethod
+    def evaluate_phenotype_using_arrays(x_values: ndarray, y_values: ndarray) -> ndarray:
+        pass

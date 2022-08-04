@@ -82,3 +82,7 @@ class ParabolaPhenotype(AbstractPhenotype):
         Updates genotype attribute in place.
         """
         self.genotype.mutate()
+
+    @staticmethod
+    def evaluate_phenotype_using_arrays(x_values: ndarray, y_values: ndarray) -> ndarray:
+        pass
