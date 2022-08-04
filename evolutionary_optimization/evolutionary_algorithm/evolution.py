@@ -112,7 +112,11 @@ class Evolution:
             )
             surf = ax.plot_surface(function_data.x, function_data.y, function_data.z, cmap=cm.coolwarm,
                                    linewidth=0, antialiased=False, alpha=0.5)
-            fig.colorbar(surf, shrink=0.5, aspect=5)
+            fig.colorbar(surf, shrink=0.5, aspect=20, pad=0.15, orientation="horizontal")
+            ax.set_xlabel('Gene 1')
+            ax.set_ylabel('Gene 2')
+            ax.set_zlabel("Phenotype")
+            ax.set_title("Phenotype Function and Best Predictions")
 
         plt.legend()
         plt.show()
