@@ -1,5 +1,7 @@
 from typing import Tuple
 
+from numpy import ndarray
+
 from evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype import FloatListGenotype
 from evolutionary_optimization.phenotype import AbstractPhenotype
 

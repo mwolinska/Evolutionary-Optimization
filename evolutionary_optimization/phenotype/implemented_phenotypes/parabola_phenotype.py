@@ -1,5 +1,7 @@
 from typing import Tuple
 
+from numpy import ndarray
+
 from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
 from evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype import BinaryListGenotype
 from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
