@@ -4,6 +4,12 @@ import numpy as np
 
 from evolutionary_optimization.phenotype import AbstractPhenotype
 
+@dataclass
+class PlottingData:
+    x: ndarray
+    y: ndarray
+    z: Optional[ndarray] = None
+
 def generate_points_for_function(
         phenotype: AbstractPhenotype,
         bottom_plotting_limit: Union[float, int] = -50,
