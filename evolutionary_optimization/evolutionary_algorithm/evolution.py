@@ -1,6 +1,7 @@
-from typing import Tuple, Union, List
+from typing import Tuple, Union, List, Optional
 
-from matplotlib import pyplot as plt
+import numpy as np
+from matplotlib import pyplot as plt, cm
 from tqdm import tqdm
 
 from evolutionary_optimization.evolutionary_algorithm.ea_data_model import PerformancePlotting
@@ -9,6 +10,7 @@ from evolutionary_optimization.fitness_functions.abstract_fitness_function impor
 from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunction
 from evolutionary_optimization.fitness_functions.implemented_fitness_functions import MaximizeFitnessFunction
 from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.phenotype.phenotype_model.phenotype_utils import PlottingData
 
 
 class Evolution:
@@ -69,7 +71,7 @@ class Evolution:
             phenotype=self.population.best_individual)
         )
         self.performance_over_time.phenotype_over_time.append(self.population.best_individual.phenotype_value)
-        self.performance_over_time.genotype_over_time.append(self.population.best_individual.genotype.genotype[0])
+        self.performance_over_time.genotype_over_time.append(self.population.best_individual.genotype.genotype)
 
     def plot_fitness_score_over_time(self):
         """Plot score of the best individual at each generation."""
@@ -82,17 +84,39 @@ class Evolution:
 
     def plot_phenotype_function_and_best_individuals(
             self,
-            function_tuple: Tuple[List[Union[int, float]], List[Union[int, float]]],
+            function_data: PlottingData,
     ):
         """Plot phenotype function and best individual phenotype values."""
-        plt.plot(function_tuple[0], function_tuple[1], label="Phenotype Function")
-        plt.plot(
-            self.performance_over_time.genotype_over_time,
-            self.performance_over_time.phenotype_over_time,
-            label="Best Individual Over Time"
-        )
-        plt.title('Phenotype Function and Best Predictions')
-        plt.xlabel('Genotype')
-        plt.ylabel('Phenotype')
+        number_of_dimensions = 2
+
+        if function_data.z is not None:
+            number_of_dimensions = 3
+
+        if number_of_dimensions == 2:
+            plt.plot(function_data.x, function_data.y, label="Phenotype Function")
+            plt.plot(
+                np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+                self.performance_over_time.phenotype_over_time,
+                label="Best Individual Over Time"
+            )
+            plt.title('Phenotype Function and Best Predictions')
+            plt.xlabel('Genotype')
+            plt.ylabel('Phenotype')
+
+        elif number_of_dimensions == 3:
+            fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+            ax.plot3D(
+                np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+                np.asarray(self.performance_over_time.genotype_over_time)[:, 1],
+                self.performance_over_time.phenotype_over_time,
+            )
+            surf = ax.plot_surface(function_data.x, function_data.y, function_data.z, cmap=cm.coolwarm,
+                                   linewidth=0, antialiased=False, alpha=0.5)
+            fig.colorbar(surf, shrink=0.5, aspect=20, pad=0.15, orientation="horizontal")
+            ax.set_xlabel('Gene 1')
+            ax.set_ylabel('Gene 2')
+            ax.set_zlabel("Phenotype")
+            ax.set_title("Phenotype Function and Best Predictions")
+
         plt.legend()
         plt.show()

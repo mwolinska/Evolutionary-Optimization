@@ -1,5 +1,7 @@
 from typing import Tuple
 
+from numpy import ndarray
+
 from evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype import FloatListGenotype
 from evolutionary_optimization.phenotype import AbstractPhenotype
 
@@ -72,3 +74,7 @@ class SaddlePointPhenotype(AbstractPhenotype):
             ratio_of_population_for_crossover=base_phenotype.genotype.ratio_of_population_for_crossover,
         )
         return cls(new_genotype)
+
+    @staticmethod
+    def evaluate_phenotype_using_arrays(x_values: ndarray, y_values: ndarray) -> ndarray:
+        pass

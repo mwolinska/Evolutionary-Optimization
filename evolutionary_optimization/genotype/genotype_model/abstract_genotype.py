@@ -41,12 +41,16 @@ class AbstractGenotype(ABC):
     @abstractmethod
     def build_random_genotype(
         cls,
+        number_of_genes,
+        value_range: Tuple[int, int],
         mutation_probability: Optional[float],
         ratio_of_population_for_crossover: Optional[float],
     ) -> "AbstractGenotype":
         """Build random genotype attribute based on class parameters.
 
         Args:
+            number_of_genes: number of genes in the genotype.
+            value_range: minimum and maximum values of a gene.
             mutation_probability: probability of a gene mutating.
             ratio_of_population_for_crossover: ratio of population used for crossover when updating population.
 

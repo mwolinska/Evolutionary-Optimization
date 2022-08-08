@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Tuple
 
+from numpy import ndarray
+
 from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
 
 class AbstractPhenotype(ABC):
@@ -62,4 +64,10 @@ class AbstractPhenotype(ABC):
     @abstractmethod
     def from_phenotype(cls, base_phenotype: "AbstractPhenotype"):
         """Create new phenotype with the same attributes as the base phenotype."""
+        pass
+
+    @staticmethod
+    @abstractmethod
+    def evaluate_phenotype_using_arrays(x_values: ndarray, y_values: ndarray) -> ndarray:
+        """Calculates multiple phenotype values from numpy arrays."""
         pass
