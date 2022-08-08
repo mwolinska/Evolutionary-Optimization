@@ -69,8 +69,7 @@ class Population:
             fitness_function: fitness function used to evaluate the phenotype.
         """
         for individual in self.population:
-            if individual.phenotype_value is None:
-                individual.evaluate_phenotype()
+            individual.evaluate_phenotype()
             fitness_score = fitness_function.evaluate(phenotype=individual)
 
             if self.best_individual.phenotype_value is None or \
