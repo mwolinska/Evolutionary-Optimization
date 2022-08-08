@@ -90,6 +90,7 @@ class Population:
         """
         elite_individuals, non_elite_individuals = self.split_elite_individuals(fitness_function)
 
+        non_elite_individuals = non_elite_individuals[len(elite_individuals):] + deepcopy(elite_individuals)
         if self.crossover:
             number_of_individuals_for_crossover = int(self.phenotype.genotype.ratio_of_population_for_crossover
                                                       * self.number_of_individuals)
@@ -102,8 +103,9 @@ class Population:
             for individual in non_elite_individuals:
                 individual.mutate()
 
-        if not self.crossover and not self.mutation:
-            non_elite_individuals = self.create_list_of_new_individuals(len(non_elite_individuals))
+        # TODO (Marta): This is a deviation from the standard algorithm
+        # if not self.crossover and not self.mutation:
+        #     non_elite_individuals = self.create_list_of_new_individuals(len(non_elite_individuals))
 
         new_individuals_list = elite_individuals + non_elite_individuals
         self.population = new_individuals_list
