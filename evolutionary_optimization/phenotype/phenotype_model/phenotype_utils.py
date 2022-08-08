@@ -18,21 +18,22 @@ def generate_points_for_function(
     bottom_plotting_limit: Union[float, int] = -50,
     upper_plotting_limit: Union[float, int] = 50,
     number_of_points: int = 100,
-    three_dimensions: bool = False
-        # TODO (Marta): remove three_dimensions as a parameter
-) -> PlottingData:
+) -> Union[NameError, PlottingData]:
+    phenotype = phenotype.from_phenotype(phenotype)
+
+    number_of_dimensions = len(phenotype.genotype.genotype) + 1
 
     function_data = PlottingData(x=np.empty(0), y=np.empty(0))
     range_of_x = np.linspace(bottom_plotting_limit, upper_plotting_limit, num=number_of_points)
 
-    if not three_dimensions:
+    if number_of_dimensions == 2:
         for x_datapoint in range_of_x:
             function_data.x = np.append(function_data.x, x_datapoint)
             phenotype.genotype.genotype = [x_datapoint]
             phenotype.evaluate_phenotype()
-            function_data.y = np.append(function_data.x, phenotype.phenotype_value)
+            function_data.y = np.append(function_data.y, phenotype.phenotype_value)
 
-    if three_dimensions:
+    elif number_of_dimensions == 3:
         function_data.z = np.empty(0)
 
         x_mesh, y_mesh = np.meshgrid(np.asarray(range_of_x), np.asarray(range_of_x))
@@ -40,5 +41,8 @@ def generate_points_for_function(
         function_data.x = x_mesh
         function_data.y = y_mesh
         function_data.z = z_mesh
+
+    else:
+        return NameError("You can't plot more than 3 dimensions")
 
     return function_data
