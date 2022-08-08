@@ -95,7 +95,7 @@ class Evolution:
         if number_of_dimensions == 2:
             plt.plot(function_data.x, function_data.y, label="Phenotype Function")
             plt.plot(
-                self.performance_over_time.genotype_over_time,
+                np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
                 self.performance_over_time.phenotype_over_time,
                 label="Best Individual Over Time"
             )
