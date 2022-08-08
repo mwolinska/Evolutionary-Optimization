@@ -149,7 +149,7 @@ class Population:
                 elite and non_elite individuals.
         """
         sorted_individuals = self.sort_phenotypes_by_fitness_score(fitness_function)
-        elite_individual_threshold = max(1, int(self.number_of_individuals * self.ratio_of_elite_individuals))
+        elite_individual_threshold = int(self.number_of_individuals * self.ratio_of_elite_individuals)
         elite_individuals = sorted_individuals[:elite_individual_threshold]
         non_elite_individuals = sorted_individuals[elite_individual_threshold:]
         shuffle(non_elite_individuals)
