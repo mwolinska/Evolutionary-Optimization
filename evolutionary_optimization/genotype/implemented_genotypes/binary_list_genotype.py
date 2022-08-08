@@ -82,20 +82,16 @@ class BinaryListGenotype(AbstractGenotype):
 
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
-        new_genotype = []
 
-        for gene in self.binary_genotype:
-            mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
+        mutation_mask = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability], size=len(self.binary_genotype))
 
-            if mutation:
-                my_list = [1, 0]
-                new_gene = my_list[gene]
-            else:
-                new_gene = gene
+        logical_binary_genotype = np.array(self.binary_genotype).astype(bool)
 
-            new_genotype.append(new_gene)
+        mutated_logical_binary_genotype = np.logical_xor(logical_binary_genotype, mutation_mask)
 
-        self.binary_genotype = new_genotype
+        mutated_binary_genotype = mutated_logical_binary_genotype.astype(int)
+
+        self.binary_genotype = list(mutated_binary_genotype)
         self.genotype = self.return_integer_form()
 
     def crossover(

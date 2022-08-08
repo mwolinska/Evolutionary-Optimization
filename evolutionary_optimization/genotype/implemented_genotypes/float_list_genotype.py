@@ -81,20 +81,16 @@ class FloatListGenotype:
 
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
-        new_genotype = []
+        # new_genotype = []
 
-        for gene in self.genotype:
-            mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
+        noise = np.random.normal(0, 1, len(self.genotype))
+        mutation_mask = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability], size=len(self.genotype)).astype(int)
 
-            if mutation:
-                noise = uniform(-1, 1)
-                new_gene = gene + noise
-            else:
-                new_gene = gene
+        mutation_noise = noise * mutation_mask
 
-            new_genotype.append(new_gene)
+        self.genotype += mutation_noise
 
-        self.genotype = new_genotype
+        # for gene in self.genotype:
 
     def crossover(self, parent_2_genotype: "AbstractGenotype") -> Tuple["AbstractGenotype", "AbstractGenotype"]:
         """Perform crossover between two phenotypes.
