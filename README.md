@@ -1,8 +1,8 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mwolinska/Evolutionary-Optimisation/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mwolinska/Evolutionary-Optimisation/tree/main)
-[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mwolinska/Evolutionary-Optimisation/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/mwolinska/Evolutionary-Optimisation/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mwolinska/Evolutionary-Optimization/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/mwolinska/Evolutionary-Optimization/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/mwolinska/Evolutionary-Optimization/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/mwolinska/Evolutionary-Optimization/tree/main)
 
-# Evolutionary-Optimisation
-A generic evolutionary algorithm for function optimisation.
+# Evolutionary-Optimization
+A generic evolutionary algorithm for function optimization.
 
 ## Introduction
 This package allows the user to optimise a function using an evolutionary algorithm.
@@ -27,11 +27,11 @@ number of generations.
 To get started with this package clone this repo:
 
 ```bash
-git clone https://github.com/mwolinska/Evolutionary-Optimisation
+git clone https://github.com/mwolinska/Evolutionary-Optimization
 ```
 Then enter the correct directory on your machine:
 ```bash
-cd Evolutionary-Optimisation
+cd Evolutionary-Optimization
 ```
 This package uses [poetry](https://python-poetry.org) dependency manager. 
 To install all dependencies run:
@@ -110,4 +110,4 @@ The implemented fitness functions are outlined in the diagram below.
 <img src="./Images/code_structure/abstract_fitness_functions_diagram.svg"/>
 
 ### Documentation
-You can consult our documentation [here](https://mwolinska.github.io/Evolutionary-Optimisation/).
+You can consult our documentation [here](https://mwolinska.github.io/Evolutionary-Optimization/).
