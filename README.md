@@ -75,7 +75,7 @@ To generate the graph of fitness over time use:
 within the run_evolution function to produce the following output:
 
 <p align="center">
-<img height="400" src="./Images/algorithm_plots/sample_evolution_over_time.png" height="400">
+<img height="400" src="./Images/algorithm_plots/sample_evolution_over_time.png">
 </p>
 
 To generate the graph of the phenotype function and best individual phenotype / genotype 
