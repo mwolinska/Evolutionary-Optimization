@@ -10,6 +10,8 @@ Welcome to Evolutionary-Optimization's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+
+   quickstart
    modules
 
 
