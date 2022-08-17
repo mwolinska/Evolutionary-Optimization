@@ -73,6 +73,7 @@ workflows:
               only:
                 - master
                 - main
+                - expand_sphinx_documentation
       - docs-deploy:
           requires:
             - docs-build
