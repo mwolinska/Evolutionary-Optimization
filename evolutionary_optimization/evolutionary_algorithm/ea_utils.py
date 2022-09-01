@@ -41,3 +41,19 @@ class CreateGif2D:
                                        frames=len(self.x_data), interval=200, blit=True)
         # anim.save('basic_animation.mp4', fps=30, extra_args=['-vcodec', 'libx264'])
         plt.show()
+
+class CreateGif3D:
+    def __init__(
+            self,
+            animation_data_x: np.ndarray,
+            animation_data_y: np.ndarray,
+            animation_data_z: np.ndarray,
+            static_plot_data: PlottingData
+        self.fig, self.ax = plt.subplots(constrained_layout=True)
+        self.ax = plt.axes(projection="3d")
+        self.x_data = animation_data_x
+        self.y_data = animation_data_y
+        self.z_data = animation_data_z
+        self.static_data = static_plot_data
+    def generate_animation(self):
+        raise NotImplementedError
