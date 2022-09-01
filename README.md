@@ -40,6 +40,11 @@ To install all dependencies run:
 poetry install
 ```
 
+Alternatively you can install the pypi package using pip:
+```bash
+pip install evolutionary_optimization
+```
+
 ### Running Experiments
 To run the code type the following in your terminal. The default experiment is a 
 simple optimization of the $x^{2}$ using integers.
