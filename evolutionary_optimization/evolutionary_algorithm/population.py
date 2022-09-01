@@ -1,4 +1,5 @@
-
+import copy
+from copy import deepcopy
 from random import shuffle
 from typing import Tuple, List, Union
 
@@ -75,7 +76,7 @@ class Population:
             if self.best_individual.phenotype_value is None or \
                     fitness_score > fitness_function.evaluate(self.best_individual):
 
-                self.best_individual = individual
+                self.best_individual = copy.deepcopy(individual)
 
     def update_population(self, fitness_function: AbstractFitnessFunction):
         """Update population attribute following evaluation.
@@ -94,7 +95,6 @@ class Population:
         if self.crossover:
             number_of_individuals_for_crossover = int(self.phenotype.genotype.ratio_of_population_for_crossover
                                                       * self.number_of_individuals)
-            # TODO (Marta): include elite individuals in crossover
             non_elite_individuals = \
                 self.crossover_for_population_segment(non_elite_individuals[:number_of_individuals_for_crossover]) + \
                 non_elite_individuals[number_of_individuals_for_crossover:]
