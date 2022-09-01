@@ -18,6 +18,8 @@
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/clipboard.min.js"></script>
         <script src="../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -40,6 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickstart.html">Using the Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../modules.html">evolutionary_optimization</a></li>
 </ul>
 
@@ -71,7 +74,7 @@
 <span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
 
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.fitness_functions.abstract_fitness_function</span> <span class="kn">import</span> <span class="n">AbstractFitnessFunction</span>
-<span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.abstract_phenotype</span> <span class="kn">import</span> <span class="n">AbstractPhenotype</span>
+<span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype</span> <span class="kn">import</span> <span class="n">AbstractPhenotype</span>
 
 
 <div class="viewcode-block" id="MaximizeFitnessFunction"><a class="viewcode-back" href="../../../evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.MaximizeFitnessFunction">[docs]</a><span class="k">class</span> <span class="nc">MaximizeFitnessFunction</span><span class="p">(</span><span class="n">AbstractFitnessFunction</span><span class="p">):</span>
@@ -102,9 +105,17 @@
 
 
 <div class="viewcode-block" id="ApproachValueFitnessFunction"><a class="viewcode-back" href="../../../evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction">[docs]</a><span class="k">class</span> <span class="nc">ApproachValueFitnessFunction</span><span class="p">(</span><span class="n">AbstractFitnessFunction</span><span class="p">):</span>
-<div class="viewcode-block" id="ApproachValueFitnessFunction.evaluate"><a class="viewcode-back" href="../../../evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenotype</span><span class="p">:</span> <span class="n">AbstractPhenotype</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">expected_value</span> <span class="o">-</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">phenotype_value</span><span class="p">)</span></div></div>
-    <span class="c1"># TODO (Marta): how to deal with expected value?</span>
+<div class="viewcode-block" id="ApproachValueFitnessFunction.__init__"><a class="viewcode-back" href="../../../evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expected_value</span> <span class="o">=</span> <span class="n">expected_value</span></div>
+
+<div class="viewcode-block" id="ApproachValueFitnessFunction.evaluate"><a class="viewcode-back" href="../../../evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenotype</span><span class="p">:</span> <span class="n">AbstractPhenotype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+
+        <span class="n">delta_to_expected_value</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expected_value</span> <span class="o">-</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">phenotype_value</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">delta_to_expected_value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">delta_to_expected_value</span></div></div>
 </pre></div>
 
            </div>

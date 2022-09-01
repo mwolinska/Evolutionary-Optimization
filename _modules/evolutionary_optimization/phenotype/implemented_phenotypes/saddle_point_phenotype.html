@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype &mdash; Evolutionary-Optimization 1.0.0 documentation</title>
+      <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../../" id="documentation_options" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> Evolutionary-Optimization
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickstart.html">Using the Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../modules.html">evolutionary_optimization</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Evolutionary-Optimization</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../../index.html">Module code</a> &raquo;</li>
+      <li>evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ndarray</span>
+
+<span class="kn">from</span> <span class="nn">evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype</span> <span class="kn">import</span> <span class="n">FloatListGenotype</span>
+<span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype</span> <span class="kn">import</span> <span class="n">AbstractPhenotype</span>
+
+<div class="viewcode-block" id="SaddlePointPhenotype"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype">[docs]</a><span class="k">class</span> <span class="nc">SaddlePointPhenotype</span><span class="p">(</span><span class="n">AbstractPhenotype</span><span class="p">):</span>
+<div class="viewcode-block" id="SaddlePointPhenotype.__init__"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">genotype</span><span class="p">:</span> <span class="n">FloatListGenotype</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialise AbstractPhenotype object.</span>
+
+<span class="sd">        Args</span>
+<span class="sd">            genotype: an AbstractGenotype that defines the phenotype.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span> <span class="o">=</span> <span class="n">genotype</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype_value</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span>
+
+    <span class="nd">@genotype</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">phenotype_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Stores value of the phenotype based on the genotype - calculated using evaluate_phenotype.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype_value</span>
+
+    <span class="nd">@phenotype_value</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">phenotype_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_phenotype_value</span> <span class="o">=</span> <span class="n">value</span>
+
+<div class="viewcode-block" id="SaddlePointPhenotype.evaluate_phenotype"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.evaluate_phenotype">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate_phenotype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Calculate phenotype value using genotype.&quot;&quot;&quot;</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">genotype</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">4</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phenotype_value</span> <span class="o">=</span> <span class="n">y</span></div>
+
+<div class="viewcode-block" id="SaddlePointPhenotype.crossover"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.crossover">[docs]</a>    <span class="k">def</span> <span class="nf">crossover</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent_2</span><span class="p">:</span> <span class="s2">&quot;AbstractPhenotype&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;AbstractPhenotype&quot;</span><span class="p">,</span> <span class="s2">&quot;AbstractPhenotype&quot;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Perform crossover between two phenotypes.</span>
+
+<span class="sd">        Calls crossover method from the genotype attribute. Combines a portion of this object&#39;s genotype</span>
+<span class="sd">        with that of parent_2 to return 2 new phenotypes based on the combined genotypes.</span>
+<span class="sd">        The new genotype length is the same as of the parents.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            parent_2: a phenotype of the same class whose genotype will be mixed with</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Two new phenotype instances based on the combined genotypes of the two parents.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">child_genotype_1</span><span class="p">,</span> <span class="n">child_genotype_2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">crossover</span><span class="p">(</span><span class="n">parent_2</span><span class="o">.</span><span class="n">genotype</span><span class="p">)</span>
+        <span class="n">child_1</span> <span class="o">=</span> <span class="n">SaddlePointPhenotype</span><span class="p">(</span><span class="n">child_genotype_1</span><span class="p">)</span>
+        <span class="n">child_2</span> <span class="o">=</span> <span class="n">SaddlePointPhenotype</span><span class="p">(</span><span class="n">child_genotype_2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">child_1</span><span class="p">,</span> <span class="n">child_2</span></div>
+
+<div class="viewcode-block" id="SaddlePointPhenotype.mutate"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.mutate">[docs]</a>    <span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;In place modification of the genotype by randomly changing genes based on mutation probability.</span>
+
+<span class="sd">        Calls mutate method as implemented for the genotype attribute in order to perform mutation.</span>
+<span class="sd">        Updates genotype attribute in place.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">mutate</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="SaddlePointPhenotype.from_phenotype"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.from_phenotype">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_phenotype</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">base_phenotype</span><span class="p">:</span> <span class="s2">&quot;AbstractPhenotype&quot;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new phenotype with the same attributes as the base phenotype.&quot;&quot;&quot;</span>
+        <span class="n">new_genotype</span> <span class="o">=</span> <span class="n">base_phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">build_random_genotype</span><span class="p">(</span>
+            <span class="n">number_of_genes</span><span class="o">=</span><span class="n">base_phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">number_of_genes</span><span class="p">,</span>
+            <span class="n">value_range</span><span class="o">=</span><span class="n">base_phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">value_range</span><span class="p">,</span>
+            <span class="n">mutation_probability</span><span class="o">=</span><span class="n">base_phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">mutation_probability</span><span class="p">,</span>
+            <span class="n">ratio_of_population_for_crossover</span><span class="o">=</span><span class="n">base_phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">ratio_of_population_for_crossover</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">new_genotype</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="SaddlePointPhenotype.evaluate_phenotype_using_arrays"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.evaluate_phenotype_using_arrays">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">evaluate_phenotype_using_arrays</span><span class="p">(</span><span class="n">x_values</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">y_values</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
+        <span class="k">pass</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Marta Wolinska.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

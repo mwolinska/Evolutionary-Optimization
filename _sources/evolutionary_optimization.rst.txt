@@ -12,6 +12,17 @@ Subpackages
    evolutionary_optimization.genotype
    evolutionary_optimization.phenotype
 
+Submodules
+----------
+
+evolutionary\_optimization.main module
+--------------------------------------
+
+.. automodule:: evolutionary_optimization.main
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

@@ -4,6 +4,22 @@ evolutionary\_optimization.evolutionary\_algorithm package
 Submodules
 ----------
 
+evolutionary\_optimization.evolutionary\_algorithm.ea\_data\_model module
+-------------------------------------------------------------------------
+
+.. automodule:: evolutionary_optimization.evolutionary_algorithm.ea_data_model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+evolutionary\_optimization.evolutionary\_algorithm.ea\_utils module
+-------------------------------------------------------------------
+
+.. automodule:: evolutionary_optimization.evolutionary_algorithm.ea_utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 evolutionary\_optimization.evolutionary\_algorithm.evolution module
 -------------------------------------------------------------------
 

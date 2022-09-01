@@ -18,6 +18,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -40,6 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Using the Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">evolutionary_optimization</a></li>
 </ul>
 
@@ -83,27 +86,40 @@
  | <a href="#R"><strong>R</strong></a>
  | <a href="#S"><strong>S</strong></a>
  | <a href="#U"><strong>U</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
  
 </div>
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.abstract_genotype.AbstractGenotype.__init__">__init__() (AbstractGenotype method)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.__init__">__init__() (AbstractGenotype method)</a>
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.__init__">(AbstractPhenotype method)</a>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.__init__">(AbstractPhenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.binary_list_genotype.BinaryListGenotype.__init__">(BinaryListGenotype method)</a>
+        <li><a href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.__init__">(ApproachValueFitnessFunction method)</a>
 </li>
-        <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.__init__">(Evolution method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype.BinaryListGenotype.__init__">(BinaryListGenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.integer_list_genotype.IntegerListGenotype.__init__">(IntegerListGenotype method)</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype.__init__">(BoothPhenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.__init__">(InvertedParabolaPhenotype method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype.FloatListGenotype.__init__">(FloatListGenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.__init__">(ParabolaPhenotype method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.__init__">(IntegerListGenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype.__init__">(InvertedParabolaPhenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype.__init__">(ParabolaPhenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.__init__">(PerformancePlotting method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.PlottingData.__init__">(PlottingData method)</a>
 </li>
         <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.population.Population.__init__">(Population method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.__init__">(SaddlePointPhenotype method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -114,11 +130,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.abstract_fitness_function.AbstractFitnessFunction">AbstractFitnessFunction (class in evolutionary_optimization.fitness_functions.abstract_fitness_function)</a>
 </li>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.abstract_genotype.AbstractGenotype">AbstractGenotype (class in evolutionary_optimization.genotype.abstract_genotype)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype">AbstractGenotype (class in evolutionary_optimization.genotype.genotype_model.abstract_genotype)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype">AbstractPhenotype (class in evolutionary_optimization.phenotype.abstract_phenotype)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype">AbstractPhenotype (class in evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype)</a>
 </li>
       <li><a href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.fitness_interface.FitnessFunctions.APPROACH_VALUE">APPROACH_VALUE (FitnessFunctions attribute)</a>
 </li>
@@ -130,18 +146,22 @@
 <h2 id="B">B</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.genotype_interface.Genotypes.BINARY_LIST">BINARY_LIST (Genotypes attribute)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.genotype_interface.Genotypes.BINARY_LIST">BINARY_LIST (Genotypes attribute)</a>
 </li>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.binary_list_genotype.BinaryListGenotype">BinaryListGenotype (class in evolutionary_optimization.genotype.binary_list_genotype)</a>
+      <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype.BinaryListGenotype">BinaryListGenotype (class in evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype)</a>
+</li>
+      <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype">BoothPhenotype (class in evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.abstract_genotype.AbstractGenotype.build_random_genotype">build_random_genotype() (AbstractGenotype class method)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.build_random_genotype">build_random_genotype() (AbstractGenotype class method)</a>
 
       <ul>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.binary_list_genotype.BinaryListGenotype.build_random_genotype">(BinaryListGenotype class method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype.BinaryListGenotype.build_random_genotype">(BinaryListGenotype class method)</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.integer_list_genotype.IntegerListGenotype.build_random_genotype">(IntegerListGenotype class method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype.FloatListGenotype.build_random_genotype">(FloatListGenotype class method)</a>
+</li>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.build_random_genotype">(IntegerListGenotype class method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -152,18 +172,24 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.population.Population.create_list_of_new_individuals">create_list_of_new_individuals() (Population method)</a>
 </li>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.abstract_genotype.AbstractGenotype.crossover">crossover() (AbstractGenotype method)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.crossover">crossover() (AbstractGenotype method)</a>
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.crossover">(AbstractPhenotype method)</a>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.crossover">(AbstractPhenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.binary_list_genotype.BinaryListGenotype.crossover">(BinaryListGenotype method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype.BinaryListGenotype.crossover">(BinaryListGenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.integer_list_genotype.IntegerListGenotype.crossover">(IntegerListGenotype method)</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype.crossover">(BoothPhenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.crossover">(InvertedParabolaPhenotype method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype.FloatListGenotype.crossover">(FloatListGenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.crossover">(ParabolaPhenotype method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.crossover">(IntegerListGenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype.crossover">(InvertedParabolaPhenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype.crossover">(ParabolaPhenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.crossover">(SaddlePointPhenotype method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -186,17 +212,31 @@
         <li><a href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.MinimizeFitnessFunction.evaluate">(MinimizeFitnessFunction method)</a>
 </li>
       </ul></li>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.evaluate_phenotype">evaluate_phenotype() (AbstractPhenotype method)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.evaluate_phenotype">evaluate_phenotype() (AbstractPhenotype method)</a>
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.evaluate_phenotype">(InvertedParabolaPhenotype method)</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype.evaluate_phenotype">(BoothPhenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.evaluate_phenotype">(ParabolaPhenotype method)</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype.evaluate_phenotype">(InvertedParabolaPhenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype.evaluate_phenotype">(ParabolaPhenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.evaluate_phenotype">(SaddlePointPhenotype method)</a>
+</li>
+      </ul></li>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.evaluate_phenotype_using_arrays">evaluate_phenotype_using_arrays() (AbstractPhenotype static method)</a>
+
+      <ul>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype.evaluate_phenotype_using_arrays">(BoothPhenotype static method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype.evaluate_phenotype_using_arrays">(InvertedParabolaPhenotype static method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype.evaluate_phenotype_using_arrays">(ParabolaPhenotype static method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.evaluate_phenotype_using_arrays">(SaddlePointPhenotype static method)</a>
 </li>
       </ul></li>
       <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.population.Population.evaluate_population">evaluate_population() (Population method)</a>
-</li>
-      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution">Evolution (class in evolutionary_optimization.evolutionary_algorithm.evolution)</a>
 </li>
       <li>
     evolutionary_optimization
@@ -213,10 +253,10 @@
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.evolutionary_algorithm.evolution
+    evolutionary_optimization.evolutionary_algorithm.ea_data_model
 
       <ul>
-        <li><a href="evolutionary_optimization.evolutionary_algorithm.html#module-evolutionary_optimization.evolutionary_algorithm.evolution">module</a>
+        <li><a href="evolutionary_optimization.evolutionary_algorithm.html#module-evolutionary_optimization.evolutionary_algorithm.ea_data_model">module</a>
 </li>
       </ul></li>
       <li>
@@ -247,8 +287,6 @@
         <li><a href="evolutionary_optimization.fitness_functions.html#module-evolutionary_optimization.fitness_functions.fitness_interface">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     evolutionary_optimization.fitness_functions.implemented_fitness_functions
 
@@ -264,31 +302,61 @@
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.genotype.abstract_genotype
+    evolutionary_optimization.genotype.genotype_model
 
       <ul>
-        <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.abstract_genotype">module</a>
+        <li><a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    evolutionary_optimization.genotype.genotype_model.abstract_genotype
+
+      <ul>
+        <li><a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.abstract_genotype">module</a>
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.genotype.binary_list_genotype
+    evolutionary_optimization.genotype.genotype_model.genotype_interface
 
       <ul>
-        <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.binary_list_genotype">module</a>
+        <li><a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.genotype_interface">module</a>
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.genotype.genotype_interface
+    evolutionary_optimization.genotype.genotype_model.genotype_utils
 
       <ul>
-        <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.genotype_interface">module</a>
+        <li><a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.genotype_utils">module</a>
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.genotype.integer_list_genotype
+    evolutionary_optimization.genotype.implemented_genotypes
 
       <ul>
-        <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.integer_list_genotype">module</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes">module</a>
+</li>
+      </ul></li>
+      <li>
+    evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype
+
+      <ul>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype">module</a>
+</li>
+      </ul></li>
+      <li>
+    evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype
+
+      <ul>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype">module</a>
+</li>
+      </ul></li>
+      <li>
+    evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype
+
+      <ul>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype">module</a>
 </li>
       </ul></li>
       <li>
@@ -299,35 +367,68 @@
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.phenotype.abstract_phenotype
+    evolutionary_optimization.phenotype.implemented_phenotypes
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.abstract_phenotype">module</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes">module</a>
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.phenotype.inverted_parabola_phenotype
+    evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.inverted_parabola_phenotype">module</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype">module</a>
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.phenotype.parabola_phenotype
+    evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.parabola_phenotype">module</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype">module</a>
 </li>
       </ul></li>
       <li>
-    evolutionary_optimization.phenotype.phenotype_interface
+    evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.phenotype_interface">module</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype">module</a>
 </li>
       </ul></li>
-      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.evolve">evolve() (Evolution method)</a>
+      <li>
+    evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype
+
+      <ul>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype">module</a>
 </li>
+      </ul></li>
+      <li>
+    evolutionary_optimization.phenotype.phenotype_model
+
+      <ul>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model">module</a>
+</li>
+      </ul></li>
+      <li>
+    evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype
+
+      <ul>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype">module</a>
+</li>
+      </ul></li>
+      <li>
+    evolutionary_optimization.phenotype.phenotype_model.phenotype_interface
+
+      <ul>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.phenotype_interface">module</a>
+</li>
+      </ul></li>
+      <li>
+    evolutionary_optimization.phenotype.phenotype_model.phenotype_utils
+
+      <ul>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.phenotype_utils">module</a>
+</li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -336,18 +437,38 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.fitness_interface.FitnessFunction.fitness_functions_dictionary">fitness_functions_dictionary (FitnessFunction attribute)</a>
 </li>
+      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.fitness_over_time">fitness_over_time (PerformancePlotting attribute)</a>
+</li>
       <li><a href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.fitness_interface.FitnessFunction">FitnessFunction (class in evolutionary_optimization.fitness_functions.fitness_interface)</a>
 </li>
       <li><a href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.fitness_interface.FitnessFunctions">FitnessFunctions (class in evolutionary_optimization.fitness_functions.fitness_interface)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.from_phenotype">from_phenotype() (AbstractPhenotype class method)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.genotype_interface.Genotypes.FLOAT_LIST">FLOAT_LIST (Genotypes attribute)</a>
+</li>
+      <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype.FloatListGenotype">FloatListGenotype (class in evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype)</a>
+</li>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.from_genotype">from_genotype() (AbstractGenotype class method)</a>
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.from_phenotype">(InvertedParabolaPhenotype class method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype.BinaryListGenotype.from_genotype">(BinaryListGenotype class method)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.from_phenotype">(ParabolaPhenotype class method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype.FloatListGenotype.from_genotype">(FloatListGenotype class method)</a>
+</li>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.from_genotype">(IntegerListGenotype class method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.from_phenotype">from_phenotype() (AbstractPhenotype class method)</a>
+
+      <ul>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype.from_phenotype">(BoothPhenotype class method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype.from_phenotype">(InvertedParabolaPhenotype class method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype.from_phenotype">(ParabolaPhenotype class method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.from_phenotype">(SaddlePointPhenotype class method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -356,27 +477,45 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.genotype">genotype (AbstractPhenotype property)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.generate_points_for_function">generate_points_for_function() (in module evolutionary_optimization.phenotype.phenotype_model.phenotype_utils)</a>
 </li>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.genotype_interface.Genotype">Genotype (class in evolutionary_optimization.genotype.genotype_interface)</a>
-</li>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.genotype">genotype (InvertedParabolaPhenotype property)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.genotype">genotype (AbstractGenotype property)</a>
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.genotype">(ParabolaPhenotype property)</a>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.genotype">(AbstractPhenotype property)</a>
+</li>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype.BinaryListGenotype.genotype">(BinaryListGenotype property)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype.genotype">(BoothPhenotype property)</a>
 </li>
       </ul></li>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.genotype_interface.Genotypes">Genotypes (class in evolutionary_optimization.genotype.genotype_interface)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.genotype_interface.Genotype">Genotype (class in evolutionary_optimization.genotype.genotype_model.genotype_interface)</a>
 </li>
+      <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype.FloatListGenotype.genotype">genotype (FloatListGenotype property)</a>
+
+      <ul>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.genotype">(IntegerListGenotype property)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype.genotype">(InvertedParabolaPhenotype property)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype.genotype">(ParabolaPhenotype property)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.genotype">(SaddlePointPhenotype property)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.genotype_interface.Genotype.genotypes_dictionary">genotypes_dictionary (Genotype attribute)</a>
+      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.genotype_over_time">genotype_over_time (PerformancePlotting attribute)</a>
+</li>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.genotype_interface.Genotypes">Genotypes (class in evolutionary_optimization.genotype.genotype_model.genotype_interface)</a>
+</li>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.genotype_interface.Genotype.genotypes_dictionary">genotypes_dictionary (Genotype attribute)</a>
 </li>
       <li><a href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.fitness_interface.FitnessFunction.get_fitness_function">get_fitness_function() (FitnessFunction class method)</a>
 </li>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.genotype_interface.Genotype.get_genotype">get_genotype() (Genotype class method)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.genotype_interface.Genotype.get_genotype">get_genotype() (Genotype class method)</a>
 </li>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.phenotype_interface.Phenotype.get_phenotype">get_phenotype() (Phenotype class method)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotype.get_phenotype">get_phenotype() (Phenotype class method)</a>
 </li>
       <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.population.get_score_for_sorting">get_score_for_sorting() (in module evolutionary_optimization.evolutionary_algorithm.population)</a>
 </li>
@@ -386,15 +525,15 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.genotype_interface.Genotypes.INTEGER_LIST">INTEGER_LIST (Genotypes attribute)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.genotype_interface.Genotypes.INTEGER_LIST">INTEGER_LIST (Genotypes attribute)</a>
 </li>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.integer_list_genotype.IntegerListGenotype">IntegerListGenotype (class in evolutionary_optimization.genotype.integer_list_genotype)</a>
+      <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype">IntegerListGenotype (class in evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.phenotype_interface.Phenotypes.INVERTED_PARABOLA">INVERTED_PARABOLA (Phenotypes attribute)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotypes.INVERTED_PARABOLA">INVERTED_PARABOLA (Phenotypes attribute)</a>
 </li>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype">InvertedParabolaPhenotype (class in evolutionary_optimization.phenotype.inverted_parabola_phenotype)</a>
+      <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype">InvertedParabolaPhenotype (class in evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -418,7 +557,7 @@
 </li>
         <li><a href="evolutionary_optimization.evolutionary_algorithm.html#module-evolutionary_optimization.evolutionary_algorithm">evolutionary_optimization.evolutionary_algorithm</a>
 </li>
-        <li><a href="evolutionary_optimization.evolutionary_algorithm.html#module-evolutionary_optimization.evolutionary_algorithm.evolution">evolutionary_optimization.evolutionary_algorithm.evolution</a>
+        <li><a href="evolutionary_optimization.evolutionary_algorithm.html#module-evolutionary_optimization.evolutionary_algorithm.ea_data_model">evolutionary_optimization.evolutionary_algorithm.ea_data_model</a>
 </li>
         <li><a href="evolutionary_optimization.evolutionary_algorithm.html#module-evolutionary_optimization.evolutionary_algorithm.population">evolutionary_optimization.evolutionary_algorithm.population</a>
 </li>
@@ -432,39 +571,63 @@
 </li>
         <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype">evolutionary_optimization.genotype</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.abstract_genotype">evolutionary_optimization.genotype.abstract_genotype</a>
+        <li><a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model">evolutionary_optimization.genotype.genotype_model</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.binary_list_genotype">evolutionary_optimization.genotype.binary_list_genotype</a>
+        <li><a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.abstract_genotype">evolutionary_optimization.genotype.genotype_model.abstract_genotype</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.genotype_interface">evolutionary_optimization.genotype.genotype_interface</a>
+        <li><a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.genotype_interface">evolutionary_optimization.genotype.genotype_model.genotype_interface</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.integer_list_genotype">evolutionary_optimization.genotype.integer_list_genotype</a>
+        <li><a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.genotype_utils">evolutionary_optimization.genotype.genotype_model.genotype_utils</a>
+</li>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes">evolutionary_optimization.genotype.implemented_genotypes</a>
+</li>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype">evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype</a>
+</li>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype">evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype</a>
+</li>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype">evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype</a>
 </li>
         <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype">evolutionary_optimization.phenotype</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.abstract_phenotype">evolutionary_optimization.phenotype.abstract_phenotype</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes">evolutionary_optimization.phenotype.implemented_phenotypes</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.inverted_parabola_phenotype">evolutionary_optimization.phenotype.inverted_parabola_phenotype</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype">evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.parabola_phenotype">evolutionary_optimization.phenotype.parabola_phenotype</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype">evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.phenotype_interface">evolutionary_optimization.phenotype.phenotype_interface</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype">evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype">evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model">evolutionary_optimization.phenotype.phenotype_model</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype">evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.phenotype_interface">evolutionary_optimization.phenotype.phenotype_model.phenotype_interface</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.phenotype_utils">evolutionary_optimization.phenotype.phenotype_model.phenotype_utils</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.abstract_genotype.AbstractGenotype.mutate">mutate() (AbstractGenotype method)</a>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.mutate">mutate() (AbstractGenotype method)</a>
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.mutate">(AbstractPhenotype method)</a>
+        <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.mutate">(AbstractPhenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.binary_list_genotype.BinaryListGenotype.mutate">(BinaryListGenotype method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype.BinaryListGenotype.mutate">(BinaryListGenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.integer_list_genotype.IntegerListGenotype.mutate">(IntegerListGenotype method)</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype.mutate">(BoothPhenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.mutate">(InvertedParabolaPhenotype method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype.FloatListGenotype.mutate">(FloatListGenotype method)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.mutate">(ParabolaPhenotype method)</a>
+        <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.mutate">(IntegerListGenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype.mutate">(InvertedParabolaPhenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype.mutate">(ParabolaPhenotype method)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.mutate">(SaddlePointPhenotype method)</a>
 </li>
       </ul></li>
   </ul></td>
@@ -473,29 +636,35 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.phenotype_interface.Phenotypes.PARABOLA">PARABOLA (Phenotypes attribute)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotypes.PARABOLA">PARABOLA (Phenotypes attribute)</a>
 </li>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype">ParabolaPhenotype (class in evolutionary_optimization.phenotype.parabola_phenotype)</a>
+      <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype">ParabolaPhenotype (class in evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype)</a>
 </li>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.phenotype_interface.Phenotype">Phenotype (class in evolutionary_optimization.phenotype.phenotype_interface)</a>
+      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting">PerformancePlotting (class in evolutionary_optimization.evolutionary_algorithm.ea_data_model)</a>
 </li>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.phenotype_value">phenotype_value (AbstractPhenotype property)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotype">Phenotype (class in evolutionary_optimization.phenotype.phenotype_model.phenotype_interface)</a>
+</li>
+      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.phenotype_over_time">phenotype_over_time (PerformancePlotting attribute)</a>
+</li>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.phenotype_value">phenotype_value (AbstractPhenotype property)</a>
 
       <ul>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.phenotype_value">(InvertedParabolaPhenotype property)</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype.BoothPhenotype.phenotype_value">(BoothPhenotype property)</a>
 </li>
-        <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.phenotype_value">(ParabolaPhenotype property)</a>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype.InvertedParabolaPhenotype.phenotype_value">(InvertedParabolaPhenotype property)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype.ParabolaPhenotype.phenotype_value">(ParabolaPhenotype property)</a>
+</li>
+        <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype.phenotype_value">(SaddlePointPhenotype property)</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.phenotype_interface.Phenotypes">Phenotypes (class in evolutionary_optimization.phenotype.phenotype_interface)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotypes">Phenotypes (class in evolutionary_optimization.phenotype.phenotype_model.phenotype_interface)</a>
 </li>
-      <li><a href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.phenotype_interface.Phenotype.phenotypes_dictionary">phenotypes_dictionary (Phenotype attribute)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotype.phenotypes_dictionary">phenotypes_dictionary (Phenotype attribute)</a>
 </li>
-      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_performance">plot_performance() (Evolution method)</a>
-</li>
-      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_phenotype_function_and_guesses">plot_phenotype_function_and_guesses() (Evolution method)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.PlottingData">PlottingData (class in evolutionary_optimization.phenotype.phenotype_model.phenotype_utils)</a>
 </li>
       <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.population.Population">Population (class in evolutionary_optimization.evolutionary_algorithm.population)</a>
 </li>
@@ -505,13 +674,7 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.record_guess">record_guess() (Evolution method)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.record_performance">record_performance() (Evolution method)</a>
-</li>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.binary_list_genotype.BinaryListGenotype.return_integer_form">return_integer_form() (BinaryListGenotype method)</a>
+      <li><a href="evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype.BinaryListGenotype.return_integer_form">return_integer_form() (BinaryListGenotype method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -519,14 +682,14 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.binary_list_genotype.BinaryListGenotype.single_point_crossover">single_point_crossover() (BinaryListGenotype static method)</a>
-
-      <ul>
-        <li><a href="evolutionary_optimization.genotype.html#evolutionary_optimization.genotype.integer_list_genotype.IntegerListGenotype.single_point_crossover">(IntegerListGenotype static method)</a>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotypes.SADDLE_POINT">SADDLE_POINT (Phenotypes attribute)</a>
 </li>
-      </ul></li>
+      <li><a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype.SaddlePointPhenotype">SaddlePointPhenotype (class in evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="evolutionary_optimization.genotype.genotype_model.html#evolutionary_optimization.genotype.genotype_model.genotype_utils.single_point_crossover">single_point_crossover() (in module evolutionary_optimization.genotype.genotype_model.genotype_utils)</a>
+</li>
       <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.population.Population.sort_phenotypes_by_fitness_score">sort_phenotypes_by_fitness_score() (Population method)</a>
 </li>
       <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.population.Population.split_elite_individuals">split_elite_individuals() (Population method)</a>
@@ -538,6 +701,30 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="evolutionary_optimization.evolutionary_algorithm.html#evolutionary_optimization.evolutionary_algorithm.population.Population.update_population">update_population() (Population method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.PlottingData.x">x (PlottingData attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.PlottingData.y">y (PlottingData attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.PlottingData.z">z (PlottingData attribute)</a>
 </li>
   </ul></td>
 </tr></table>

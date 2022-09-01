@@ -19,10 +19,13 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="evolutionary_optimization.genotype package" href="evolutionary_optimization.genotype.html" /> 
+    <link rel="next" title="evolutionary_optimization.phenotype.implemented_phenotypes package" href="evolutionary_optimization.phenotype.implemented_phenotypes.html" />
+    <link rel="prev" title="evolutionary_optimization.genotype.implemented_genotypes package" href="evolutionary_optimization.genotype.implemented_genotypes.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,6 +45,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Using the Package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">evolutionary_optimization</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="evolutionary_optimization.html">evolutionary_optimization package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="evolutionary_optimization.html#subpackages">Subpackages</a><ul class="current">
@@ -51,6 +55,8 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">evolutionary_optimization.phenotype package</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#evolutionary-optimization-main-module">evolutionary_optimization.main module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#module-evolutionary_optimization">Module contents</a></li>
 </ul>
 </li>
@@ -86,287 +92,29 @@
              
   <section id="evolutionary-optimization-phenotype-package">
 <h1>evolutionary_optimization.phenotype package<a class="headerlink" href="#evolutionary-optimization-phenotype-package" title="Permalink to this heading"></a></h1>
-<section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
-</section>
-<section id="module-evolutionary_optimization.phenotype.abstract_phenotype">
-<span id="evolutionary-optimization-phenotype-abstract-phenotype-module"></span><h2>evolutionary_optimization.phenotype.abstract_phenotype module<a class="headerlink" href="#module-evolutionary_optimization.phenotype.abstract_phenotype" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AbstractPhenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/abstract_phenotype.html#AbstractPhenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">ABC</span></code></p>
-<dl class="field-list simple">
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.__init__">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/abstract_phenotype.html#AbstractPhenotype.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Initialise AbstractPhenotype object.</p>
-<dl class="simple">
-<dt>Args</dt><dd><p>genotype: an AbstractGenotype that defines the phenotype.</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.crossover">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">crossover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/abstract_phenotype.html#AbstractPhenotype.crossover"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.crossover" title="Permalink to this definition"></a></dt>
-<dd><p>Perform crossover between two phenotypes.</p>
-<p>Calls crossover method from the genotype attribute.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parent_2</strong> (<a class="reference internal" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – a phenotype of the same class whose genotype will be mixed with</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference internal" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>, <a class="reference internal" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Two new phenotype instances based on the combined genotypes of the two parents.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.evaluate_phenotype">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">evaluate_phenotype</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/abstract_phenotype.html#AbstractPhenotype.evaluate_phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.evaluate_phenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Calculate phenotype value using genotype.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.from_phenotype">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_phenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_phenotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/abstract_phenotype.html#AbstractPhenotype.from_phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.from_phenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Create new phenotype with the same attributes as the base phenotype.</p>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.genotype">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">genotype</span></span><a class="headerlink" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.genotype" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.mutate">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/abstract_phenotype.html#AbstractPhenotype.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.mutate" title="Permalink to this definition"></a></dt>
-<dd><p>In place modification of the genotype by randomly changing genes based on mutation probability.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.phenotype_value">
-<em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">phenotype_value</span></span><a class="headerlink" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype.phenotype_value" title="Permalink to this definition"></a></dt>
-<dd><p>Stores value of the phenotype based on the genotype - calculated using evaluate_phenotype.</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-evolutionary_optimization.phenotype.inverted_parabola_phenotype">
-<span id="evolutionary-optimization-phenotype-inverted-parabola-phenotype-module"></span><h2>evolutionary_optimization.phenotype.inverted_parabola_phenotype module<a class="headerlink" href="#module-evolutionary_optimization.phenotype.inverted_parabola_phenotype" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InvertedParabolaPhenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/inverted_parabola_phenotype.html#InvertedParabolaPhenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a></p>
-<dl class="field-list simple">
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/inverted_parabola_phenotype.html#InvertedParabolaPhenotype.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Initialise InvertedParabolaPhenotype object.</p>
-<dl class="simple">
-<dt>Args</dt><dd><p>genotype: an AbstractGenotype that defines the phenotype.</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.crossover">
-<span class="sig-name descname"><span class="pre">crossover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/inverted_parabola_phenotype.html#InvertedParabolaPhenotype.crossover"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.crossover" title="Permalink to this definition"></a></dt>
-<dd><p>Perform crossover between two phenotypes.</p>
-<p>Calls crossover method from the genotype attribute. Combines a portion of this object’s genotype
-with that of parent_2 to return 2 new phenotypes based on the combined genotypes.
-The new genotype length is the same as of the parents.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parent_2</strong> (<a class="reference internal" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype" title="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvertedParabolaPhenotype</span></code></a>) – a phenotype of the same class whose genotype will be mixed with</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference internal" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype" title="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvertedParabolaPhenotype</span></code></a>, <a class="reference internal" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype" title="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvertedParabolaPhenotype</span></code></a>]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Two new phenotype instances based on the combined genotypes of the two parents.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.evaluate_phenotype">
-<span class="sig-name descname"><span class="pre">evaluate_phenotype</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/inverted_parabola_phenotype.html#InvertedParabolaPhenotype.evaluate_phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.evaluate_phenotype" title="Permalink to this definition"></a></dt>
-<dd><p>In place method to calculate phenotype value using genotype.</p>
-<p>This phenotype follows -x^2 and as such is a single parameter optimisation problem.
-For a binary genotype the integer value is returned,for an integer list genotype only the first value is used.
-It updates the phenotype_value property in place once the calculation is done.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.from_phenotype">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_phenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_phenotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/inverted_parabola_phenotype.html#InvertedParabolaPhenotype.from_phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.from_phenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Create new phenotype with the same attributes as the base phenotype, but a new random genotype.genotype.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype" title="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvertedParabolaPhenotype</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.genotype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">genotype</span></span><a class="headerlink" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.genotype" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.mutate">
-<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/inverted_parabola_phenotype.html#InvertedParabolaPhenotype.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.mutate" title="Permalink to this definition"></a></dt>
-<dd><p>In place modification of the genotype by randomly changing genes based on mutation probability.</p>
-<p>Calls mutate method as implemented for the genotype attribute in order to perform mutation.
-Updates genotype attribute in place.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.phenotype_value">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">phenotype_value</span></span><a class="headerlink" href="#evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype.phenotype_value" title="Permalink to this definition"></a></dt>
-<dd><p>Stores value of the phenotype based on the genotype - calculated using evaluate_phenotype.</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-evolutionary_optimization.phenotype.parabola_phenotype">
-<span id="evolutionary-optimization-phenotype-parabola-phenotype-module"></span><h2>evolutionary_optimization.phenotype.parabola_phenotype module<a class="headerlink" href="#module-evolutionary_optimization.phenotype.parabola_phenotype" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ParabolaPhenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/parabola_phenotype.html#ParabolaPhenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <a class="reference internal" href="#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a></p>
-<dl class="field-list simple">
-</dl>
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">genotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/parabola_phenotype.html#ParabolaPhenotype.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Initialise InvertedParabolaPhenotype object.</p>
-<dl class="simple">
-<dt>Args</dt><dd><p>genotype: an AbstractGenotype that defines the phenotype.</p>
-</dd>
-</dl>
-<dl class="field-list simple">
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.crossover">
-<span class="sig-name descname"><span class="pre">crossover</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent_2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/parabola_phenotype.html#ParabolaPhenotype.crossover"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.crossover" title="Permalink to this definition"></a></dt>
-<dd><p>Perform crossover between two phenotypes.</p>
-<p>Calls crossover method from the genotype attribute. Combines a portion of this object’s genotype
-with that of parent_2 to return 2 new phenotypes based on the combined genotypes.
-The new genotype length is the same as of the parents.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>parent_2</strong> (<a class="reference internal" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype" title="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParabolaPhenotype</span></code></a>) – a phenotype of the same class whose genotype will be mixed with</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference internal" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype" title="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParabolaPhenotype</span></code></a>, <a class="reference internal" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype" title="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParabolaPhenotype</span></code></a>]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>Two new phenotype instances based on the combined genotypes of the two parents.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.evaluate_phenotype">
-<span class="sig-name descname"><span class="pre">evaluate_phenotype</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/parabola_phenotype.html#ParabolaPhenotype.evaluate_phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.evaluate_phenotype" title="Permalink to this definition"></a></dt>
-<dd><p>In place method to calculate phenotype value using genotype.</p>
-<p>This phenotype follows x^2 and as such is a single parameter optimisation problem.
-For a binary genotype the integer value is returned,for an integer list genotype only the first value is used.
-It updates the phenotype_value property in place once the calculation is done.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.from_phenotype">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_phenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_phenotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/parabola_phenotype.html#ParabolaPhenotype.from_phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.from_phenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Create new phenotype with the same attributes as the base phenotype, but a new random genotype.genotype.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype" title="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">ParabolaPhenotype</span></code></a></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.genotype">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">genotype</span></span><a class="headerlink" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.genotype" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.mutate">
-<span class="sig-name descname"><span class="pre">mutate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/parabola_phenotype.html#ParabolaPhenotype.mutate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.mutate" title="Permalink to this definition"></a></dt>
-<dd><p>In place modification of the genotype by randomly changing genes based on mutation probability.</p>
-<p>Calls mutate method as implemented for the genotype attribute in order to perform mutation.
-Updates genotype attribute in place.</p>
-</dd></dl>
-
-<dl class="py property">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.phenotype_value">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">phenotype_value</span></span><a class="headerlink" href="#evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype.phenotype_value" title="Permalink to this definition"></a></dt>
-<dd><p>Stores value of the phenotype based on the genotype - calculated using evaluate_phenotype.</p>
-</dd></dl>
-
-</dd></dl>
-
-</section>
-<section id="module-evolutionary_optimization.phenotype.phenotype_interface">
-<span id="evolutionary-optimization-phenotype-phenotype-interface-module"></span><h2>evolutionary_optimization.phenotype.phenotype_interface module<a class="headerlink" href="#module-evolutionary_optimization.phenotype.phenotype_interface" title="Permalink to this heading"></a></h2>
-<dl class="py class">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.phenotype_interface.Phenotype">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Phenotype</span></span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/phenotype_interface.html#Phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.phenotype_interface.Phenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Maps Phenotypes to their associated concrete class based on AbstractPhenotype.</p>
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.phenotype_interface.Phenotype.get_phenotype">
-<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_phenotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phenotypes_enum</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/phenotype_interface.html#Phenotype.get_phenotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.phenotype_interface.Phenotype.get_phenotype" title="Permalink to this definition"></a></dt>
-<dd><p>Return class of desired AbstractPhenotype.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ABCMeta</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.phenotype_interface.Phenotype.phenotypes_dictionary">
-<span class="sig-name descname"><span class="pre">phenotypes_dictionary</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{Phenotypes.INVERTED_PARABOLA:</span> <span class="pre">&lt;class</span> <span class="pre">'evolutionary_optimization.phenotype.inverted_parabola_phenotype.InvertedParabolaPhenotype'&gt;,</span> <span class="pre">Phenotypes.PARABOLA:</span> <span class="pre">&lt;class</span> <span class="pre">'evolutionary_optimization.phenotype.parabola_phenotype.ParabolaPhenotype'&gt;}</span></em><a class="headerlink" href="#evolutionary_optimization.phenotype.phenotype_interface.Phenotype.phenotypes_dictionary" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.phenotype_interface.Phenotypes">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Phenotypes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/phenotype/phenotype_interface.html#Phenotypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.phenotype.phenotype_interface.Phenotypes" title="Permalink to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></p>
-<p>Enum containing implemented phenotypes.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.phenotype_interface.Phenotypes.INVERTED_PARABOLA">
-<span class="sig-name descname"><span class="pre">INVERTED_PARABOLA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'inverted_parabola'</span></em><a class="headerlink" href="#evolutionary_optimization.phenotype.phenotype_interface.Phenotypes.INVERTED_PARABOLA" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="evolutionary_optimization.phenotype.phenotype_interface.Phenotypes.PARABOLA">
-<span class="sig-name descname"><span class="pre">PARABOLA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'parabola'</span></em><a class="headerlink" href="#evolutionary_optimization.phenotype.phenotype_interface.Phenotypes.PARABOLA" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="evolutionary_optimization.phenotype.implemented_phenotypes.html">evolutionary_optimization.phenotype.implemented_phenotypes package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.implemented_phenotypes.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype">evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype">evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype">evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype">evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html">evolutionary_optimization.phenotype.phenotype_model package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype">evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.phenotype_interface">evolutionary_optimization.phenotype.phenotype_model.phenotype_interface module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.phenotype_utils">evolutionary_optimization.phenotype.phenotype_model.phenotype_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </section>
 <section id="module-evolutionary_optimization.phenotype">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-evolutionary_optimization.phenotype" title="Permalink to this heading"></a></h2>
@@ -377,7 +125,8 @@ Updates genotype attribute in place.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="evolutionary_optimization.genotype.html" class="btn btn-neutral float-left" title="evolutionary_optimization.genotype package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="evolutionary_optimization.genotype.implemented_genotypes.html" class="btn btn-neutral float-left" title="evolutionary_optimization.genotype.implemented_genotypes package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="evolutionary_optimization.phenotype.implemented_phenotypes.html" class="btn btn-neutral float-right" title="evolutionary_optimization.phenotype.implemented_phenotypes package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

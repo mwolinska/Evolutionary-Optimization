@@ -19,6 +19,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,6 +45,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Using the Package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">evolutionary_optimization</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="evolutionary_optimization.html">evolutionary_optimization package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="evolutionary_optimization.html#subpackages">Subpackages</a><ul class="current">
@@ -52,6 +55,8 @@
 <li class="toctree-l4"><a class="reference internal" href="evolutionary_optimization.phenotype.html">evolutionary_optimization.phenotype package</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#evolutionary-optimization-main-module">evolutionary_optimization.main module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#module-evolutionary_optimization">Module contents</a></li>
 </ul>
 </li>
@@ -90,70 +95,44 @@
 <section id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading"></a></h2>
 </section>
-<section id="module-evolutionary_optimization.evolutionary_algorithm.evolution">
-<span id="evolutionary-optimization-evolutionary-algorithm-evolution-module"></span><h2>evolutionary_optimization.evolutionary_algorithm.evolution module<a class="headerlink" href="#module-evolutionary_optimization.evolutionary_algorithm.evolution" title="Permalink to this heading"></a></h2>
+<section id="module-evolutionary_optimization.evolutionary_algorithm.ea_data_model">
+<span id="evolutionary-optimization-evolutionary-algorithm-ea-data-model-module"></span><h2>evolutionary_optimization.evolutionary_algorithm.ea_data_model module<a class="headerlink" href="#module-evolutionary_optimization.evolutionary_algorithm.ea_data_model" title="Permalink to this heading"></a></h2>
 <dl class="py class">
-<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Evolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phenotype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">FitnessFunctions.MAXIMIZE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_individuals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_generations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_of_elite_individuals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PerformancePlotting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fitness_over_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phenotype_over_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genotype_over_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_data_model.html#PerformancePlotting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.__init__">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phenotype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness_function</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">FitnessFunctions.MAXIMIZE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_individuals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_generations</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_of_elite_individuals</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.__init__" title="Permalink to this definition"></a></dt>
-<dd><p>Initialise Evolution class.</p>
-<p>The Evolution class performs evolutionary optimization of a function (a phenotype).
-It contains a population of individuals that are evaluated at every iteration (generation)
-of the algorithm.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – a phenotype instance with the desired genotype.</p></li>
-<li><p><strong>fitness_function</strong> (<a class="reference internal" href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.fitness_interface.FitnessFunctions" title="evolutionary_optimization.fitness_functions.fitness_interface.FitnessFunctions"><code class="xref py py-class docutils literal notranslate"><span class="pre">FitnessFunctions</span></code></a>) – desired fitness function from interface.</p></li>
-<li><p><strong>number_of_individuals</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of phenotype instances to be used within the population.</p></li>
-<li><p><strong>number_of_generations</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of times the algorithm will be run.</p></li>
-<li><p><strong>ratio_of_elite_individuals</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – proportion of best scoring phenotypes in population that will be kept
-to the next generation.</p></li>
-</ul>
-</dd>
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fitness_over_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phenotype_over_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genotype_over_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
 </dl>
 </dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.evolve">
-<span class="sig-name descname"><span class="pre">evolve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.evolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.evolve" title="Permalink to this definition"></a></dt>
-<dd><p>Perform evolutionary optimisation.</p>
-<p>This function performs the evolutionary optimisation. Over number_of_generations it evaluates the population,
-updates the population (with crossover and/ or mutation as initialised). It then records the
-best fitness score at each generation.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_performance">
-<span class="sig-name descname"><span class="pre">plot_performance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.plot_performance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_performance" title="Permalink to this definition"></a></dt>
-<dd><p>Plot score of the best individual at each generation.</p>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_phenotype_function_and_guesses">
-<span class="sig-name descname"><span class="pre">plot_phenotype_function_and_guesses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_tuple</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.plot_phenotype_function_and_guesses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_phenotype_function_and_guesses" title="Permalink to this definition"></a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.fitness_over_time">
+<span class="sig-name descname"><span class="pre">fitness_over_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.fitness_over_time" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.record_guess">
-<span class="sig-name descname"><span class="pre">record_guess</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.record_guess"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.record_guess" title="Permalink to this definition"></a></dt>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.genotype_over_time">
+<span class="sig-name descname"><span class="pre">genotype_over_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.genotype_over_time" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.record_performance">
-<span class="sig-name descname"><span class="pre">record_performance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.record_performance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.record_performance" title="Permalink to this definition"></a></dt>
-<dd><p>In place addition of fitness function value of the current best individual.</p>
-<p>This function performs in place addition of the current best fitness score to the
-fitness_over_time attribute. Visualise using the plot_performance function.</p>
-</dd></dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.phenotype_over_time">
+<span class="sig-name descname"><span class="pre">phenotype_over_time</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Union</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting.phenotype_over_time" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
+</section>
+<section id="evolutionary-optimization-evolutionary-algorithm-ea-utils-module">
+<h2>evolutionary_optimization.evolutionary_algorithm.ea_utils module<a class="headerlink" href="#evolutionary-optimization-evolutionary-algorithm-ea-utils-module" title="Permalink to this heading"></a></h2>
+</section>
+<section id="evolutionary-optimization-evolutionary-algorithm-evolution-module">
+<h2>evolutionary_optimization.evolutionary_algorithm.evolution module<a class="headerlink" href="#evolutionary-optimization-evolutionary-algorithm-evolution-module" title="Permalink to this heading"></a></h2>
 </section>
 <section id="module-evolutionary_optimization.evolutionary_algorithm.population">
 <span id="evolutionary-optimization-evolutionary-algorithm-population-module"></span><h2>evolutionary_optimization.evolutionary_algorithm.population module<a class="headerlink" href="#module-evolutionary_optimization.evolutionary_algorithm.population" title="Permalink to this heading"></a></h2>
@@ -172,7 +151,7 @@ fitness_over_time attribute. Visualise using the plot_performance function.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>number_of_individuals</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of phenotype instances i.e. individuals in the desired population.</p></li>
-<li><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – a phenotype instance with the desired genotype.</p></li>
+<li><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – a phenotype instance with the desired genotype.</p></li>
 <li><p><strong>ratio_of_elite_individuals</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – proportion of best scoring phenotypes in population that will be kept
 to the next generation.</p></li>
 </ul>
@@ -189,7 +168,7 @@ to the next generation.</p></li>
 <dd class="field-odd"><p><strong>n_new_individuals</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of desired individuals in list.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of random Phenotype instances of length n_new_individuals.</p>
@@ -205,10 +184,10 @@ to the next generation.</p></li>
 phenotype’s crossover method.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>list_of_parents</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]) – list of phenotypes which should be used to generate offspring.</p>
+<dd class="field-odd"><p><strong>list_of_parents</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]) – list of phenotypes which should be used to generate offspring.</p>
 </dd>
 <dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]</p>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]</p>
 </dd>
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p>List of new Phenotype objects created from their parents’ genotypes.</p>
@@ -235,7 +214,7 @@ in the population.best_individual attribute.</p>
 <dd><p>Sort list of AbstractPhenotype by descending fitness score.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]</p>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]</p>
 </dd>
 </dl>
 </dd></dl>
@@ -249,7 +228,7 @@ scores, from those with lower fitness scores. Top 10% of individuals (or at leas
 a list. The rest will be assigned to a separate list, which will be updated using crossover and/or mutation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]]</p>
+<dd class="field-odd"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>], <code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>]]</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
@@ -286,7 +265,7 @@ be replaced by randomly generated individuals.</p>
 of phenotype and fitness score. This is used with python’s sorted function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>phenotype_and_fitness_score_tuple</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – tuple of phenotype instance and its fitness score.</p>
+<dd class="field-odd"><p><strong>phenotype_and_fitness_score_tuple</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]) – tuple of phenotype instance and its fitness score.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>

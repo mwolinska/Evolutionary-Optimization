@@ -18,6 +18,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,6 +45,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Using the Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">evolutionary_optimization</a></li>
 </ul>
 
@@ -94,7 +97,7 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.evolutionary_algorithm.html#module-evolutionary_optimization.evolutionary_algorithm.evolution"><code class="xref">evolutionary_optimization.evolutionary_algorithm.evolution</code></a></td><td>
+       <a href="evolutionary_optimization.evolutionary_algorithm.html#module-evolutionary_optimization.evolutionary_algorithm.ea_data_model"><code class="xref">evolutionary_optimization.evolutionary_algorithm.ea_data_model</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -129,22 +132,42 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.abstract_genotype"><code class="xref">evolutionary_optimization.genotype.abstract_genotype</code></a></td><td>
+       <a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model"><code class="xref">evolutionary_optimization.genotype.genotype_model</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.binary_list_genotype"><code class="xref">evolutionary_optimization.genotype.binary_list_genotype</code></a></td><td>
+       <a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.abstract_genotype"><code class="xref">evolutionary_optimization.genotype.genotype_model.abstract_genotype</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.genotype_interface"><code class="xref">evolutionary_optimization.genotype.genotype_interface</code></a></td><td>
+       <a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.genotype_interface"><code class="xref">evolutionary_optimization.genotype.genotype_model.genotype_interface</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.genotype.html#module-evolutionary_optimization.genotype.integer_list_genotype"><code class="xref">evolutionary_optimization.genotype.integer_list_genotype</code></a></td><td>
+       <a href="evolutionary_optimization.genotype.genotype_model.html#module-evolutionary_optimization.genotype.genotype_model.genotype_utils"><code class="xref">evolutionary_optimization.genotype.genotype_model.genotype_utils</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes"><code class="xref">evolutionary_optimization.genotype.implemented_genotypes</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype"><code class="xref">evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype"><code class="xref">evolutionary_optimization.genotype.implemented_genotypes.float_list_genotype</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.genotype.implemented_genotypes.html#module-evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype"><code class="xref">evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
@@ -154,22 +177,47 @@
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.abstract_phenotype"><code class="xref">evolutionary_optimization.phenotype.abstract_phenotype</code></a></td><td>
+       <a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes"><code class="xref">evolutionary_optimization.phenotype.implemented_phenotypes</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.inverted_parabola_phenotype"><code class="xref">evolutionary_optimization.phenotype.inverted_parabola_phenotype</code></a></td><td>
+       <a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype"><code class="xref">evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.parabola_phenotype"><code class="xref">evolutionary_optimization.phenotype.parabola_phenotype</code></a></td><td>
+       <a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype"><code class="xref">evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype</code></a></td><td>
        <em></em></td></tr>
      <tr class="cg-1">
        <td></td>
        <td>&#160;&#160;&#160;
-       <a href="evolutionary_optimization.phenotype.html#module-evolutionary_optimization.phenotype.phenotype_interface"><code class="xref">evolutionary_optimization.phenotype.phenotype_interface</code></a></td><td>
+       <a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype"><code class="xref">evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.phenotype.implemented_phenotypes.html#module-evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype"><code class="xref">evolutionary_optimization.phenotype.implemented_phenotypes.saddle_point_phenotype</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model"><code class="xref">evolutionary_optimization.phenotype.phenotype_model</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype"><code class="xref">evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.phenotype_interface"><code class="xref">evolutionary_optimization.phenotype.phenotype_model.phenotype_interface</code></a></td><td>
+       <em></em></td></tr>
+     <tr class="cg-1">
+       <td></td>
+       <td>&#160;&#160;&#160;
+       <a href="evolutionary_optimization.phenotype.phenotype_model.html#module-evolutionary_optimization.phenotype.phenotype_model.phenotype_utils"><code class="xref">evolutionary_optimization.phenotype.phenotype_model.phenotype_utils</code></a></td><td>
        <em></em></td></tr>
    </table>
 

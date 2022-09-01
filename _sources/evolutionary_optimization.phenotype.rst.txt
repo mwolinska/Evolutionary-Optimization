@@ -1,40 +1,14 @@
 evolutionary\_optimization.phenotype package
 ============================================
 
-Submodules
-----------
+Subpackages
+-----------
 
-evolutionary\_optimization.phenotype.abstract\_phenotype module
----------------------------------------------------------------
+.. toctree::
+   :maxdepth: 4
 
-.. automodule:: evolutionary_optimization.phenotype.abstract_phenotype
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-evolutionary\_optimization.phenotype.inverted\_parabola\_phenotype module
--------------------------------------------------------------------------
-
-.. automodule:: evolutionary_optimization.phenotype.inverted_parabola_phenotype
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-evolutionary\_optimization.phenotype.parabola\_phenotype module
----------------------------------------------------------------
-
-.. automodule:: evolutionary_optimization.phenotype.parabola_phenotype
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-evolutionary\_optimization.phenotype.phenotype\_interface module
-----------------------------------------------------------------
-
-.. automodule:: evolutionary_optimization.phenotype.phenotype_interface
-   :members:
-   :undoc-members:
-   :show-inheritance:
+   evolutionary_optimization.phenotype.implemented_phenotypes
+   evolutionary_optimization.phenotype.phenotype_model
 
 Module contents
 ---------------

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to Evolutionary-Optimization’s documentation! &mdash; Evolutionary-Optimization 1.0.0 documentation</title>
+  <title>Welcome to Evolutionary-Optimization’s documentation &mdash; Evolutionary-Optimization 1.0.0 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
@@ -19,10 +19,12 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="evolutionary_optimization" href="modules.html" /> 
+    <link rel="next" title="Using the Package" href="quickstart.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -42,6 +44,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Using the Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">evolutionary_optimization</a></li>
 </ul>
 
@@ -59,7 +62,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="#" class="icon icon-home"></a> &raquo;</li>
-      <li>Welcome to Evolutionary-Optimization’s documentation!</li>
+      <li>Welcome to Evolutionary-Optimization’s documentation</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -70,10 +73,28 @@
            <div itemprop="articleBody">
              
   <section id="welcome-to-evolutionary-optimization-s-documentation">
-<h1>Welcome to Evolutionary-Optimization’s documentation!<a class="headerlink" href="#welcome-to-evolutionary-optimization-s-documentation" title="Permalink to this heading"></a></h1>
+<h1>Welcome to Evolutionary-Optimization’s documentation<a class="headerlink" href="#welcome-to-evolutionary-optimization-s-documentation" title="Permalink to this heading"></a></h1>
+<p>This package allows the user to optimise a function using an evolutionary algorithm.
+An <a class="reference external" href="https://en.wikipedia.org/wiki/Evolutionary_algorithm">evolutionary algorithm</a> uses the principles of evolution to find optimal solutions.
+At a high level diagram of the process is as follows:</p>
+<div class="mermaid">
+            flowchart TD;
+    A[Generate population] --&gt; B[Evaluate population];
+    B --&gt; C{Is exit condition met?};
+    C --No--&gt; D[Update population];
+    C --Yes--&gt; E[Exit algorithm];
+    D --&gt; B
+        </div><p>Currently, the only exit condition for the code is running the desired
+number of generations.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Using the Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#getting-started">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#running-experiments">Running Experiments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quickstart.html#personalising-experiments">Personalising Experiments</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="modules.html">evolutionary_optimization</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="evolutionary_optimization.html">evolutionary_optimization package</a></li>
 </ul>
@@ -94,7 +115,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="modules.html" class="btn btn-neutral float-right" title="evolutionary_optimization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-right" title="Using the Package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

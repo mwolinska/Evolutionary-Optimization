@@ -19,6 +19,8 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/clipboard.min.js"></script>
         <script src="_static/copybutton.js"></script>
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -43,6 +45,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Using the Package</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">evolutionary_optimization</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="evolutionary_optimization.html">evolutionary_optimization package</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="evolutionary_optimization.html#subpackages">Subpackages</a><ul class="current">
@@ -52,6 +55,8 @@
 <li class="toctree-l4"><a class="reference internal" href="evolutionary_optimization.phenotype.html">evolutionary_optimization.phenotype package</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#evolutionary-optimization-main-module">evolutionary_optimization.main module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#module-evolutionary_optimization">Module contents</a></li>
 </ul>
 </li>
@@ -102,7 +107,7 @@
 <dd><p>This method will return the fitness score from a phenotype.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – instance of AbstractPhenotype being evaluated.</p>
+<dd class="field-odd"><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – instance of AbstractPhenotype being evaluated.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
@@ -168,15 +173,24 @@
 <span id="evolutionary-optimization-fitness-functions-implemented-fitness-functions-module"></span><h2>evolutionary_optimization.fitness_functions.implemented_fitness_functions module<a class="headerlink" href="#module-evolutionary_optimization.fitness_functions.implemented_fitness_functions" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ApproachValueFitnessFunction</span></span><a class="reference internal" href="_modules/evolutionary_optimization/fitness_functions/implemented_fitness_functions.html#ApproachValueFitnessFunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ApproachValueFitnessFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected_value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/fitness_functions/implemented_fitness_functions.html#ApproachValueFitnessFunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <a class="reference internal" href="#evolutionary_optimization.fitness_functions.abstract_fitness_function.AbstractFitnessFunction" title="evolutionary_optimization.fitness_functions.abstract_fitness_function.AbstractFitnessFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractFitnessFunction</span></code></a></p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expected_value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/fitness_functions/implemented_fitness_functions.html#ApproachValueFitnessFunction.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.evaluate">
-<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phenotype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">expected_value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/fitness_functions/implemented_fitness_functions.html#ApproachValueFitnessFunction.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.evaluate" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phenotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/fitness_functions/implemented_fitness_functions.html#ApproachValueFitnessFunction.evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.evaluate" title="Permalink to this definition"></a></dt>
 <dd><p>This method will return the fitness score from a phenotype.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – instance of AbstractPhenotype being evaluated.</p>
+<dd class="field-odd"><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – instance of AbstractPhenotype being evaluated.</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code></p>
@@ -199,7 +213,7 @@
 <dd><p>Looking for maximum phenotype value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – instance of Abstract phenotype being evaluated).</p>
+<dd class="field-odd"><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – instance of Abstract phenotype being evaluated).</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
@@ -222,7 +236,7 @@
 <dd><p>Looking for minimum phenotype value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.html#evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – instance of Abstract phenotype being evaluated).</p>
+<dd class="field-odd"><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – instance of Abstract phenotype being evaluated).</p>
 </dd>
 <dt class="field-even">Return type</dt>
 <dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]</p>
