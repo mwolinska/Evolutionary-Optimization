@@ -1,12 +1,12 @@
-from typing import Union, Tuple
+from typing import Tuple
 
-from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
-from evolutionary_optimization.genotype.binary_list_genotype import BinaryListGenotype
-from evolutionary_optimization.genotype.integer_list_genotype import IntegerListGenotype
-from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
+import numpy as np
 
+from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
 
-class ParabolaPhenotype(AbstractPhenotype):
+class BoothPhenotype(AbstractPhenotype):
+    # TODO (Marta): Import of abstract phenotype doesn't work
     def __init__(self, genotype: AbstractGenotype): # Union[BinaryListGenotype, IntegerListGenotype]
         """Initialise InvertedParabolaPhenotype object.
 
@@ -35,7 +35,7 @@ class ParabolaPhenotype(AbstractPhenotype):
         self._phenotype_value = value
 
     @classmethod
-    def from_phenotype(cls, base_phenotype: "ParabolaPhenotype") -> "ParabolaPhenotype":
+    def from_phenotype(cls, base_phenotype: "BoothPhenotype") -> "BoothPhenotype":
         """Create new phenotype with the same attributes as the base phenotype, but a new random genotype.genotype."""
         new_genotype = base_phenotype.genotype.build_random_genotype(
             number_of_genes=base_phenotype.genotype.number_of_genes,
@@ -52,15 +52,18 @@ class ParabolaPhenotype(AbstractPhenotype):
         For a binary genotype the integer value is returned,for an integer list genotype only the first value is used.
         It updates the phenotype_value property in place once the calculation is done.
         """
-        if isinstance(self.genotype, BinaryListGenotype):
-            float_genotype = self.genotype.return_integer_form()
-        else:
-            float_genotype = self.genotype.genotype[0]
 
-        phenotype = float_genotype ** 2
+        x_1 = self.genotype.genotype[0]
+        x_2 = self.genotype.genotype[1]
+
+        phenotype = (x_1 + x_2 - 7) ** 2 + (2 * x_1 + x_2 - 5) ** 2
         self.phenotype_value = phenotype
 
-    def crossover(self, parent_2: "ParabolaPhenotype") -> Tuple["ParabolaPhenotype", "ParabolaPhenotype"]:
+    @staticmethod
+    def evaluate_phenotype_using_arrays(x_values: np.ndarray, y_values: np.ndarray) -> np.ndarray:
+        return (x_values + y_values - 7) ** 2 + (2 * x_values + y_values - 5) ** 2
+
+    def crossover(self, parent_2: "BoothPhenotype") -> Tuple["BoothPhenotype", "BoothPhenotype"]:
         """Perform crossover between two phenotypes.
 
         Calls crossover method from the genotype attribute. Combines a portion of this object's genotype
@@ -74,8 +77,8 @@ class ParabolaPhenotype(AbstractPhenotype):
             Two new phenotype instances based on the combined genotypes of the two parents.
         """
         child_genotype_1, child_genotype_2 = self.genotype.crossover(parent_2.genotype)
-        child_1 = ParabolaPhenotype(child_genotype_1)
-        child_2 = ParabolaPhenotype(child_genotype_2)
+        child_1 = BoothPhenotype(child_genotype_1)
+        child_2 = BoothPhenotype(child_genotype_2)
         return child_1, child_2
 
     def mutate(self):

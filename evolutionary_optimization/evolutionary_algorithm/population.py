@@ -1,9 +1,10 @@
-
+import copy
+from copy import deepcopy
 from random import shuffle
 from typing import Tuple, List, Union
 
 from evolutionary_optimization.fitness_functions.abstract_fitness_function import AbstractFitnessFunction
-from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
 
 
 class Population:
@@ -69,14 +70,13 @@ class Population:
             fitness_function: fitness function used to evaluate the phenotype.
         """
         for individual in self.population:
-            if individual.phenotype_value is None:
-                individual.evaluate_phenotype()
+            individual.evaluate_phenotype()
             fitness_score = fitness_function.evaluate(phenotype=individual)
 
             if self.best_individual.phenotype_value is None or \
                     fitness_score > fitness_function.evaluate(self.best_individual):
 
-                self.best_individual = individual
+                self.best_individual = copy.deepcopy(individual)
 
     def update_population(self, fitness_function: AbstractFitnessFunction):
         """Update population attribute following evaluation.
@@ -91,10 +91,10 @@ class Population:
         """
         elite_individuals, non_elite_individuals = self.split_elite_individuals(fitness_function)
 
+        non_elite_individuals = non_elite_individuals[len(elite_individuals):] + deepcopy(elite_individuals)
         if self.crossover:
             number_of_individuals_for_crossover = int(self.phenotype.genotype.ratio_of_population_for_crossover
                                                       * self.number_of_individuals)
-            # TODO (Marta): include elite individuals in crossover
             non_elite_individuals = \
                 self.crossover_for_population_segment(non_elite_individuals[:number_of_individuals_for_crossover]) + \
                 non_elite_individuals[number_of_individuals_for_crossover:]
@@ -103,8 +103,9 @@ class Population:
             for individual in non_elite_individuals:
                 individual.mutate()
 
-        if not self.crossover and not self.mutation:
-            non_elite_individuals = self.create_list_of_new_individuals(len(non_elite_individuals))
+        # TODO (Marta): This is a deviation from the standard algorithm
+        # if not self.crossover and not self.mutation:
+        #     non_elite_individuals = self.create_list_of_new_individuals(len(non_elite_individuals))
 
         new_individuals_list = elite_individuals + non_elite_individuals
         self.population = new_individuals_list
@@ -147,10 +148,8 @@ class Population:
             Tuple of List[Phenotype] and List[Phenotype] representing separate groups of
                 elite and non_elite individuals.
         """
-        # TODO (Marta): allow user to define % of elitism
-
         sorted_individuals = self.sort_phenotypes_by_fitness_score(fitness_function)
-        elite_individual_threshold = max(1, int(self.number_of_individuals * self.ratio_of_elite_individuals))
+        elite_individual_threshold = int(self.number_of_individuals * self.ratio_of_elite_individuals)
         elite_individuals = sorted_individuals[:elite_individual_threshold]
         non_elite_individuals = sorted_individuals[elite_individual_threshold:]
         shuffle(non_elite_individuals)

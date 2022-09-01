@@ -1,9 +1,12 @@
 [tool.poetry]
-name = "evolutionary-optimisation"
-version = "2.1.0"
+name = "evolutionary-optimization"
+version = "3.0.0"
 description = "A generic evolutionary algorithm for function optimisation."
-authors = ["Marta <mswolinska@gmail.com>"]
+readme = "README_PYPI.md"
+authors = ["Marta Wolinska <mswolinska@gmail.com>"]
 packages = [{ include = "evolutionary_optimization"}]
+documentation = "https://mwolinska.github.io/Evolutionary-Optimization/"
+repository = "https://github.com/mwolinska/Evolutionary-Optimization"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -18,11 +21,11 @@ sphinx-rtd-theme = "^1.0.0"
 pylint = "^2.14.5"
 Sphinx = "^5.1.1"
 sphinx-autodoc-typehints = "^1.19.0"
-
+sphinxcontrib-mermaid = "^0.7.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-run_evolution = "main:run_evolutionary_alg"
+run_evolution = "evolutionary_optimization.main:run_evolutionary_alg"

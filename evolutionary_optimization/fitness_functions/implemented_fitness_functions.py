@@ -1,7 +1,7 @@
 from typing import Union
 
 from evolutionary_optimization.fitness_functions.abstract_fitness_function import AbstractFitnessFunction
-from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
 
 
 class MaximizeFitnessFunction(AbstractFitnessFunction):
@@ -32,6 +32,14 @@ class MinimizeFitnessFunction(AbstractFitnessFunction):
 
 
 class ApproachValueFitnessFunction(AbstractFitnessFunction):
-    def evaluate(self, phenotype: AbstractPhenotype, expected_value) -> float:
-        return 1 / (expected_value - phenotype.phenotype_value)
-    # TODO (Marta): how to deal with expected value?
+    def __init__(self, expected_value: Union[float, int]):
+        self.expected_value = expected_value
+
+    def evaluate(self, phenotype: AbstractPhenotype) -> float:
+
+        delta_to_expected_value = abs(self.expected_value - phenotype.phenotype_value)
+
+        if delta_to_expected_value == 0:
+            return 1
+        else:
+            return 1 / delta_to_expected_value

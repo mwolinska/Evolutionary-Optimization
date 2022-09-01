@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Tuple, Optional
+from typing import Tuple, Optional, List, Union
 
 
 class AbstractGenotype(ABC):
@@ -27,16 +27,30 @@ class AbstractGenotype(ABC):
         """
         pass
 
+    @property
+    @abstractmethod
+    def genotype(self):
+        pass
+
+    @genotype.setter
+    @abstractmethod
+    def genotype(self, value):
+        pass
+
     @classmethod
     @abstractmethod
     def build_random_genotype(
         cls,
+        number_of_genes,
+        value_range: Tuple[int, int],
         mutation_probability: Optional[float],
         ratio_of_population_for_crossover: Optional[float],
     ) -> "AbstractGenotype":
         """Build random genotype attribute based on class parameters.
 
         Args:
+            number_of_genes: number of genes in the genotype.
+            value_range: minimum and maximum values of a gene.
             mutation_probability: probability of a gene mutating.
             ratio_of_population_for_crossover: ratio of population used for crossover when updating population.
 
@@ -63,4 +77,13 @@ class AbstractGenotype(ABC):
         Returns:
             Two new phenotype instances based on the combined genotypes of the two parents.
         """
+        pass
+
+    @classmethod
+    @abstractmethod
+    def from_genotype(
+        cls,
+        base_genotype: "AbstractGenotype",
+        new_genotype: Union[List[int], List[float], List[str]],
+    ) -> "AbstractGenotype":
         pass

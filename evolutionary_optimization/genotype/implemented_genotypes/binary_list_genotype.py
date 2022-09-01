@@ -3,7 +3,8 @@ from typing import Tuple, Optional, List
 
 import numpy as np
 
-from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.genotype_model.genotype_utils import single_point_crossover
 
 
 class BinaryListGenotype(AbstractGenotype):
@@ -18,17 +19,27 @@ class BinaryListGenotype(AbstractGenotype):
         """Initialise instance of AbstractGenotype.
 
         Args:
-            genotype: genotype used for mutation, crossover and to calculate phenotype_value.
+            genotype: genotype used for mutation, crossover and to calculate phenotype_value in binary form.
             mutation_probability: probability of a gene mutating.
             ratio_of_population_for_crossover: ratio of population used for crossover when updating population.
             number_of_genes: number of genes in the genotype.
             value_range: minimum and maximum values of a gene.
         """
-        self.genotype = genotype
+        self.binary_genotype = genotype
+        self._genotype = self.return_integer_form()
         self.mutation_probability = mutation_probability
         self.ratio_of_population_for_crossover = ratio_of_population_for_crossover
         self.number_of_genes = number_of_genes
         self.value_range = value_range
+
+    @property
+    def genotype(self):
+        """This is the integer form of the self.binary_genotype."""
+        return self._genotype
+
+    @genotype.setter
+    def genotype(self, value):
+        self._genotype = value
 
     @classmethod
     def build_random_genotype(
@@ -61,22 +72,27 @@ class BinaryListGenotype(AbstractGenotype):
                    number_of_genes=number_of_genes,
                    value_range=value_range)
 
+    @classmethod
+    def from_genotype(cls, base_genotype: "BinaryListGenotype", new_genotype: List[int]) -> "BinaryListGenotype":
+        return cls(genotype=new_genotype,
+                   value_range=base_genotype.value_range,
+                   mutation_probability=base_genotype.mutation_probability,
+                   ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover
+                   )
+
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
-        new_genotype = []
 
-        for gene in self.genotype:
-            mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
+        mutation_mask = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability], size=len(self.binary_genotype))
 
-            if mutation:
-                my_list = [1, 0]
-                new_gene = my_list[gene]
-            else:
-                new_gene = gene
+        logical_binary_genotype = np.array(self.binary_genotype).astype(bool)
 
-            new_genotype.append(new_gene)
+        mutated_logical_binary_genotype = np.logical_xor(logical_binary_genotype, mutation_mask)
 
-        self.genotype = new_genotype
+        mutated_binary_genotype = mutated_logical_binary_genotype.astype(int)
+
+        self.binary_genotype = list(mutated_binary_genotype)
+        self.genotype = self.return_integer_form()
 
     def crossover(
         self,
@@ -102,11 +118,8 @@ class BinaryListGenotype(AbstractGenotype):
 
         Returns:
             Tuple of AbstractGenotype, representing two children genotypes that are a combination of the parents.
-
-        Todo:
-            * (Marta): implement method to return Genotype copy with updated genotype attribute
         """
-        if len(self.genotype) != len(parent_2_genotype.genotype):
+        if len(self.binary_genotype) != len(parent_2_genotype.binary_genotype):
             raise NameError("The Individuals have genotypes of different lengths - crossover is impossible")
 
         if self.number_of_genes == 1:
@@ -115,58 +128,23 @@ class BinaryListGenotype(AbstractGenotype):
             last_slice_index = self.number_of_genes - 1
             gene_slice_index = randint(1, last_slice_index)
 
-            child_1_genotype = self.single_point_crossover(self.genotype, parent_2_genotype.genotype, gene_slice_index)
-            child_2_genotype = self.single_point_crossover(parent_2_genotype.genotype, self.genotype, gene_slice_index)
+            child_1_genotype = single_point_crossover(self.binary_genotype, parent_2_genotype.binary_genotype, gene_slice_index)
+            child_2_genotype = single_point_crossover(parent_2_genotype.binary_genotype, self.binary_genotype, gene_slice_index)
 
-            child_1 = BinaryListGenotype(
-                genotype=child_1_genotype,
-                mutation_probability=self.mutation_probability,
-                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                number_of_genes=self.number_of_genes,
-                value_range=self.value_range,
-            )
-
-            child_2 = BinaryListGenotype(
-                genotype=child_2_genotype,
-                mutation_probability=self.mutation_probability,
-                ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                number_of_genes=self.number_of_genes,
-                value_range=self.value_range,
-            )
+            child_1 = self.from_genotype(parent_2_genotype, child_1_genotype)
+            child_2 = self.from_genotype(parent_2_genotype, child_2_genotype)
 
             return child_1, child_2
-
-    @staticmethod
-    def single_point_crossover(
-        parent_1_genotype: List[int],
-        parent_2_genotype: List[int],
-        gene_slice_index: int,
-    ) -> List[int]:
-        """A single point crossover for genotype of type list.
-
-        This is a single point crossover. Using the gene_slice_index, for both parents the genotype are sliced.
-        The slice [:gene_slice_index] is taken from parent_1 and the slice [gene_slice_index:] is taken from parent_2.
-        The two complementary slices are then joined to create a new genotype (a child genotype).
-
-        Args:
-            parent_1_genotype: genotype which will be used to create an offspring.
-            parent_2_genotype: genotype which will be used to create an offspring.
-            gene_slice_index: random integer at which the parent genotypes will be sliced.
-
-        Returns:
-            A genotype used to build a Genotype object.
-        """
-        child_genotype_part_1 = parent_1_genotype[:gene_slice_index]
-        child_genotype_part_2 = parent_2_genotype[gene_slice_index:]
-        child_genotype = child_genotype_part_1 + child_genotype_part_2
-        return child_genotype
 
     def return_integer_form(self):
         """Return integer form of a binary number."""
         power_of_2 = 0
         integer_form = 0
 
-        for i in range(len(self.genotype) - 1, -1, -1):
-            integer_form += self.genotype[i] * 2 ** power_of_2
-            power_of_2 += 1
-        return integer_form
+        if self.binary_genotype is None:
+            return None
+        else:
+            for i in range(len(self.binary_genotype) - 1, -1, -1):
+                integer_form += self.binary_genotype[i] * 2 ** power_of_2
+                power_of_2 += 1
+            return [integer_form]

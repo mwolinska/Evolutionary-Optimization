@@ -1,9 +1,11 @@
+import random
 from random import randint
 from typing import Tuple, Optional, List
 
 import numpy as np
 
-from evolutionary_optimization.genotype.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
+from evolutionary_optimization.genotype.genotype_model.genotype_utils import single_point_crossover
 
 
 class IntegerListGenotype(AbstractGenotype):
@@ -25,11 +27,19 @@ class IntegerListGenotype(AbstractGenotype):
             number_of_genes: number of genes in the genotype.
             value_range: minimum and maximum values of a gene.
         """
-        self.genotype = genotype
+        self._genotype = genotype
         self.mutation_probability = mutation_probability
         self.ratio_of_population_for_crossover = ratio_of_population_for_crossover
         self.number_of_genes = number_of_genes
         self.value_range = value_range
+
+    @property
+    def genotype(self):
+        return self._genotype
+
+    @genotype.setter
+    def genotype(self, value):
+        self._genotype = value
 
     @classmethod
     def build_random_genotype(
@@ -65,6 +75,14 @@ class IntegerListGenotype(AbstractGenotype):
                    number_of_genes=number_of_genes,
                    value_range=value_range)
 
+    @classmethod
+    def from_genotype(cls, base_genotype: "IntegerListGenotype", new_genotype: List[int]) -> "IntegerListGenotype":
+        return cls(genotype=new_genotype,
+                   value_range=base_genotype.value_range,
+                   mutation_probability=base_genotype.mutation_probability,
+                   ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover
+                   )
+
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
         new_genotype = []
@@ -73,7 +91,11 @@ class IntegerListGenotype(AbstractGenotype):
             mutation = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability])
 
             if mutation:
-                new_gene = randint(self.value_range[0], self.value_range[1])
+                noise = random.uniform(-1, 1)
+                if noise > 0:
+                    new_gene = gene + 1
+                else:
+                    new_gene = gene - 1
             else:
                 new_gene = gene
 
@@ -104,9 +126,6 @@ class IntegerListGenotype(AbstractGenotype):
 
         Returns:
             Tuple of AbstractGenotype, representing two children genotypes that are a combination of the parents.
-
-        Todo:
-            * (Marta): implement method to return Genotype copy with updated genotype attribute
         """
         if len(self.genotype) != len(parent_2_genotype.genotype):
             raise NameError("The Individuals have genotypes of different lengths - crossover is impossible")
@@ -117,45 +136,10 @@ class IntegerListGenotype(AbstractGenotype):
             last_slice_index = self.number_of_genes - 1
             gene_slice_index = randint(1, last_slice_index)
 
-            child_1_genotype = self.single_point_crossover(self.genotype, parent_2_genotype.genotype, gene_slice_index)
-            child_2_genotype = self.single_point_crossover(parent_2_genotype.genotype, self.genotype, gene_slice_index)
+            child_1_genotype = single_point_crossover(self.genotype, parent_2_genotype.genotype, gene_slice_index)
+            child_2_genotype = single_point_crossover(parent_2_genotype.genotype, self.genotype, gene_slice_index)
 
-            child_1 = IntegerListGenotype(genotype=child_1_genotype,
-                                          mutation_probability=self.mutation_probability,
-                                          ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                                          number_of_genes=self.number_of_genes,
-                                          value_range=self.value_range)
-
-            child_2 = IntegerListGenotype(genotype=child_2_genotype,
-                                          mutation_probability=self.mutation_probability,
-                                          ratio_of_population_for_crossover=self.ratio_of_population_for_crossover,
-                                          number_of_genes=self.number_of_genes,
-                                          value_range=self.value_range)
-            # TODO (Marta): implement method to return Genotype copy with updated genotype attribuet
+            child_1 = self.from_genotype(parent_2_genotype, child_1_genotype)
+            child_2 = self.from_genotype(parent_2_genotype, child_2_genotype)
 
             return child_1, child_2
-
-    @staticmethod
-    def single_point_crossover(
-        parent_1_genotype: List[int],
-        parent_2_genotype: List[int],
-        gene_slice_index: int,
-    ) -> List[int]:
-        """A single point crossover for genotype of type list.
-
-        This is a single point crossover. Using the gene_slice_index, for both parents the genotype are sliced.
-        The slice [:gene_slice_index] is taken from parent_1 and the slice [gene_slice_index:] is taken from parent_2.
-        The two complementary slices are then joined to create a new genotype (a child genotype).
-
-        Args:
-            parent_1_genotype: genotype which will be used to create an offspring.
-            parent_2_genotype: genotype which will be used to create an offspring.
-            gene_slice_index: random integer at which the parent genotypes will be sliced.
-
-        Returns:
-            A genotype used to build a Genotype object.
-        """
-        child_genotype_part_1 = parent_1_genotype[:gene_slice_index]
-        child_genotype_part_2 = parent_2_genotype[gene_slice_index:]
-        child_genotype = child_genotype_part_1 + child_genotype_part_2
-        return child_genotype

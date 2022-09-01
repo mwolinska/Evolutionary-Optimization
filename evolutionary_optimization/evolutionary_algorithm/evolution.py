@@ -1,16 +1,21 @@
-from matplotlib import pyplot as plt
+import numpy as np
+from matplotlib import pyplot as plt, cm
 from tqdm import tqdm
 
+from evolutionary_optimization.evolutionary_algorithm.ea_data_model import PerformancePlotting
+from evolutionary_optimization.evolutionary_algorithm.ea_utils import CreateGif2D, CreateGif3D
 from evolutionary_optimization.evolutionary_algorithm.population import Population
-from evolutionary_optimization.fitness_functions.fitness_interface import FitnessFunctions, FitnessFunction
-from evolutionary_optimization.phenotype.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.fitness_functions.abstract_fitness_function import AbstractFitnessFunction
+from evolutionary_optimization.fitness_functions.implemented_fitness_functions import MaximizeFitnessFunction
+from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
+from evolutionary_optimization.phenotype.phenotype_model.phenotype_utils import PlottingData
 
 
 class Evolution:
     def __init__(
         self,
         phenotype: AbstractPhenotype,
-        fitness_function: FitnessFunctions = FitnessFunctions.MAXIMIZE,
+        fitness_function: AbstractFitnessFunction = MaximizeFitnessFunction(),
         number_of_individuals: int = 100,
         number_of_generations: int = 20,
         ratio_of_elite_individuals: float = 0.1,
@@ -31,10 +36,12 @@ class Evolution:
         """
         self.population = Population(number_of_individuals, phenotype, ratio_of_elite_individuals)
         self.epochs = number_of_generations
-        self.fitness_over_time = []
-        self.fitness_function = FitnessFunction.get_fitness_function(fitness_function)
-        self.phenotype_values_over_time = []
-        self.genotype_values_over_time = []
+        self.fitness_function = fitness_function
+        self.performance_over_time = PerformancePlotting(
+            fitness_over_time=[],
+            phenotype_over_time=[],
+            genotype_over_time=[],
+        )
 
     def evolve(self):
         """Perform evolutionary optimisation.
@@ -44,38 +51,88 @@ class Evolution:
         best fitness score at each generation.
         """
         for epoch in tqdm(range(self.epochs)):
-            self.population.evaluate_population(self.fitness_function())
-            self.population.update_population(self.fitness_function())
+            self.population.evaluate_population(self.fitness_function)
+            self.population.update_population(self.fitness_function)
             self.record_performance()
-            self.record_guess()
 
         print(f"The value of the best individual is {self.population.best_individual.genotype.genotype}")
 
     def record_performance(self):
-        """In place addition of fitness function value of the current best individual.
+        """In place addition of fitness score, phenotype and genotype values of the current best individual.
 
-        This function performs in place addition of the current best fitness score to the
-        fitness_over_time attribute. Visualise using the plot_performance function.
+        This function performs in place addition of the current best fitness score, phenotype value
+        and genotype value to the performance_over_time attribute.
+        You can visualise fitness over time using the plot_fitness_score_over_time function, and you can visualise
+        phenotype and genotype values over time using plot_phenotype_function_and_best_individuals function.
         """
-        self.fitness_over_time.append(self.fitness_function().evaluate(phenotype=self.population.best_individual))
+        self.performance_over_time.fitness_over_time.append(self.fitness_function.evaluate(
+            phenotype=self.population.best_individual)
+        )
+        self.performance_over_time.phenotype_over_time.append(self.population.best_individual.phenotype_value)
+        self.performance_over_time.genotype_over_time.append(self.population.best_individual.genotype.genotype)
 
-    def record_guess(self):
-        self.phenotype_values_over_time.append(self.population.best_individual.phenotype_value)
-        self.genotype_values_over_time.append(self.population.best_individual.genotype.genotype[0])
-
-    def plot_performance(self):
+    def plot_fitness_score_over_time(self):
         """Plot score of the best individual at each generation."""
-        x_axis = list(range(0, len(self.fitness_over_time)))
-        plt.plot(x_axis, self.fitness_over_time)
+        x_axis = list(range(0, len(self.performance_over_time.fitness_over_time)))
+        plt.plot(x_axis, self.performance_over_time.fitness_over_time)
         plt.title('Algorithm Performance Over Time')
         plt.xlabel('Epoch')
         plt.ylabel('Fitness score')
         plt.show()
 
-    def plot_phenotype_function_and_guesses(self, function_tuple):
-        plt.plot(self.genotype_values_over_time, self.phenotype_values_over_time)
-        plt.plot(function_tuple[0], function_tuple[1])
-        plt.title('Function to optimise')
-        plt.xlabel('x')
-        plt.ylabel('y')
+    def plot_phenotype_function_and_best_individuals(
+            self,
+            function_data: PlottingData,
+    ):
+        """Plot phenotype function and best individual phenotype values."""
+        number_of_dimensions = 2
+
+        if function_data.z is not None:
+            number_of_dimensions = 3
+
+        if number_of_dimensions == 2:
+            plt.plot(function_data.x, function_data.y, label="Phenotype Function")
+            plt.plot(
+                np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+                self.performance_over_time.phenotype_over_time,
+                label="Best Individual Over Time"
+            )
+            plt.title('Phenotype Function and Best Predictions')
+            plt.xlabel('Genotype')
+            plt.ylabel('Phenotype')
+
+        elif number_of_dimensions == 3:
+            fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+            ax.plot3D(
+                np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+                np.asarray(self.performance_over_time.genotype_over_time)[:, 1],
+                self.performance_over_time.phenotype_over_time,
+            )
+            surf = ax.plot_surface(function_data.x, function_data.y, function_data.z, cmap=cm.coolwarm,
+                                   linewidth=0, antialiased=False, alpha=0.5)
+            fig.colorbar(surf, shrink=0.5, aspect=20, pad=0.15, orientation="horizontal")
+            ax.set_xlabel('Gene 1')
+            ax.set_ylabel('Gene 2')
+            ax.set_zlabel("Phenotype")
+            ax.set_title("Phenotype Function and Best Predictions")
+
+        plt.legend()
         plt.show()
+
+    def create_gif(self, function_data: PlottingData):
+
+        if function_data.z is None:
+            animation = CreateGif2D(
+                animation_data_x=np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+                animation_data_y=np.asarray(self.performance_over_time.phenotype_over_time),
+                static_plot_data=function_data,
+            )
+        else:
+            animation = CreateGif3D(
+                animation_data_x=np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+                animation_data_y=np.asarray(self.performance_over_time.genotype_over_time)[:, 1],
+                animation_data_z=np.asarray(self.performance_over_time.phenotype_over_time),
+                static_plot_data=function_data,
+            )
+
+        animation.generate_animation()

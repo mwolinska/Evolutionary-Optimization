@@ -49,6 +49,7 @@ extensions = [
   "sphinx.ext.autosectionlabel",
   "sphinx_autodoc_typehints",
   "sphinx_copybutton",
+  "sphinxcontrib.mermaid",
 ]
 
 autodoc_typehints = "description"
