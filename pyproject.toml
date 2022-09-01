@@ -25,4 +25,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-run_evolution = "main:run_evolutionary_alg"
+run_evolution = "evolutionary_optimization.main:run_evolutionary_alg"
