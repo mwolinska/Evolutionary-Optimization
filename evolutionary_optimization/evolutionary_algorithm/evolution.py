@@ -3,7 +3,7 @@ from matplotlib import pyplot as plt, cm
 from tqdm import tqdm
 
 from evolutionary_optimization.evolutionary_algorithm.ea_data_model import PerformancePlotting
-from evolutionary_optimization.evolutionary_algorithm.ea_utils import CreateGif
+from evolutionary_optimization.evolutionary_algorithm.ea_utils import CreateGif2D, CreateGif3D
 from evolutionary_optimization.evolutionary_algorithm.population import Population
 from evolutionary_optimization.fitness_functions.abstract_fitness_function import AbstractFitnessFunction
 from evolutionary_optimization.fitness_functions.implemented_fitness_functions import MaximizeFitnessFunction
@@ -120,9 +120,19 @@ class Evolution:
         plt.show()
 
     def create_gif(self, function_data: PlottingData):
-        animation = CreateGif(
-            animation_data_x=np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
-            animation_data_y=np.asarray(self.performance_over_time.phenotype_over_time),
-            static_plot_data=(function_data.x, function_data.y)
-        )
+
+        if function_data.z is None:
+            animation = CreateGif2D(
+                animation_data_x=np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+                animation_data_y=np.asarray(self.performance_over_time.phenotype_over_time),
+                static_plot_data=function_data,
+            )
+        else:
+            animation = CreateGif3D(
+                animation_data_x=np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+                animation_data_y=np.asarray(self.performance_over_time.genotype_over_time)[:, 1],
+                animation_data_z=np.asarray(self.performance_over_time.phenotype_over_time),
+                static_plot_data=function_data,
+            )
+
         animation.generate_animation()
