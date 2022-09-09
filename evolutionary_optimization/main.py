@@ -7,9 +7,8 @@ from evolutionary_optimization.phenotype.phenotype_model.phenotype_utils import 
 
 
 def run_evolutionary_alg():
-    genotype_class = Genotype.get_genotype(Genotypes.FLOAT_LIST)
-    # phenotype_class = Phenotype.get_phenotype(Phenotypes.PARABOLA)
-    phenotype_class = BoothPhenotype
+    genotype_class = Genotype.get_genotype(Genotypes.INTEGER_LIST)
+    phenotype_class = Phenotype.get_phenotype(Phenotypes.BOOTH)
     fitness_function_class = FitnessFunction.get_fitness_function(FitnessFunctions.MINIMIZE)
     fitness_function_instance = fitness_function_class()
 
@@ -23,7 +22,7 @@ def run_evolutionary_alg():
         number_of_individuals=100,
         number_of_generations=100,
         fitness_function=fitness_function_instance,
-        ratio_of_elite_individuals=0.2,
+        ratio_of_elite_individuals=0.3,
     )
     evolutionary_algorithm.evolve()
     evolutionary_algorithm.plot_fitness_score_over_time()
@@ -34,7 +33,7 @@ def run_evolutionary_alg():
         number_of_points=100,
     )
     evolutionary_algorithm.plot_phenotype_function_and_best_individuals(phenotype_function_points_tuple)
-
+    evolutionary_algorithm.create_gif(phenotype_function_points_tuple)
 
 if __name__ == '__main__':
    run_evolutionary_alg()
