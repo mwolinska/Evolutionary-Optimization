@@ -35,17 +35,19 @@ class IntegerListGenotype(AbstractGenotype):
 
     @property
     def genotype(self):
+        """Genotype value used for evaluation of phenotype."""
         return self._genotype
 
     @genotype.setter
     def genotype(self, value):
+        """Genotype attribute setter."""
         self._genotype = value
 
     @classmethod
     def build_random_genotype(
         cls,
         number_of_genes: int = 1,
-        value_range: Tuple[int, int] = (-100, 100),
+        value_range: Tuple[int, int] = (-10000, 10000),
         mutation_probability: Optional[float] = 0.5,
         ratio_of_population_for_crossover: Optional[float] = 0.5,
     ) -> "IntegerListGenotype":
@@ -77,7 +79,7 @@ class IntegerListGenotype(AbstractGenotype):
 
     @classmethod
     def from_genotype(cls, base_genotype: "IntegerListGenotype", new_genotype: List[int]) -> "IntegerListGenotype":
-        return cls(genotype=new_genotype,
+        """Create a new genotype using the parameters of an existing genotype."""
                    value_range=base_genotype.value_range,
                    mutation_probability=base_genotype.mutation_probability,
                    ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover
