@@ -4,9 +4,11 @@ version = "3.0.2"
 description = "A generic evolutionary algorithm for function optimisation."
 readme = "README_PYPI.md"
 authors = ["Marta Wolinska <mswolinska@gmail.com>"]
-packages = [{ include = "evolutionary_optimization"}]
 documentation = "https://mwolinska.github.io/Evolutionary-Optimization/"
 repository = "https://github.com/mwolinska/Evolutionary-Optimization"
+packages = [
+    { include = "evolutionary_optimization" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
