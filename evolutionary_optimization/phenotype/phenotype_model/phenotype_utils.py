@@ -19,10 +19,7 @@ def generate_points_for_function(
     upper_plotting_limit: Union[float, int] = 50,
     number_of_points: int = 100,
 ) -> Union[NameError, PlottingData]:
-    phenotype = phenotype.from_phenotype(phenotype)
-
     number_of_dimensions = len(phenotype.genotype.genotype) + 1
-
     function_data = PlottingData(x=np.empty(0), y=np.empty(0))
     range_of_x = np.linspace(bottom_plotting_limit, upper_plotting_limit, num=number_of_points)
 
