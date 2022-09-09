@@ -18,13 +18,13 @@ class AbstractPhenotype(ABC):
     @property
     @abstractmethod
     def genotype(self):
-        """Abstract genotype that defines the phenotype."""
+        """AbstractGenotype that defines the phenotype."""
         pass
 
     @genotype.setter
     @abstractmethod
     def genotype(self, value):
-        """Genotype property setter."""
+        """"Setter for genotype property."""
         pass
 
     @property

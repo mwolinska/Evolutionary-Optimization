@@ -17,10 +17,12 @@ class SaddlePointPhenotype(AbstractPhenotype):
 
     @property
     def genotype(self):
+        """AbstractGenotype that defines the phenotype."""
         return self._genotype
 
     @genotype.setter
     def genotype(self, value):
+        """Setter for genotype property."""
         self._genotype = value
 
     @property
@@ -30,6 +32,7 @@ class SaddlePointPhenotype(AbstractPhenotype):
 
     @phenotype_value.setter
     def phenotype_value(self, value):
+        """Setter for phenotype_value property."""
         self._phenotype_value = value
 
     def evaluate_phenotype(self):
