@@ -18,11 +18,13 @@ class AbstractPhenotype(ABC):
     @property
     @abstractmethod
     def genotype(self):
+        """AbstractGenotype that defines the phenotype."""
         pass
 
     @genotype.setter
     @abstractmethod
     def genotype(self, value):
+        """"Setter for genotype property."""
         pass
 
     @property
@@ -34,6 +36,7 @@ class AbstractPhenotype(ABC):
     @phenotype_value.setter
     @abstractmethod
     def phenotype_value(self, value):
+        """Phenotype_value setter."""
         pass
 
     @abstractmethod
@@ -69,5 +72,5 @@ class AbstractPhenotype(ABC):
     @staticmethod
     @abstractmethod
     def evaluate_phenotype_using_arrays(x_values: ndarray, y_values: ndarray) -> ndarray:
-        """Calculates multiple phenotype values from numpy arrays."""
+        """Calculate multiple phenotype values from numpy arrays."""
         pass

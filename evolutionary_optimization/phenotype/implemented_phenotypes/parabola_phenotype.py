@@ -3,7 +3,6 @@ from typing import Tuple
 from numpy import ndarray
 
 from evolutionary_optimization.genotype.genotype_model.abstract_genotype import AbstractGenotype
-from evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype import BinaryListGenotype
 from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
 
 
@@ -19,10 +18,12 @@ class ParabolaPhenotype(AbstractPhenotype):
 
     @property
     def genotype(self):
+        """AbstractGenotype that defines the phenotype."""
         return self._genotype
 
     @genotype.setter
     def genotype(self, value):
+        """Setter for genotype property."""
         self._genotype = value
 
     @property

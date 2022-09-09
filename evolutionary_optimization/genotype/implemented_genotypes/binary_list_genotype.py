@@ -24,6 +24,10 @@ class BinaryListGenotype(AbstractGenotype):
             ratio_of_population_for_crossover: ratio of population used for crossover when updating population.
             number_of_genes: number of genes in the genotype.
             value_range: minimum and maximum values of a gene.
+
+        .. warning::
+            This genotype can only be used for single value optimization e.g. for a ParabolaPhenotype,
+            and would not work for BoothPhenotype.
         """
         self.binary_genotype = genotype
         self._genotype = self.return_integer_form()
@@ -34,11 +38,15 @@ class BinaryListGenotype(AbstractGenotype):
 
     @property
     def genotype(self):
-        """This is the integer form of the self.binary_genotype."""
+        """Genotype value used for evaluation of phenotype.
+
+        .. warning::
+            This is the integer form of the self.binary_genotype."""
         return self._genotype
 
     @genotype.setter
     def genotype(self, value):
+        """Genotype attribute setter."""
         self._genotype = value
 
     @classmethod
@@ -49,7 +57,7 @@ class BinaryListGenotype(AbstractGenotype):
         mutation_probability: Optional[float] = 0.1,
         ratio_of_population_for_crossover: Optional[float] = 0.5
     ) -> "BinaryListGenotype":
-        """Builds random genotype attribute based on requirements.
+        """Build random genotype attribute based on requirements.
 
         Args:
             number_of_genes: number of genes in the genotype.
@@ -66,19 +74,23 @@ class BinaryListGenotype(AbstractGenotype):
             new_gene = randint(0, 1)
             genotype.append(new_gene)
 
-        return cls(genotype=genotype,
-                   mutation_probability=mutation_probability,
-                   ratio_of_population_for_crossover=ratio_of_population_for_crossover,
-                   number_of_genes=number_of_genes,
-                   value_range=value_range)
+        return cls(
+            genotype=genotype,
+            mutation_probability=mutation_probability,
+            ratio_of_population_for_crossover=ratio_of_population_for_crossover,
+            number_of_genes=number_of_genes,
+            value_range=value_range,
+        )
 
     @classmethod
     def from_genotype(cls, base_genotype: "BinaryListGenotype", new_genotype: List[int]) -> "BinaryListGenotype":
-        return cls(genotype=new_genotype,
-                   value_range=base_genotype.value_range,
-                   mutation_probability=base_genotype.mutation_probability,
-                   ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover
-                   )
+        """Create a new genotype using the parameters of an existing genotype."""
+        return cls(
+            genotype=new_genotype,
+            value_range=base_genotype.value_range,
+            mutation_probability=base_genotype.mutation_probability,
+            ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover
+        )
 
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""

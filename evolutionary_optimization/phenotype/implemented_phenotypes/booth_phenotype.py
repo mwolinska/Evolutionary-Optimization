@@ -18,10 +18,12 @@ class BoothPhenotype(AbstractPhenotype):
 
     @property
     def genotype(self):
+        """AbstractGenotype that defines the phenotype."""
         return self._genotype
 
     @genotype.setter
     def genotype(self, value):
+        """Setter for genotype property."""
         self._genotype = value
 
     @property

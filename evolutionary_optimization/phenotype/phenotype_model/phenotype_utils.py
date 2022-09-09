@@ -8,6 +8,7 @@ from evolutionary_optimization.phenotype import AbstractPhenotype
 
 @dataclass
 class PlottingData:
+    """Dataclass containing plotting information."""
     x: ndarray
     y: ndarray
     z: Optional[ndarray] = None
@@ -19,6 +20,18 @@ def generate_points_for_function(
     upper_plotting_limit: Union[float, int] = 50,
     number_of_points: int = 100,
 ) -> Union[NameError, PlottingData]:
+    """Generate datapoints to plot a phenotype function.
+
+    Args:
+        phenotype: AbstractPhenotype which we want to plot.
+        bottom_plotting_limit: the bottom limit for plotting.
+        upper_plotting_limit: the upper limit for plotting.
+        number_of_points: number of points to generate within the plotting range.
+
+    Returns:
+        Data necessary to generate a plot of the phenotype.
+
+    """
     number_of_dimensions = len(phenotype.genotype.genotype) + 1
     function_data = PlottingData(x=np.empty(0), y=np.empty(0))
     range_of_x = np.linspace(bottom_plotting_limit, upper_plotting_limit, num=number_of_points)
