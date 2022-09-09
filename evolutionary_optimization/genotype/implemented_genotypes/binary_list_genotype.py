@@ -14,7 +14,7 @@ class BinaryListGenotype(AbstractGenotype):
         mutation_probability: float = 0.5,
         ratio_of_population_for_crossover: float = 0.5,
         number_of_genes: int = 32,
-        value_range: Tuple[int, int] = (0, 1),
+        value_range: Optional[Tuple[int, int]] = (0, 1),
     ):
         """Initialise instance of AbstractGenotype.
 
@@ -30,7 +30,7 @@ class BinaryListGenotype(AbstractGenotype):
         self.mutation_probability = mutation_probability
         self.ratio_of_population_for_crossover = ratio_of_population_for_crossover
         self.number_of_genes = number_of_genes
-        self.value_range = value_range
+        self.value_range = (0, 1)
 
     @property
     def genotype(self):
@@ -63,7 +63,7 @@ class BinaryListGenotype(AbstractGenotype):
         genotype = []
 
         for i in range(number_of_genes):
-            new_gene = randint(value_range[0], value_range[1])
+            new_gene = randint(0, 1)
             genotype.append(new_gene)
 
         return cls(genotype=genotype,
@@ -83,7 +83,9 @@ class BinaryListGenotype(AbstractGenotype):
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""
 
-        mutation_mask = np.random.choice([True, False], p=[self.mutation_probability, 1 - self.mutation_probability], size=len(self.binary_genotype))
+        mutation_mask = np.random.choice([True, False],
+                                         p=[self.mutation_probability, 1 - self.mutation_probability],
+                                         size=len(self.binary_genotype))
 
         logical_binary_genotype = np.array(self.binary_genotype).astype(bool)
 
