@@ -16,7 +16,7 @@ class IntegerListGenotype(AbstractGenotype):
         mutation_probability: float = 0.1,
         ratio_of_population_for_crossover: float = 0.5,
         number_of_genes: int = 1,
-        value_range: Tuple[int, int] = (0, 9),
+        value_range: Tuple[int, int] = (-10000, 10000),
     ):
         """Initialise instance of AbstractGenotype.
 

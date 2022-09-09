@@ -13,7 +13,7 @@ class FloatListGenotype:
             mutation_probability: float = 0.5,
             ratio_of_population_for_crossover: float = 0,
             number_of_genes: int = 1,
-            value_range: Tuple[int, int] = (-100, 100),
+            value_range: Tuple[int, int] = (-10000, 10000),
     ):
         """Initialise instance of AbstractGenotype.
 
@@ -48,7 +48,7 @@ class FloatListGenotype:
     def build_random_genotype(
             cls,
             number_of_genes: int = 1,
-            value_range: Tuple[int, int] = (-100, 100),
+            value_range: Tuple[int, int] = (-10000, 10000),
             mutation_probability: float = 0.5,
             ratio_of_population_for_crossover: float = 0,
     ) -> "AbstractGenotype":
