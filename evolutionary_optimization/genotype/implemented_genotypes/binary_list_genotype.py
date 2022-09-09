@@ -24,6 +24,10 @@ class BinaryListGenotype(AbstractGenotype):
             ratio_of_population_for_crossover: ratio of population used for crossover when updating population.
             number_of_genes: number of genes in the genotype.
             value_range: minimum and maximum values of a gene.
+
+        .. warning::
+            This genotype can only be used for single value optimization e.g. for a ParabolaPhenotype,
+            and would not work for BoothPhenotype.
         """
         self.binary_genotype = genotype
         self._genotype = self.return_integer_form()
