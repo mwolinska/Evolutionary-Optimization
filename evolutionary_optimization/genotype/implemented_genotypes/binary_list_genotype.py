@@ -38,11 +38,15 @@ class BinaryListGenotype(AbstractGenotype):
 
     @property
     def genotype(self):
-        """This is the integer form of the self.binary_genotype."""
+        """Genotype value used for evaluation of phenotype.
+
+        .. warning::
+            This is the integer form of the self.binary_genotype."""
         return self._genotype
 
     @genotype.setter
     def genotype(self, value):
+        """Genotype attribute setter."""
         self._genotype = value
 
     @classmethod
@@ -53,7 +57,7 @@ class BinaryListGenotype(AbstractGenotype):
         mutation_probability: Optional[float] = 0.1,
         ratio_of_population_for_crossover: Optional[float] = 0.5
     ) -> "BinaryListGenotype":
-        """Builds random genotype attribute based on requirements.
+        """Build random genotype attribute based on requirements.
 
         Args:
             number_of_genes: number of genes in the genotype.
@@ -78,6 +82,7 @@ class BinaryListGenotype(AbstractGenotype):
 
     @classmethod
     def from_genotype(cls, base_genotype: "BinaryListGenotype", new_genotype: List[int]) -> "BinaryListGenotype":
+        """Create a new genotype using the parameters of an existing genotype."""
         return cls(genotype=new_genotype,
                    value_range=base_genotype.value_range,
                    mutation_probability=base_genotype.mutation_probability,
