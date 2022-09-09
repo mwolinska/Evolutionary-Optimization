@@ -103,10 +103,6 @@ class Population:
             for individual in non_elite_individuals:
                 individual.mutate()
 
-        # TODO (Marta): This is a deviation from the standard algorithm
-        # if not self.crossover and not self.mutation:
-        #     non_elite_individuals = self.create_list_of_new_individuals(len(non_elite_individuals))
-
         new_individuals_list = elite_individuals + non_elite_individuals
         self.population = new_individuals_list
 
