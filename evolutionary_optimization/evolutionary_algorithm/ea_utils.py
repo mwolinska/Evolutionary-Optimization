@@ -6,7 +6,7 @@ from evolutionary_optimization.phenotype.phenotype_model.phenotype_utils import 
 
 class CreateGif2D:
     def __init__(self, animation_data_x: np.ndarray, animation_data_y: np.ndarray, static_plot_data: PlottingData):
-        """Initialises CreateGif2D class.
+        """Initialise CreateGif2D class.
 
         This class creates a gif of a two-dimensional phenotype.
 
@@ -34,7 +34,7 @@ class CreateGif2D:
         self.ax.plot(static_plot_data.x, static_plot_data.y)
 
     def plot_background_for_frame(self):
-        """Initialises the background for the gif."""
+        """Initialise the background for the gif."""
         self.line.set_data([], [])
         return self.line,
 
