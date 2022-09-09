@@ -1,5 +1,5 @@
 from random import uniform, randint
-from typing import Tuple, List
+from typing import Tuple, List, Optional
 
 import numpy as np
 
@@ -9,7 +9,7 @@ from evolutionary_optimization.genotype.genotype_model.genotype_utils import sin
 class FloatListGenotype:
     def __init__(
             self,
-            genotype=None,
+            genotype: Optional[List[float]] = None,
             mutation_probability: float = 0.5,
             ratio_of_population_for_crossover: float = 0,
             number_of_genes: int = 1,
@@ -36,10 +36,12 @@ class FloatListGenotype:
 
     @property
     def genotype(self):
+        """Genotype value used for evaluation of phenotype."""
         return self._genotype
 
     @genotype.setter
     def genotype(self, value):
+        """Genotype attribute setter."""
         self._genotype = value
 
     @classmethod
@@ -73,6 +75,7 @@ class FloatListGenotype:
 
     @classmethod
     def from_genotype(cls, base_genotype: "FloatListGenotype", new_genotype: List[float]) -> "FloatListGenotype":
+        """Create a new genotype using the parameters of an existing genotype."""
         return cls(genotype=new_genotype,
                    value_range=base_genotype.value_range,
                    mutation_probability=base_genotype.mutation_probability,
