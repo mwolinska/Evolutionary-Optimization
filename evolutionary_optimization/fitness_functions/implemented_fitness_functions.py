@@ -9,7 +9,7 @@ class MaximizeFitnessFunction(AbstractFitnessFunction):
         """Looking for maximum phenotype value.
 
         Args:
-            phenotype: instance of Abstract phenotype being evaluated).
+            phenotype: instance of Abstract phenotype being evaluated.
 
         Returns:
             The phenotype_value directly as we are looking for the greatest value.
@@ -22,7 +22,7 @@ class MinimizeFitnessFunction(AbstractFitnessFunction):
         """Looking for minimum phenotype value.
 
         Args:
-            phenotype: instance of Abstract phenotype being evaluated).
+            phenotype: instance of Abstract phenotype being evaluated.
 
         Returns:
             The negative version of phenotype_value as we are looking for the lowest value i.e.
