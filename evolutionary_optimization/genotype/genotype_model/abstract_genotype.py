@@ -29,11 +29,13 @@ class AbstractGenotype(ABC):
     @property
     @abstractmethod
     def genotype(self):
+        """Genotype value used for evaluation of phenotype."""
         pass
 
     @genotype.setter
     @abstractmethod
     def genotype(self, value):
+        """Genotype attribute setter."""
         pass
 
     @classmethod
@@ -85,4 +87,5 @@ class AbstractGenotype(ABC):
         base_genotype: "AbstractGenotype",
         new_genotype: Union[List[int], List[float], List[str]],
     ) -> "AbstractGenotype":
+        """Create a new genotype using the parameters of an existing genotype."""
         pass
