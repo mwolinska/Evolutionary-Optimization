@@ -120,7 +120,7 @@ class Evolution:
         plt.show()
 
     def create_gif(self, function_data: PlottingData):
-
+        """Create gif animation of the best phenotype/genotype pair over time."""
         if function_data.z is None:
             animation = CreateGif2D(
                 animation_data_x=np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
