@@ -1,7 +1,5 @@
 from typing import List
 
-
-
 def single_point_crossover(
         parent_1_genotype: List[int],
         parent_2_genotype: List[int],
