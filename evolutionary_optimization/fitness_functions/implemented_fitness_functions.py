@@ -33,10 +33,22 @@ class MinimizeFitnessFunction(AbstractFitnessFunction):
 
 class ApproachValueFitnessFunction(AbstractFitnessFunction):
     def __init__(self, expected_value: Union[float, int]):
+        """Initialise class.
+
+        Args:
+            expected_value: the value of the phenotype we are looking to find.
+        """
         self.expected_value = expected_value
 
     def evaluate(self, phenotype: AbstractPhenotype) -> float:
+        """Looking for a particular phenotype value.
 
+        Args:
+            phenotype: instance of Abstract phenotype being evaluated).
+
+        Returns:
+            The value of 1 divided by the absolute value of the phenotype.
+        """
         delta_to_expected_value = abs(self.expected_value - phenotype.phenotype_value)
 
         if delta_to_expected_value == 0:
