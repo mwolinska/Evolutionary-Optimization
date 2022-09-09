@@ -128,11 +128,12 @@ class Evolution:
                 static_plot_data=function_data,
             )
         else:
-            animation = CreateGif3D(
-                animation_data_x=np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
-                animation_data_y=np.asarray(self.performance_over_time.genotype_over_time)[:, 1],
-                animation_data_z=np.asarray(self.performance_over_time.phenotype_over_time),
-                static_plot_data=function_data,
-            )
+            raise NotImplementedError
+            # animation = CreateGif3D(
+            #     animation_data_x=np.asarray(self.performance_over_time.genotype_over_time)[:, 0],
+            #     animation_data_y=np.asarray(self.performance_over_time.genotype_over_time)[:, 1],
+            #     animation_data_z=np.asarray(self.performance_over_time.phenotype_over_time),
+            #     static_plot_data=function_data,
+            # )
 
         animation.generate_animation()
