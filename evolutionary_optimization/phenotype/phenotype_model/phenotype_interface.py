@@ -15,7 +15,7 @@ class Phenotypes(str, Enum):
     BOOTH = "booth"
 
 class Phenotype:
-    """Maps Phenotypes to their associated concrete class based on AbstractPhenotype."""
+    """Map Phenotypes to their associated concrete class based on AbstractPhenotype."""
     phenotypes_dictionary = {
         Phenotypes.PARABOLA: ParabolaPhenotype,
         Phenotypes.INVERTED_PARABOLA: InvertedParabolaPhenotype,
