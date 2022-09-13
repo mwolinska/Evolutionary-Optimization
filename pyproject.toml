@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "evolutionary-optimization-algorithm"
-version = "3.0.4"
+version = "3.0.5"
 description = "A generic evolutionary algorithm for function optimisation."
 readme = "README_PYPI.md"
 authors = ["Marta Wolinska <mswolinska@gmail.com>"]
