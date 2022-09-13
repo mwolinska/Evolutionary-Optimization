@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "evolutionary-optimization"
+name = "evolutionary-optimization-algorithm"
 version = "3.0.3"
 description = "A generic evolutionary algorithm for function optimisation."
 readme = "README_PYPI.md"
