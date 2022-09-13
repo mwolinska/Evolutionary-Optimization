@@ -1,5 +1,6 @@
 from enum import Enum
 
+from evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype import BoothPhenotype
 from evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype import AbstractPhenotype
 from evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype import InvertedParabolaPhenotype
 from evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype import ParabolaPhenotype
@@ -11,13 +12,15 @@ class Phenotypes(str, Enum):
     PARABOLA = "parabola"
     INVERTED_PARABOLA = "inverted_parabola"
     SADDLE_POINT = "saddle_point"
+    BOOTH = "booth"
 
 class Phenotype:
-    """Maps Phenotypes to their associated concrete class based on AbstractPhenotype."""
+    """Map Phenotypes to their associated concrete class based on AbstractPhenotype."""
     phenotypes_dictionary = {
         Phenotypes.PARABOLA: ParabolaPhenotype,
         Phenotypes.INVERTED_PARABOLA: InvertedParabolaPhenotype,
         Phenotypes.SADDLE_POINT: SaddlePointPhenotype,
+        Phenotypes.BOOTH: BoothPhenotype,
     }
 
     @classmethod

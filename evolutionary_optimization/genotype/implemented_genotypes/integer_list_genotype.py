@@ -16,7 +16,7 @@ class IntegerListGenotype(AbstractGenotype):
         mutation_probability: float = 0.1,
         ratio_of_population_for_crossover: float = 0.5,
         number_of_genes: int = 1,
-        value_range: Tuple[int, int] = (0, 9),
+        value_range: Tuple[int, int] = (-10000, 10000),
     ):
         """Initialise instance of AbstractGenotype.
 
@@ -35,17 +35,19 @@ class IntegerListGenotype(AbstractGenotype):
 
     @property
     def genotype(self):
+        """Genotype value used for evaluation of phenotype."""
         return self._genotype
 
     @genotype.setter
     def genotype(self, value):
+        """Genotype attribute setter."""
         self._genotype = value
 
     @classmethod
     def build_random_genotype(
         cls,
         number_of_genes: int = 1,
-        value_range: Tuple[int, int] = (-100, 100),
+        value_range: Tuple[int, int] = (-10000, 10000),
         mutation_probability: Optional[float] = 0.5,
         ratio_of_population_for_crossover: Optional[float] = 0.5,
     ) -> "IntegerListGenotype":
@@ -69,19 +71,23 @@ class IntegerListGenotype(AbstractGenotype):
             new_gene = randint(value_range[0], value_range[1])
             genotype.append(new_gene)
 
-        return cls(genotype=genotype,
-                   mutation_probability=mutation_probability,
-                   ratio_of_population_for_crossover=ratio_of_population_for_crossover,
-                   number_of_genes=number_of_genes,
-                   value_range=value_range)
+        return cls(
+            genotype=genotype,
+            mutation_probability=mutation_probability,
+            ratio_of_population_for_crossover=ratio_of_population_for_crossover,
+            number_of_genes=number_of_genes,
+            value_range=value_range,
+        )
 
     @classmethod
     def from_genotype(cls, base_genotype: "IntegerListGenotype", new_genotype: List[int]) -> "IntegerListGenotype":
-        return cls(genotype=new_genotype,
-                   value_range=base_genotype.value_range,
-                   mutation_probability=base_genotype.mutation_probability,
-                   ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover
-                   )
+        """Create a new genotype using the parameters of an existing genotype."""
+        return cls(
+            genotype=new_genotype,
+            value_range=base_genotype.value_range,
+            mutation_probability=base_genotype.mutation_probability,
+            ratio_of_population_for_crossover=base_genotype.ratio_of_population_for_crossover,
+        )
 
     def mutate(self):
         """In place modification of the genotype by randomly changing genes based on mutation probability."""

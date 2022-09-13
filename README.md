@@ -42,7 +42,7 @@ poetry install
 
 Alternatively you can install the pypi package using pip:
 ```bash
-pip install evolutionary_optimization
+pip install evolutionary-optimization-algorithm
 ```
 
 ### Running Experiments
