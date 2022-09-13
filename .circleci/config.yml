@@ -17,7 +17,20 @@ jobs:
           command: |
             RELEASE_VERSION=$(poetry version --short)
             gh release create $RELEASE_VERSION --generate-notes
-
+  publish-to-testpypi:
+    docker:
+      - image: cimg/python:3.8.12
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: poetry
+      - run:
+          name: Publish to test pypi
+          command: |
+            poetry build
+            poetry config repositories.testpypi https://test.pypi.org/legacy/
+            poetry config http-basic.testpypi $PYPI_USERNAME $PYPI_PASSWORD
+            poetry publish -r testpypi
   docs-build:
       docker:
         - image: cimg/python:3.8.12
@@ -67,6 +80,15 @@ workflows:
                 - main
           context:
             - GITHUB_CREDS
+      - publish-to-testpypi:
+          filters:
+            branches:
+              only:
+                - master
+                - main
+                - add_publishing_package_to_ci
+          context:
+            - PYPI_CREDS
       - docs-build:
           filters:
             branches:
