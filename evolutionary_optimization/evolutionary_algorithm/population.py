@@ -33,6 +33,18 @@ class Population:
         self.crossover = True if phenotype.genotype.mutation_probability > 0 else False
         self.ratio_of_elite_individuals = ratio_of_elite_individuals
 
+    # TODO (Marta): a better method would be to act on separate populations
+    # @classmethod
+    # def from_existing_population(cls, population: List[AbstractPhenotype]) -> "Population":
+    #     new_population = cls(
+    #         number_of_individuals=len(population),
+    #         phenotype=population[0],
+    #         ratio_of_elite_individuals=0.2
+    #     )
+    #
+    #     new_population.population = population
+    #     return new_population
+
     def _create_population(self) -> List[AbstractPhenotype]:
         """Create initial population of individuals.
 
@@ -92,6 +104,10 @@ class Population:
         elite_individuals, non_elite_individuals = self.split_elite_individuals(fitness_function)
 
         non_elite_individuals = non_elite_individuals[len(elite_individuals):] + deepcopy(elite_individuals)
+
+        # elite_population = Population.from_existing_population(elite_individuals)
+        # non_elite_population = Population.from_existing_population(non_elite_individuals)
+
         if self.crossover:
             number_of_individuals_for_crossover = int(self.phenotype.genotype.ratio_of_population_for_crossover
                                                       * self.number_of_individuals)
