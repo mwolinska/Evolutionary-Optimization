@@ -99,7 +99,6 @@ workflows:
             branches:
               only:
                 - dev
-                - add_publishing_package_to_ci
           context:
             - PYPI_CREDS
       - publish-to-pypi:
@@ -108,7 +107,6 @@ workflows:
               only:
                 - master
                 - main
-                - add_publishing_package_to_ci
           context:
             - PYPI_CREDS
       - docs-build:
