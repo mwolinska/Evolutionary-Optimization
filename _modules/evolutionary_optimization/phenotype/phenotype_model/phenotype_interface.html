@@ -73,6 +73,7 @@
   <h1>Source code for evolutionary_optimization.phenotype.phenotype_model.phenotype_interface</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 
+<span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.implemented_phenotypes.booth_phenotype</span> <span class="kn">import</span> <span class="n">BoothPhenotype</span>
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype</span> <span class="kn">import</span> <span class="n">AbstractPhenotype</span>
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.implemented_phenotypes.inverted_parabola_phenotype</span> <span class="kn">import</span> <span class="n">InvertedParabolaPhenotype</span>
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.implemented_phenotypes.parabola_phenotype</span> <span class="kn">import</span> <span class="n">ParabolaPhenotype</span>
@@ -83,14 +84,16 @@
     <span class="sd">&quot;&quot;&quot;Enum containing implemented phenotypes.&quot;&quot;&quot;</span>
     <span class="n">PARABOLA</span> <span class="o">=</span> <span class="s2">&quot;parabola&quot;</span>
     <span class="n">INVERTED_PARABOLA</span> <span class="o">=</span> <span class="s2">&quot;inverted_parabola&quot;</span>
-    <span class="n">SADDLE_POINT</span> <span class="o">=</span> <span class="s2">&quot;saddle_point&quot;</span></div>
+    <span class="n">SADDLE_POINT</span> <span class="o">=</span> <span class="s2">&quot;saddle_point&quot;</span>
+    <span class="n">BOOTH</span> <span class="o">=</span> <span class="s2">&quot;booth&quot;</span></div>
 
 <div class="viewcode-block" id="Phenotype"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotype">[docs]</a><span class="k">class</span> <span class="nc">Phenotype</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Maps Phenotypes to their associated concrete class based on AbstractPhenotype.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Map Phenotypes to their associated concrete class based on AbstractPhenotype.&quot;&quot;&quot;</span>
     <span class="n">phenotypes_dictionary</span> <span class="o">=</span> <span class="p">{</span>
         <span class="n">Phenotypes</span><span class="o">.</span><span class="n">PARABOLA</span><span class="p">:</span> <span class="n">ParabolaPhenotype</span><span class="p">,</span>
         <span class="n">Phenotypes</span><span class="o">.</span><span class="n">INVERTED_PARABOLA</span><span class="p">:</span> <span class="n">InvertedParabolaPhenotype</span><span class="p">,</span>
         <span class="n">Phenotypes</span><span class="o">.</span><span class="n">SADDLE_POINT</span><span class="p">:</span> <span class="n">SaddlePointPhenotype</span><span class="p">,</span>
+        <span class="n">Phenotypes</span><span class="o">.</span><span class="n">BOOTH</span><span class="p">:</span> <span class="n">BoothPhenotype</span><span class="p">,</span>
     <span class="p">}</span>
 
 <div class="viewcode-block" id="Phenotype.get_phenotype"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_interface.Phenotype.get_phenotype">[docs]</a>    <span class="nd">@classmethod</span>

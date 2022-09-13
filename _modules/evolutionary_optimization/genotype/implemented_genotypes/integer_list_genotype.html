@@ -89,7 +89,7 @@
         <span class="n">mutation_probability</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
         <span class="n">ratio_of_population_for_crossover</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
         <span class="n">number_of_genes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="n">value_range</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span>
+        <span class="n">value_range</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Initialise instance of AbstractGenotype.</span>
 
@@ -108,17 +108,19 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Genotype value used for evaluation of phenotype.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span>
 
     <span class="nd">@genotype</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Genotype attribute setter.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span> <span class="o">=</span> <span class="n">value</span>
 
 <div class="viewcode-block" id="IntegerListGenotype.build_random_genotype"><a class="viewcode-back" href="../../../../evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.build_random_genotype">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">build_random_genotype</span><span class="p">(</span>
         <span class="bp">cls</span><span class="p">,</span>
         <span class="n">number_of_genes</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="n">value_range</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+        <span class="n">value_range</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">),</span>
         <span class="n">mutation_probability</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
         <span class="n">ratio_of_population_for_crossover</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;IntegerListGenotype&quot;</span><span class="p">:</span>
@@ -142,19 +144,23 @@
             <span class="n">new_gene</span> <span class="o">=</span> <span class="n">randint</span><span class="p">(</span><span class="n">value_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">value_range</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
             <span class="n">genotype</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_gene</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">genotype</span><span class="o">=</span><span class="n">genotype</span><span class="p">,</span>
-                   <span class="n">mutation_probability</span><span class="o">=</span><span class="n">mutation_probability</span><span class="p">,</span>
-                   <span class="n">ratio_of_population_for_crossover</span><span class="o">=</span><span class="n">ratio_of_population_for_crossover</span><span class="p">,</span>
-                   <span class="n">number_of_genes</span><span class="o">=</span><span class="n">number_of_genes</span><span class="p">,</span>
-                   <span class="n">value_range</span><span class="o">=</span><span class="n">value_range</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">genotype</span><span class="o">=</span><span class="n">genotype</span><span class="p">,</span>
+            <span class="n">mutation_probability</span><span class="o">=</span><span class="n">mutation_probability</span><span class="p">,</span>
+            <span class="n">ratio_of_population_for_crossover</span><span class="o">=</span><span class="n">ratio_of_population_for_crossover</span><span class="p">,</span>
+            <span class="n">number_of_genes</span><span class="o">=</span><span class="n">number_of_genes</span><span class="p">,</span>
+            <span class="n">value_range</span><span class="o">=</span><span class="n">value_range</span><span class="p">,</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="IntegerListGenotype.from_genotype"><a class="viewcode-back" href="../../../../evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.from_genotype">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">from_genotype</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">base_genotype</span><span class="p">:</span> <span class="s2">&quot;IntegerListGenotype&quot;</span><span class="p">,</span> <span class="n">new_genotype</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="s2">&quot;IntegerListGenotype&quot;</span><span class="p">:</span>
-        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">genotype</span><span class="o">=</span><span class="n">new_genotype</span><span class="p">,</span>
-                   <span class="n">value_range</span><span class="o">=</span><span class="n">base_genotype</span><span class="o">.</span><span class="n">value_range</span><span class="p">,</span>
-                   <span class="n">mutation_probability</span><span class="o">=</span><span class="n">base_genotype</span><span class="o">.</span><span class="n">mutation_probability</span><span class="p">,</span>
-                   <span class="n">ratio_of_population_for_crossover</span><span class="o">=</span><span class="n">base_genotype</span><span class="o">.</span><span class="n">ratio_of_population_for_crossover</span>
-                   <span class="p">)</span></div>
+        <span class="sd">&quot;&quot;&quot;Create a new genotype using the parameters of an existing genotype.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">genotype</span><span class="o">=</span><span class="n">new_genotype</span><span class="p">,</span>
+            <span class="n">value_range</span><span class="o">=</span><span class="n">base_genotype</span><span class="o">.</span><span class="n">value_range</span><span class="p">,</span>
+            <span class="n">mutation_probability</span><span class="o">=</span><span class="n">base_genotype</span><span class="o">.</span><span class="n">mutation_probability</span><span class="p">,</span>
+            <span class="n">ratio_of_population_for_crossover</span><span class="o">=</span><span class="n">base_genotype</span><span class="o">.</span><span class="n">ratio_of_population_for_crossover</span><span class="p">,</span>
+        <span class="p">)</span></div>
 
 <div class="viewcode-block" id="IntegerListGenotype.mutate"><a class="viewcode-back" href="../../../../evolutionary_optimization.genotype.implemented_genotypes.html#evolutionary_optimization.genotype.implemented_genotypes.integer_list_genotype.IntegerListGenotype.mutate">[docs]</a>    <span class="k">def</span> <span class="nf">mutate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;In place modification of the genotype by randomly changing genes based on mutation probability.&quot;&quot;&quot;</span>

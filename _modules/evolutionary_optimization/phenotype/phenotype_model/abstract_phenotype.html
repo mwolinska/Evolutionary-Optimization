@@ -91,11 +91,13 @@
     <span class="nd">@property</span>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;AbstractGenotype that defines the phenotype.&quot;&quot;&quot;</span>
         <span class="k">pass</span>
 
     <span class="nd">@genotype</span><span class="o">.</span><span class="n">setter</span>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;&quot;Setter for genotype property.&quot;&quot;&quot;</span>
         <span class="k">pass</span>
 
     <span class="nd">@property</span>
@@ -107,6 +109,7 @@
     <span class="nd">@phenotype_value</span><span class="o">.</span><span class="n">setter</span>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">phenotype_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Phenotype_value setter.&quot;&quot;&quot;</span>
         <span class="k">pass</span>
 
 <div class="viewcode-block" id="AbstractPhenotype.evaluate_phenotype"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.evaluate_phenotype">[docs]</a>    <span class="nd">@abstractmethod</span>
@@ -142,7 +145,7 @@
 <div class="viewcode-block" id="AbstractPhenotype.evaluate_phenotype_using_arrays"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype.evaluate_phenotype_using_arrays">[docs]</a>    <span class="nd">@staticmethod</span>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span> <span class="nf">evaluate_phenotype_using_arrays</span><span class="p">(</span><span class="n">x_values</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">,</span> <span class="n">y_values</span><span class="p">:</span> <span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ndarray</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Calculates multiple phenotype values from numpy arrays.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;Calculate multiple phenotype values from numpy arrays.&quot;&quot;&quot;</span>
         <span class="k">pass</span></div></div>
 </pre></div>
 

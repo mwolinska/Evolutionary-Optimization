@@ -56,7 +56,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#evolutionary-optimization-main-module">evolutionary_optimization.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#module-evolutionary_optimization.main">evolutionary_optimization.main module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#module-evolutionary_optimization">Module contents</a></li>
 </ul>
 </li>
@@ -101,6 +101,7 @@
 <dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PerformancePlotting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fitness_over_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phenotype_over_time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">genotype_over_time</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_data_model.html#PerformancePlotting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_data_model.PerformancePlotting" title="Permalink to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Dataclass storing information about the algorithm’s state overtime.</p>
 <dl class="field-list simple">
 </dl>
 <dl class="py method">
@@ -128,11 +129,148 @@
 </dd></dl>
 
 </section>
-<section id="evolutionary-optimization-evolutionary-algorithm-ea-utils-module">
-<h2>evolutionary_optimization.evolutionary_algorithm.ea_utils module<a class="headerlink" href="#evolutionary-optimization-evolutionary-algorithm-ea-utils-module" title="Permalink to this heading"></a></h2>
+<section id="module-evolutionary_optimization.evolutionary_algorithm.ea_utils">
+<span id="evolutionary-optimization-evolutionary-algorithm-ea-utils-module"></span><h2>evolutionary_optimization.evolutionary_algorithm.ea_utils module<a class="headerlink" href="#module-evolutionary_optimization.evolutionary_algorithm.ea_utils" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CreateGif2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">animation_data_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_data_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static_plot_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif2D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">animation_data_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_data_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static_plot_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif2D.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initialise CreateGif2D class.</p>
+<p>This class creates a gif of a two-dimensional phenotype.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>animation_data_x</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>) – genotype value to be lapsed in the gif.</p></li>
+<li><p><strong>animation_data_y</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ndarray</span></code>) – phenotype value to be lapsed in the gif.</p></li>
+<li><p><strong>static_plot_data</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.PlottingData" title="evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.PlottingData"><code class="xref py py-class docutils literal notranslate"><span class="pre">PlottingData</span></code></a>) – data to be used in the background of the gif e.g. the phenotype function.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D.animate">
+<span class="sig-name descname"><span class="pre">animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif2D.animate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D.animate" title="Permalink to this definition"></a></dt>
+<dd><p>Function called at each frame, plots the best phenotype / genotype pair.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D.generate_animation">
+<span class="sig-name descname"><span class="pre">generate_animation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif2D.generate_animation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D.generate_animation" title="Permalink to this definition"></a></dt>
+<dd><p>Generates gif animation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D.plot_background_for_frame">
+<span class="sig-name descname"><span class="pre">plot_background_for_frame</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif2D.plot_background_for_frame"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif2D.plot_background_for_frame" title="Permalink to this definition"></a></dt>
+<dd><p>Initialise the background for the gif.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif3D">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CreateGif3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">animation_data_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_data_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_data_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static_plot_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif3D"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif3D" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif3D.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">animation_data_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_data_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">animation_data_z</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">static_plot_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif3D.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif3D.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif3D.animate">
+<span class="sig-name descname"><span class="pre">animate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif3D.animate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif3D.animate" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif3D.generate_animation">
+<span class="sig-name descname"><span class="pre">generate_animation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/ea_utils.html#CreateGif3D.generate_animation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.ea_utils.CreateGif3D.generate_animation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </section>
-<section id="evolutionary-optimization-evolutionary-algorithm-evolution-module">
-<h2>evolutionary_optimization.evolutionary_algorithm.evolution module<a class="headerlink" href="#evolutionary-optimization-evolutionary-algorithm-evolution-module" title="Permalink to this heading"></a></h2>
+<section id="module-evolutionary_optimization.evolutionary_algorithm.evolution">
+<span id="evolutionary-optimization-evolutionary-algorithm-evolution-module"></span><h2>evolutionary_optimization.evolutionary_algorithm.evolution module<a class="headerlink" href="#module-evolutionary_optimization.evolutionary_algorithm.evolution" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Evolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phenotype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness_function=&lt;evolutionary_optimization.fitness_functions.implemented_fitness_functions.MaximizeFitnessFunction</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_individuals=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_generations=20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_of_elite_individuals=0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phenotype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fitness_function=&lt;evolutionary_optimization.fitness_functions.implemented_fitness_functions.MaximizeFitnessFunction</span> <span class="pre">object&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_individuals=100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">number_of_generations=20</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ratio_of_elite_individuals=0.1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initialise Evolution class.</p>
+<p>The Evolution class performs evolutionary optimization of a function (a phenotype).
+It contains a population of individuals that are evaluated at every iteration (generation)
+of the algorithm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>phenotype</strong> (<a class="reference internal" href="evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype" title="evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype.AbstractPhenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractPhenotype</span></code></a>) – a phenotype instance with the desired genotype.</p></li>
+<li><p><strong>fitness_function</strong> (<a class="reference internal" href="evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.abstract_fitness_function.AbstractFitnessFunction" title="evolutionary_optimization.fitness_functions.abstract_fitness_function.AbstractFitnessFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractFitnessFunction</span></code></a>) – desired fitness function from interface.</p></li>
+<li><p><strong>number_of_individuals</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of phenotype instances to be used within the population.</p></li>
+<li><p><strong>number_of_generations</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of times the algorithm will be run.</p></li>
+<li><p><strong>ratio_of_elite_individuals</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – proportion of best scoring phenotypes in population that will be kept
+to the next generation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.create_gif">
+<span class="sig-name descname"><span class="pre">create_gif</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.create_gif"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.create_gif" title="Permalink to this definition"></a></dt>
+<dd><p>Create gif animation of the best phenotype/genotype pair over time.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.evolve">
+<span class="sig-name descname"><span class="pre">evolve</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.evolve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.evolve" title="Permalink to this definition"></a></dt>
+<dd><p>Perform evolutionary optimisation.</p>
+<p>This function performs the evolutionary optimisation. Over number_of_generations it evaluates the population,
+updates the population (with crossover and/ or mutation as initialised). It then records the
+best fitness score at each generation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_fitness_score_over_time">
+<span class="sig-name descname"><span class="pre">plot_fitness_score_over_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.plot_fitness_score_over_time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_fitness_score_over_time" title="Permalink to this definition"></a></dt>
+<dd><p>Plot score of the best individual at each generation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_phenotype_function_and_best_individuals">
+<span class="sig-name descname"><span class="pre">plot_phenotype_function_and_best_individuals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">function_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.plot_phenotype_function_and_best_individuals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.plot_phenotype_function_and_best_individuals" title="Permalink to this definition"></a></dt>
+<dd><p>Plot phenotype function and best individual phenotype values.</p>
+<dl class="field-list simple">
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.record_performance">
+<span class="sig-name descname"><span class="pre">record_performance</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/evolutionary_algorithm/evolution.html#Evolution.record_performance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.evolutionary_algorithm.evolution.Evolution.record_performance" title="Permalink to this definition"></a></dt>
+<dd><p>In place addition of fitness score, phenotype and genotype values of the current best individual.</p>
+<p>This function performs in place addition of the current best fitness score, phenotype value
+and genotype value to the performance_over_time attribute.
+You can visualise fitness over time using the plot_fitness_score_over_time function, and you can visualise
+phenotype and genotype values over time using plot_phenotype_function_and_best_individuals function.</p>
+</dd></dl>
+
+</dd></dl>
+
 </section>
 <section id="module-evolutionary_optimization.evolutionary_algorithm.population">
 <span id="evolutionary-optimization-evolutionary-algorithm-population-module"></span><h2>evolutionary_optimization.evolutionary_algorithm.population module<a class="headerlink" href="#module-evolutionary_optimization.evolutionary_algorithm.population" title="Permalink to this heading"></a></h2>

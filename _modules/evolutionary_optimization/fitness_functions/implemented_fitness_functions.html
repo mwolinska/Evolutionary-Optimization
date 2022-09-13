@@ -82,7 +82,7 @@
         <span class="sd">&quot;&quot;&quot;Looking for maximum phenotype value.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            phenotype: instance of Abstract phenotype being evaluated).</span>
+<span class="sd">            phenotype: instance of Abstract phenotype being evaluated.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The phenotype_value directly as we are looking for the greatest value.</span>
@@ -95,7 +95,7 @@
         <span class="sd">&quot;&quot;&quot;Looking for minimum phenotype value.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            phenotype: instance of Abstract phenotype being evaluated).</span>
+<span class="sd">            phenotype: instance of Abstract phenotype being evaluated.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            The negative version of phenotype_value as we are looking for the lowest value i.e.</span>
@@ -106,10 +106,22 @@
 
 <div class="viewcode-block" id="ApproachValueFitnessFunction"><a class="viewcode-back" href="../../../evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction">[docs]</a><span class="k">class</span> <span class="nc">ApproachValueFitnessFunction</span><span class="p">(</span><span class="n">AbstractFitnessFunction</span><span class="p">):</span>
 <div class="viewcode-block" id="ApproachValueFitnessFunction.__init__"><a class="viewcode-back" href="../../../evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expected_value</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Initialise class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            expected_value: the value of the phenotype we are looking to find.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">expected_value</span> <span class="o">=</span> <span class="n">expected_value</span></div>
 
 <div class="viewcode-block" id="ApproachValueFitnessFunction.evaluate"><a class="viewcode-back" href="../../../evolutionary_optimization.fitness_functions.html#evolutionary_optimization.fitness_functions.implemented_fitness_functions.ApproachValueFitnessFunction.evaluate">[docs]</a>    <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phenotype</span><span class="p">:</span> <span class="n">AbstractPhenotype</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Looking for a particular phenotype value.</span>
 
+<span class="sd">        Args:</span>
+<span class="sd">            phenotype: instance of Abstract phenotype being evaluated).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The value of 1 divided by the absolute value of the phenotype.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">delta_to_expected_value</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">expected_value</span> <span class="o">-</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">phenotype_value</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="n">delta_to_expected_value</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>

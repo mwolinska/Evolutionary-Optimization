@@ -92,10 +92,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;AbstractGenotype that defines the phenotype.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span>
 
     <span class="nd">@genotype</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setter for genotype property.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>

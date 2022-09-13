@@ -81,6 +81,7 @@
 
 <div class="viewcode-block" id="PlottingData"><a class="viewcode-back" href="../../../../evolutionary_optimization.phenotype.phenotype_model.html#evolutionary_optimization.phenotype.phenotype_model.phenotype_utils.PlottingData">[docs]</a><span class="nd">@dataclass</span>
 <span class="k">class</span> <span class="nc">PlottingData</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Dataclass containing plotting information.&quot;&quot;&quot;</span>
     <span class="n">x</span><span class="p">:</span> <span class="n">ndarray</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">ndarray</span>
     <span class="n">z</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
@@ -92,10 +93,19 @@
     <span class="n">upper_plotting_limit</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
     <span class="n">number_of_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="ne">NameError</span><span class="p">,</span> <span class="n">PlottingData</span><span class="p">]:</span>
-    <span class="n">phenotype</span> <span class="o">=</span> <span class="n">phenotype</span><span class="o">.</span><span class="n">from_phenotype</span><span class="p">(</span><span class="n">phenotype</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;Generate datapoints to plot a phenotype function.</span>
 
+<span class="sd">    Args:</span>
+<span class="sd">        phenotype: AbstractPhenotype which we want to plot.</span>
+<span class="sd">        bottom_plotting_limit: the bottom limit for plotting.</span>
+<span class="sd">        upper_plotting_limit: the upper limit for plotting.</span>
+<span class="sd">        number_of_points: number of points to generate within the plotting range.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        Data necessary to generate a plot of the phenotype.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">number_of_dimensions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">phenotype</span><span class="o">.</span><span class="n">genotype</span><span class="o">.</span><span class="n">genotype</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-
     <span class="n">function_data</span> <span class="o">=</span> <span class="n">PlottingData</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
     <span class="n">range_of_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">bottom_plotting_limit</span><span class="p">,</span> <span class="n">upper_plotting_limit</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">number_of_points</span><span class="p">)</span>
 

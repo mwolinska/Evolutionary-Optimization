@@ -56,7 +56,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#submodules">Submodules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#evolutionary-optimization-main-module">evolutionary_optimization.main module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#module-evolutionary_optimization.main">evolutionary_optimization.main module</a></li>
 <li class="toctree-l3"><a class="reference internal" href="evolutionary_optimization.html#module-evolutionary_optimization">Module contents</a></li>
 </ul>
 </li>
@@ -111,7 +111,7 @@
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>genotype</strong> – genotype used for mutation, crossover and to calculate phenotype_value.</p></li>
+<li><p><strong>genotype</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>]]) – genotype used for mutation, crossover and to calculate phenotype_value.</p></li>
 <li><p><strong>mutation_probability</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – probability of a gene mutating.</p></li>
 <li><p><strong>ratio_of_population_for_crossover</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">float</span></code>) – ratio of population used for crossover when updating population.</p></li>
 <li><p><strong>number_of_genes</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">int</span></code>) – number of genes in the genotype.</p></li>
@@ -165,7 +165,8 @@ based on the combined genotypes. The new genotype length is the same as of the p
 <dl class="py method">
 <dt class="sig sig-object py" id="evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.from_genotype">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_genotype</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_genotype</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_genotype</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/evolutionary_optimization/genotype/genotype_model/abstract_genotype.html#AbstractGenotype.from_genotype"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.from_genotype" title="Permalink to this definition"></a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Create a new genotype using the parameters of an existing genotype.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype" title="evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype"><code class="xref py py-class docutils literal notranslate"><span class="pre">AbstractGenotype</span></code></a></p>
 </dd>
@@ -175,7 +176,8 @@ based on the combined genotypes. The new genotype length is the same as of the p
 <dl class="py property">
 <dt class="sig sig-object py" id="evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.genotype">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">genotype</span></span><a class="headerlink" href="#evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.genotype" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Genotype value used for evaluation of phenotype.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="evolutionary_optimization.genotype.genotype_model.abstract_genotype.AbstractGenotype.mutate">

@@ -76,7 +76,6 @@
 <span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ndarray</span>
 
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.genotype.genotype_model.abstract_genotype</span> <span class="kn">import</span> <span class="n">AbstractGenotype</span>
-<span class="kn">from</span> <span class="nn">evolutionary_optimization.genotype.implemented_genotypes.binary_list_genotype</span> <span class="kn">import</span> <span class="n">BinaryListGenotype</span>
 <span class="kn">from</span> <span class="nn">evolutionary_optimization.phenotype.phenotype_model.abstract_phenotype</span> <span class="kn">import</span> <span class="n">AbstractPhenotype</span>
 
 
@@ -92,10 +91,12 @@
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;AbstractGenotype that defines the phenotype.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span>
 
     <span class="nd">@genotype</span><span class="o">.</span><span class="n">setter</span>
     <span class="k">def</span> <span class="nf">genotype</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Setter for genotype property.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_genotype</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="nd">@property</span>
