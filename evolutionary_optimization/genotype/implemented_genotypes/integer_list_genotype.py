@@ -133,6 +133,7 @@ class IntegerListGenotype(AbstractGenotype):
         Returns:
             Tuple of AbstractGenotype, representing two children genotypes that are a combination of the parents.
         """
+        # TODO (Marta): the crossover method is too slow
         if len(self.genotype) != len(parent_2_genotype.genotype):
             raise NameError("The Individuals have genotypes of different lengths - crossover is impossible")
 

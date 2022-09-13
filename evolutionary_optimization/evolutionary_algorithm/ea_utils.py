@@ -70,6 +70,7 @@ class CreateGif3D:
             animation_data_z: np.ndarray,
             static_plot_data: PlottingData
     ):
+        # TODO (Marta): Implement 3D gif
         # self.fig, self.ax = plt.subplots(subplot_kw={"projection": "3d"})
         self.fig, self.ax = plt.subplots(constrained_layout=True)
         self.ax = plt.axes(projection="3d")
